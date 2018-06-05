@@ -12,7 +12,7 @@ def load_json(path):
 
 
 def get_entries():
-    rootDir = './resources/resources'
+    rootDir = './vecto-resources/resources'
     for dirName, subdirList, fileList in os.walk(rootDir, topdown=False):
         for fname in fileList:
             yield(os.path.join(dirName, fname))

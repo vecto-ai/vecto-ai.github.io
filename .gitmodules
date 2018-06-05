@@ -1,0 +1,3 @@
+[submodule "aux/resources/vecto-resources"]
+	path = aux/resources/vecto-resources
+	url = git@github.com:vecto-ai/vecto-resources.git
