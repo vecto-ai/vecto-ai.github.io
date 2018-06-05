@@ -1,2 +1,4 @@
 nikola
 pybtex
+webassets
+ghp-import2
