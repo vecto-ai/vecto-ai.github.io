@@ -1,0 +1,24 @@
+<!--
+.. date: 2018-06-01 09:39:34 UTC
+.. tags:
+.. category:
+.. link:
+.. description: Vecto resource library
+.. type: text
+.. hidetitle: True
+.. author: The Vecto Team
+-->
+
+<h1>Vecto resource library</h1>
+
+<table>
+    % for row in rows:
+        ${makerow(row)}
+    % endfor
+</table>
+
+<%def name="makerow(row)">
+    <tr>
+        <td><a href=${row["url"]}>${row["description"]}</a></td>
+    </tr>
+</%def>
