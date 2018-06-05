@@ -1,0 +1,4 @@
+Sitemap: http://vecto.space/sitemapindex.xml
+
+User-Agent: *
+Host: vecto.space
