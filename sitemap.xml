@@ -7,11 +7,11 @@
                         http://www.sitemaps.org/schemas/sitemap/0.9/sitemap.xsd">
  <url>
   <loc>http://vecto.space/</loc>
-  <lastmod>2018-06-06T14:40:00Z</lastmod>
+  <lastmod>2018-06-06T15:10:00Z</lastmod>
  </url>
  <url>
   <loc>http://vecto.space/archive.html</loc>
-  <lastmod>2018-06-06T14:57:00Z</lastmod>
+  <lastmod>2018-06-06T15:18:00Z</lastmod>
  </url>
  <url>
   <loc>http://vecto.space/blog/</loc>
@@ -23,7 +23,7 @@
  </url>
  <url>
   <loc>http://vecto.space/contribute.html</loc>
-  <lastmod>2018-06-06T14:57:00Z</lastmod>
+  <lastmod>2018-06-06T15:18:00Z</lastmod>
  </url>
  <url>
   <loc>http://vecto.space/data/</loc>
@@ -31,14 +31,10 @@
  </url>
  <url>
   <loc>http://vecto.space/publications.html</loc>
-  <lastmod>2018-06-06T14:57:00Z</lastmod>
+  <lastmod>2018-06-06T15:18:00Z</lastmod>
  </url>
  <url>
   <loc>http://vecto.space/team.html</loc>
-  <lastmod>2018-06-06T14:57:00Z</lastmod>
- </url>
- <url>
-  <loc>http://vecto.space/test.html</loc>
-  <lastmod>2018-06-06T15:00:00Z</lastmod>
+  <lastmod>2018-06-06T15:18:00Z</lastmod>
  </url>
 </urlset>
