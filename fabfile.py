@@ -1,4 +1,5 @@
 import os
+import shutil
 from fabric.api import local, lcd
 
 
@@ -15,8 +16,11 @@ def make():
 
 
 def update():
-    with lcd("./aux/resources/vecto-resources"):
-        local("git pull")
+    local("git submodule update --recursive --remote")
+    local("git commit aux/resources/vecto-resources -m \"update submodules\" | true")
+    with lcd("./aux/resources/"):
+        local("python3 resources.py")
+    shutil.move("./aux/resources/index.html", "./pages/data/index.html")
 
 
 def deploy():
