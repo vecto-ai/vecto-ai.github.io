@@ -102,10 +102,12 @@ NAVIGATION_LINKS = {
             ),
             'Models & Data Library '
         ),
-        ("/", "Projects"),
         ("/team.html", "About Us"),
     )
 }
+
+#        ("/", "Projects"),
+
 
 # Alternative navigation links. Works the same way NAVIGATION_LINKS does,
 # although themes may not always support them. (translatable)
