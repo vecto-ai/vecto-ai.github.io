@@ -104,7 +104,7 @@ NAVIGATION_LINKS = {
         ),
         ("/", "Projects"),
         ("/team.html", "About Us"),
-        ),
+    )
 }
 
 # Alternative navigation links. Works the same way NAVIGATION_LINKS does,
@@ -115,12 +115,8 @@ NAVIGATION_ALT_LINKS = {
 }
 
 # Name of the theme to use.
-#<<<<<<< HEAD
-#THEME = "bootstrap4-jinja"
-#=======
-#>>>>>>> 371763092a832b3be7a2896bb723b8c3fd6a818f
 THEME = "bootstrap4"
-# THEME = "custom_theme"
+
 
 # Primary color of your theme. This will be used to customize your theme.
 # Must be a HEX value.
@@ -1175,7 +1171,8 @@ SHOW_SOURCELINK = False
 # Google Analytics or whatever else you use. Added to the bottom of <body>
 # in the default template (base.tmpl).
 # (translatable)
-# BODY_END = ""
+
+BODY_END = '<script defer src="https://use.fontawesome.com/releases/v5.0.10/js/all.js" integrity="sha384-slN8GvtUJGnv6ca26v8EzVaR9DC58QEwsIk9q1QXdCU8Yu8ck/tL/5szYlBbqmS+" crossorigin="anonymous"></script>'
 
 # The possibility to extract metadata from the filename by using a
 # regular expression.

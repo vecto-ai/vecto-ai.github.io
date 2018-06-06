@@ -11,7 +11,14 @@
 
 <h1>Vecto resource library</h1>
 
-<table>
+<table class="table table-striped">
+	<thead>
+    <tr>
+      <th scope="col">Description</th>
+      <th scope="col">Download</th>
+      <th scope="col">Project page</th>
+    </tr>
+  	</thead>
     % for row in rows:
         ${makerow(row)}
     % endfor
@@ -19,6 +26,8 @@
 
 <%def name="makerow(row)">
     <tr>
-        <td><a href=${row["url"]}>${row["description"]}</a></td>
+        <td>${row["description"]}</td> 
+        <td><a href=${row["url"]}><i class="fa fa-download"></i></a></td>
+        <td><a href=${row["url"]}><i class="fa fa-info-circle"></i></a></td>
     </tr>
 </%def>
