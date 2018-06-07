@@ -16,6 +16,7 @@ def make():
 
 
 def update():
+    local("git submodule update")
     local("git submodule update --recursive --remote")
     local("git commit aux/resources/vecto-resources -m \"update submodules\" | true")
     with lcd("./aux/resources/"):
