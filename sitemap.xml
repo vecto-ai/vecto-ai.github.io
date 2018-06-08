@@ -7,7 +7,11 @@
                         http://www.sitemaps.org/schemas/sitemap/0.9/sitemap.xsd">
  <url>
   <loc>http://vecto.space/</loc>
-  <lastmod>2018-06-06T01:38:00Z</lastmod>
+  <lastmod>2018-06-08T02:38:00Z</lastmod>
+ </url>
+ <url>
+  <loc>http://vecto.space/404.html</loc>
+  <lastmod>2018-06-08T02:41:00Z</lastmod>
  </url>
  <url>
   <loc>http://vecto.space/archive.html</loc>
