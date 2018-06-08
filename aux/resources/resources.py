@@ -18,16 +18,23 @@ def get_entries():
             yield(os.path.join(dirName, fname))
 
 
+def filter_entry(metadata):
+    if "description" not in metadata:
+        metadata["description"] = "__temp"
+    for key in ["url", "project_page"]:
+        if key not in metadata:
+            metadata[key] = ""
+    keys = ["class", "description", "url", "project_page"]
+    filtered = {key: metadata[key] for key in keys}
+    return filtered
+
+
 def main():
     rows = []
     for f in get_entries():
         # print(f)
         data = load_json(f)
-        if "description" not in data:
-            data["description"] = "__temp"
-        keys = ["class", "description", "url"]
-        filtered = {key: data[key] for key in keys}
-        # print(filtered)
+        filtered = filter_entry(data)
         rows.append(filtered)
     mytemplate = Template(filename='./data.tmpl')
     result = mytemplate.render(rows=rows)
