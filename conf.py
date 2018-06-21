@@ -86,7 +86,7 @@ NAVIGATION_LINKS = {
         ),
         (
             (
-                ('/Jupyter', 'Jupyter notebooks'),
+#                ('/Jupyter', 'Jupyter notebooks'),
                 ('https://github.com/vecto-ai/vecto/', 'vecto on GitHub'),
                 ('/contribute.html', 'how to contribute')
             ),
@@ -102,6 +102,7 @@ NAVIGATION_LINKS = {
             ),
             'Models & Data Library '
         ),
+        ("/publications.html", "Publications"),
         ("/team.html", "About Us"),
     )
 }
@@ -1292,7 +1293,7 @@ BODY_END = '<script defer src="https://use.fontawesome.com/releases/v5.0.10/js/a
 # extracting unique titles at the top of your document and turning
 # them into metadata. This surprises a lot of people, and setting
 # this option to True will prevent it.
-# NO_DOCUTILS_TITLE_TRANSFORM = True
+NO_DOCUTILS_TITLE_TRANSFORM = True
 
 # If you don’t like slugified file names ([a-z0-9] and a literal dash),
 # and would prefer to use all the characters your file system allows.
