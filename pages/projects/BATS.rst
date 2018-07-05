@@ -3,6 +3,7 @@
 .. tags: mathjax
 .. hidetitle: True
 .. pretty_url: True
+.. template:: book.tmpl
 
 
 ==================================
@@ -27,7 +28,7 @@ Analogies have been one of the standard intrinsic benchmarks for word embeddings
    Figure 1. "Linguistic regularitities": linear vector offsets as model of linguistic relations (Mikolov et al., 2013) [#f1]_
 
 
-For example, consider a pair of words $a : a' :: b : b$ such as *man: woman :: king : queen*. Mikolov et al. proposed that the $b'$ word could be found with the help of the offset between the words $b$ and $a$:
+For example, consider a pair of words $a : a' :: b : b$ such as *man: woman :: king : queen*. Mikolov et al. proposed that the $b'$ word vector could be found with the help of the offset between the word vectors $b$ and $a$:
 
 $$b'=argmax_{~d\in{V}}(cos(b',b-a+a'))$$
 
