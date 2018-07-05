@@ -1,0 +1,24 @@
+## -*- coding: utf-8 -*-
+<%inherit file="base.tmpl"/>
+
+<%block name="extra_head">
+### Leave this block alone.
+</%block>
+
+
+<%block name="content">
+<body>
+<div class="container" id="content" role="main">
+    <div class="body-content">
+        ${template_hooks['page_header']()}
+
+        ${post}
+
+        <footer id="footer">
+            ${content_footer}
+            ${template_hooks['page_footer']()}
+        </footer>
+    </div>
+</div>
+</body>
+</%block>

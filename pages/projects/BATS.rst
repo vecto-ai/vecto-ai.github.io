@@ -3,6 +3,7 @@
 .. tags: mathjax
 .. hidetitle: True
 .. pretty_url: True
+.. template: base3.tmpl
 
 
 ==================================
@@ -18,6 +19,12 @@ The Bigger Analogy Test Set (BATS)
    <p>BATS in other languages:  <a href="http://vecto.space/projects/jBATS">Japanese</a>.</p>
    </div>
 
+.. contents:: In this page:
+
+-----------------
+Word analogy task
+-----------------
+
 Analogies have been one of the standard intrinsic benchmarks for word embeddings since the striking demonstration of “linguistic regularities” by Mikolov et al. (2013) [#f1]_. The big finding of that study was that simple vector offset between one pair of words with a given relation can be used to identify the missing member of a different word pair with the same relation.
 
 .. figure:: /assets/img/queen.png
@@ -27,33 +34,54 @@ Analogies have been one of the standard intrinsic benchmarks for word embeddings
    Figure 1. "Linguistic regularitities": linear vector offsets as model of linguistic relations (Mikolov et al., 2013) [#f1]_
 
 
-For example, consider a pair of words $a : a' :: b : b$ such as *man: woman :: king : queen*. Mikolov et al. proposed that the $b'$ word could be found with the help of the offset between the words $b$ and $a$:
+For example, consider a pair of words $a : a' :: b : b$ such as *man:
+woman :: king : queen*. Mikolov et al. proposed that the $b'$ word could be found with the help of the offset between the words $b$ and $a$:
 
 $$b'=argmax_{~d\in{V}}(cos(b',b-a+a'))$$
 
 In other words, the word analogy task was interpreted as follows: given the words *a, a' and b'*, to choose the word vector that is the closest to the result of calculation *b-a+a'*, and that vector should be the *b'* vector.
 
-The claim was demonstrated with a new dataset of 9 morphological and 5 semantic categories, with 20-70 unique word pairs per category which are combined in all possible ways to yield 8,869 semantic and 10,675 syntactic questions. This set is still a popular benchmark for word embeddings, commonly referred to as the Google analogy dataset. These numbers look convincingly large. When word embedding models started claiming over 80% accuracy on this dataset [#f2]_, that could be interpreted as suggesting that identifying different linguistic relations is a solved task, and we already have extremely accurate, context-independent distributional semantic representations.
+---------------------
+Why BATS is different
+---------------------
+
+The "linguistic regularity" phenomenon was demonstrated by Mikolov et al. on
+ a new dataset of 9 morphological and 5 semantic categories, with 20-70 unique word pairs per category which are combined in all possible ways to yield 8,869 semantic and 10,675 syntactic questions. This set is still a popular benchmark for word embeddings, commonly referred to as the Google analogy dataset. These numbers look convincingly large. When word embedding models started claiming over 80% accuracy on this dataset [#f2]_, that could be interpreted as suggesting that identifying different linguistic relations is a solved task, and we already have extremely accurate, context-independent distributional semantic representations.
 
 It has since become clear that this is not the case. Language has thousands of relations of various kinds, and human analogical reasoning, while fundamental to our learning, clearly `does not operate on one-rule-for-all-cases base <http://www.aclweb.org/anthology/S17-1017>`_. The Google test set had only 15 relations, and it was also highly unbalanced. 56.72\% of all semantic questions are from the same famous *country:capital* category, and "syntactic" questions were mostly on inflectional rather than derivational morphology.
 
 BATS [#f3]_ was created to address these issues and detect what kinds of relations *are* currently detectable with analogical reasoning. BATS includes 4 types of linguistic relations: inflectional and derivational morphology, and lexicographic and encyclopedic semantics. Each relation is represented with 10 categories, and each category contains 50 unique word pairs. For a test in the vector offset paradigm it yields 2480 questions (99,200 [#f4]_ in total).
-
-.. include:: ./files/assets/files/bats-table.html
-
 
 In addition to the goals of representativeness and balance, BATS has two new important features:
 
  * the morphological categories are morphological categories are sampled to reduce homonymy. For example, for verb present tense the Google set includes pairs like *walk:walks*, which could be both verbs and nouns. BATS only includes words that have no more than one part-of-speech in WordNet.
  * where applicable, BATS contains several acceptable answers (sourced from WordNet). For example, both *mammal* and *canine* are hypernyms of dog. In some cases alternative spellings are also listed (e.g. *organize: reorganize/reorganise*).
 
+-----------------
+Structure of BATS
+-----------------
+
+.. include:: ./files/assets/files/bats-table.html
+
+-------------------
+Performance on BATS
+-------------------
+
+The initial results with BATS were striking: GloVe, the model that claimed over 80% accuracy on the Google syntactic analogies, achieved under 30% on BATS. Furthermore, only inflectional morphology categories can be reliably detected, and the famous *country:capital* category is a clear outlier among the semantic categories, most of which have very low accuracy.
+
 .. figure:: /assets/img/bats_stats.png
 
    Figure 2. Performance on BATS: GloVe word embeddings vs count-based vectors condensed with SVD
 
-The initial results with BATS were striking: GloVe, the model that claimed over 80% accuracy on the Google syntactic analogies, achieved under 30% on BATS. Furthermore, only inflectional morphology categories can be reliably detected, and the famous *country:capital* category is a clear outlier among the semantic categories, most of which have very low accuracy.
+Interestingly, the above figure also shows that GloVe is generally not that
+different from a traditional count-based SVD: although it performs 5-10%
+better in many cases, the overall pattern of categories that are
+easy/difficult is clearly the same for both models. The same pattern was
+confirmed in a subsequent study [#f5].
 
-Interestingly, the above figure also shows that GloVe is generally not that different from a traditional count-based SVD: although it performs 5-10% better in many cases, the overall pattern of categories that are easy/difficult is clearly the same for both models.
+-----------------------------------------------------
+What subsequent studies with BATS helped to establish
+-----------------------------------------------------
 
 Subsequent projects used the balanced structure of BATS to show the following:
 
