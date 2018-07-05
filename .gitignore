@@ -6,3 +6,4 @@ output
 .doit.db.db
 .venv
 nikolaserve.pid
+.idea
