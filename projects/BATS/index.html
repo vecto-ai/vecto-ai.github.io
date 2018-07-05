@@ -1,0 +1,369 @@
+<!DOCTYPE html>
+<html prefix="og: http://ogp.me/ns# article: http://ogp.me/ns/article#
+" lang="en">
+<head>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width, initial-scale=1">
+<title>The Bigger Analogy Test Set (BATS) | vecto</title>
+<link href="/assets/css/all-nocdn.css" rel="stylesheet" type="text/css">
+<meta name="theme-color" content="#5670d4">
+<meta name="generator" content="Nikola (getnikola.com)">
+<link rel="alternate" type="application/rss+xml" title="RSS" href="/rss.xml">
+<link rel="canonical" href="http://vecto.space/projects/BATS/">
+<script type="text/x-mathjax-config">
+MathJax.Hub.Config({
+    tex2jax: {
+        inlineMath: [ ['$','$'], ["\\(","\\)"] ],
+        displayMath: [ ['$$','$$'], ["\\[","\\]"] ],
+        processEscapes: true
+    },
+    displayAlign: 'center', // Change this to 'left' if you want left-aligned equations.
+    "HTML-CSS": {
+        styles: {'.MathJax_Display': {"margin": 0}}
+    }
+});
+</script><!--[if lt IE 9]><script src="/assets/js/html5.js"></script><![endif]--><meta name="author" content="vecto community">
+<meta property="og:site_name" content="vecto">
+<meta property="og:title" content="The Bigger Analogy Test Set (BATS)">
+<meta property="og:url" content="http://vecto.space/projects/BATS/">
+<meta property="og:description" content="The Bigger Analogy Test Set (BATS)
+
+
+The English dataset: direct download
+The testing scripts for 6 different analogy solving methods are available in Vecto library.
+BATS in other languages:  Japanese">
+<meta property="og:type" content="article">
+<meta property="article:published_time" content="2018-07-05T15:06:13-04:00">
+<meta property="article:tag" content="mathjax">
+</head>
+<body>
+<a href="#content" class="sr-only sr-only-focusable">Skip to main content</a>
+
+<!-- Menubar -->
+
+<nav class="navbar navbar-expand-md navbar-dark bg-dark static-top mb-4"><div class="container">
+<!-- This keeps the margins nice -->
+        <a class="navbar-brand" href="http://vecto.space/">
+
+            <span id="blog-title">vecto</span>
+        </a>
+        <button class="navbar-toggler" type="button" data-toggle="collapse" data-target="#bs-navbar" aria-controls="bs-navbar" aria-expanded="false" aria-label="Toggle navigation">
+            <span class="navbar-toggler-icon"></span>
+        </button>
+
+        <div class="collapse navbar-collapse" id="bs-navbar">
+            <ul class="navbar-nav mr-auto">
+<li class="nav-item dropdown">
+<a href="#" class="nav-link dropdown-toggle" data-toggle="dropdown" aria-haspopup="true" aria-expanded="false">Docs</a>
+            <div class="dropdown-menu">
+                    <a href="http://vecto.readthedocs.io/en/docs/" class="dropdown-item">API reference</a>
+                    <a href="http://vecto.readthedocs.io/en/docs/tutorial/index.html" class="dropdown-item">Tutorial</a>
+            </div>
+            </li>
+<li class="nav-item dropdown">
+<a href="#" class="nav-link dropdown-toggle" data-toggle="dropdown" aria-haspopup="true" aria-expanded="false">Code</a>
+            <div class="dropdown-menu">
+                    <a href="https://github.com/vecto-ai/vecto/" class="dropdown-item">vecto on GitHub</a>
+                    <a href="/contribute.html" class="dropdown-item">how to contribute</a>
+            </div>
+            </li>
+<li class="nav-item dropdown">
+<a href="#" class="nav-link dropdown-toggle" data-toggle="dropdown" aria-haspopup="true" aria-expanded="false">Models &amp; Data Library </a>
+            <div class="dropdown-menu">
+                    <a href="/data/" class="dropdown-item">Corpora</a>
+                    <a href="/data/" class="dropdown-item">Pre-trained emmbeddings</a>
+                    <a href="/data/" class="dropdown-item">Tasks</a>
+                    <a href="/data/" class="dropdown-item">Datasets</a>
+                    <a href="/data/" class="dropdown-item">Share your work and increase its visibility</a>
+            </div>
+                </li>
+<li class="nav-item">
+<a href="/projects/index" class="nav-link">Projects</a>
+                </li>
+<li class="nav-item">
+<a href="/publications.html" class="nav-link">Publications</a>
+                </li>
+<li class="nav-item">
+<a href="/team.html" class="nav-link">About Us</a>
+
+                
+            </li>
+</ul>
+<ul class="navbar-nav navbar-right"></ul>
+</div>
+<!-- /.navbar-collapse -->
+    </div>
+<!-- /.container -->
+</nav><!-- End of Menubar --><div class="container" id="content" role="main">
+    <div class="body-content">
+        <!--Body content-->
+        
+        
+<article class="post-text storypage" itemscope="itemscope" itemtype="http://schema.org/Article"><header></header><div class="e-content entry-content" itemprop="articleBody text">
+    <div class="section" id="the-bigger-analogy-test-set-bats">
+<h2>The Bigger Analogy Test Set (BATS)</h2>
+<div style="padding-top: 15px; padding-bottom: 25px; margin-left: 40px">
+<br><p>The English dataset: <a href="https://my.pcloud.com/publink/show?code=XZOn0J7Z8fzFMt7Tw1mGS6uI1SYfCfTyJQTV">direct download</a></p>
+<p>The testing scripts for 6 different analogy solving methods are <a href="http://vecto.readthedocs.io/en/docs/tutorial/evaluating.html#word-analogy-task">available in Vecto library</a>.</p>
+<p>BATS in other languages:  <a href="http://vecto.space/projects/jBATS">Japanese</a>.</p>
+</div>
+<p>Analogies have been one of the standard intrinsic benchmarks for word embeddings since the striking demonstration of “linguistic regularities” by Mikolov et al. (2013) <a class="footnote-reference" href="/projects/BATS/#f1" id="id1">[1]</a>. The big finding of that study was that simple vector offset between one pair of words with a given relation can be used to identify the missing member of a different word pair with the same relation.</p>
+<div class="figure align-center">
+<img alt="/assets/img/queen.png" src="/assets/img/queen.png" style="height: 200px;"><p class="caption">Figure 1. "Linguistic regularitities": linear vector offsets as model of linguistic relations (Mikolov et al., 2013) <a class="footnote-reference" href="/projects/BATS/#f1" id="id2">[1]</a></p>
+</div>
+<p>For example, consider a pair of words $a : a' :: b : b$ such as <em>man: woman :: king : queen</em>. Mikolov et al. proposed that the $b'$ word vector could be found with the help of the offset between the word vectors $b$ and $a$:</p>
+<p>$$b'=argmax_{~din{V}}(cos(b',b-a+a'))$$</p>
+<p>In other words, the word analogy task was interpreted as follows: given the words <em>a, a' and b'</em>, to choose the word vector that is the closest to the result of calculation <em>b-a+a'</em>, and that vector should be the <em>b'</em> vector.</p>
+<p>The claim was demonstrated with a new dataset of 9 morphological and 5 semantic categories, with 20-70 unique word pairs per category which are combined in all possible ways to yield 8,869 semantic and 10,675 syntactic questions. This set is still a popular benchmark for word embeddings, commonly referred to as the Google analogy dataset. These numbers look convincingly large. When word embedding models started claiming over 80% accuracy on this dataset <a class="footnote-reference" href="/projects/BATS/#f2" id="id3">[2]</a>, that could be interpreted as suggesting that identifying different linguistic relations is a solved task, and we already have extremely accurate, context-independent distributional semantic representations.</p>
+<p>It has since become clear that this is not the case. Language has thousands of relations of various kinds, and human analogical reasoning, while fundamental to our learning, clearly <a class="reference external" href="http://www.aclweb.org/anthology/S17-1017">does not operate on one-rule-for-all-cases base</a>. The Google test set had only 15 relations, and it was also highly unbalanced. 56.72% of all semantic questions are from the same famous <em>country:capital</em> category, and "syntactic" questions were mostly on inflectional rather than derivational morphology.</p>
+<p>BATS <a class="footnote-reference" href="/projects/BATS/#f3" id="id4">[3]</a> was created to address these issues and detect what kinds of relations <em>are</em> currently detectable with analogical reasoning. BATS includes 4 types of linguistic relations: inflectional and derivational morphology, and lexicographic and encyclopedic semantics. Each relation is represented with 10 categories, and each category contains 50 unique word pairs. For a test in the vector offset paradigm it yields 2480 questions (99,200 <a class="footnote-reference" href="/projects/BATS/#f4" id="id5">[4]</a> in total).</p>
+<table border="1px" cellpadding="5px" style="font-size: smaller;padding-top: 20px; padding-bottom: 20px" align="center">
+<caption style="caption-side: top; text-align: center; color: black">Table 1. The structure of Bigger Analogy Test Set</caption>
+ <tbody>
+<tr style="background-color: lightgray;">
+<th><strong>MORPHOLOGY</strong></th>
+ <td><strong>Subcategory</strong></td>
+ <td><strong>Relations</strong></td>
+ <td><strong>SEMANTICS</strong></td>
+ <td><strong>Subcategory</strong></td>
+ <td><strong>Relations</strong></td>
+ </tr>
+<tr>
+<td rowspan="10"><strong>Inflections</strong></td>
+ <td rowspan="2">nouns</td>
+ <td>i01: regular plurals (<em>student:students</em>)</td>
+ <td rowspan="10"><strong>Lexicography</strong></td>
+ <td rowspan="2">hypernyms</td>
+ <td>l01: animals (<em>cat:feline</em>)</td>
+ </tr>
+<tr>
+<td>i02: plurals - orthographic changes (<em>wife:wives</em>)</td>
+ <td>l02: miscellaneous (<em>plum:fruit, shirt:clothes</em>)</td>
+ </tr>
+<tr>
+<td rowspan="2">adjectives</td>
+ <td>i03: comparative degree (<em>strong:stronger</em>)</td>
+ <td>hyponyms</td>
+ <td>l03: miscellaneous (<em>bag:pouch, color:white</em>)</td>
+ </tr>
+<tr>
+<td>i04: superlative degree (<em>strong:strongest</em>)</td>
+ <td rowspan="3">meronyms</td>
+ <td>l04: substance (<em>sea:water</em>)</td>
+ </tr>
+<tr>
+<td rowspan="6">verbs</td>
+ <td>i05: infinitive: 3ps.sg (<em>follow:follows</em>)</td>
+ <td>l05: member (<em>player:team</em>)</td>
+ </tr>
+<tr>
+<td>i06: infinitive: participle (<em>follow:following</em>)</td>
+ <td>l06: part-whole (<em>car:engine</em>)</td>
+ </tr>
+<tr>
+<td>i07: infinitive: past (<em>follow:followed</em>)</td>
+ <td rowspan="2">synonyms</td>
+ <td>l07: intensity (<em>cry:scream</em>)</td>
+ </tr>
+<tr>
+<td>i08: participle: 3ps.sg (<em>following:follows</em>)</td>
+ <td>l08: exact (<em>sofa:couch</em>)</td>
+ </tr>
+<tr>
+<td>i09: participle: past (<em>following:followed</em>)</td>
+ <td rowspan="2">antonyms</td>
+ <td>l09: gradable (<em>clean:dirty</em>)</td>
+ </tr>
+<tr>
+<td>i10: 3ps.sg : past (<em>follows:followed</em>)</td>
+ <td>l10: binary (<em>up:down</em>)</td>
+ </tr>
+<tr>
+<td rowspan="10"><strong>Derivation</strong></td>
+ <td rowspan="7">no stem <br> change</td>
+ <td>d01: noun+less (<em>life:lifeless</em>)</td>
+ <td rowspan="10"><strong>Encyclopedia</strong></td>
+ <td rowspan="3">geography</td>
+ <td>e01: capitals (<em>athens:greece</em>)</td>
+ </tr>
+<tr>
+<td>d02: un+adj. (<em>able:unable</em>)</td>
+ <td>e02: country:language (<em>bolivia:spanish</em>)</td>
+ </tr>
+<tr>
+<td>d03: adj.+ly (<em>usual:usually</em>)</td>
+ <td>e03: uk city:county (<em>york:yorkshire</em>)</td>
+ </tr>
+<tr>
+<td>d04: over+adj./ved (<em>used:overused</em>)</td>
+ <td rowspan="2">people</td>
+ <td>e04: nationalities (<em>lincoln:american</em>)</td>
+ </tr>
+<tr>
+<td>d05: adj.+ness (<em>same:sameness</em>)</td>
+ <td>e05: occupation (<em>lincoln:president</em>)</td>
+ </tr>
+<tr>
+<td>d06: re+verb (<em>create:recreate</em>)</td>
+ <td rowspan="3">animals</td>
+ <td>e06: the young (<em>cat:kitten</em>)</td>
+ </tr>
+<tr>
+<td>d07: verb+able (<em>allow:allowable</em>)</td>
+ <td>e07: sounds (<em>dog:bark</em>)</td>
+ </tr>
+<tr>
+<td rowspan="3">stem <br> change</td>
+ <td>d08: verb+er (<em>provide:provider</em>)</td>
+ <td>e08: shelter (<em>fox:den</em>)</td>
+ </tr>
+<tr>
+<td>d09: verb+ation (<em>continue:continuation</em>)</td>
+ <td rowspan="2">other</td>
+ <td>e09: thing:color (<em>blood:red</em>)</td>
+ </tr>
+<tr>
+<td>d10: verb+ment (<em>argue:argument</em>)</td>
+ <td>e10: male:female (<em>actor:actress</em>)</td>
+ </tr>
+</tbody>
+</table>
+<br><p>In addition to the goals of representativeness and balance, BATS has two new important features:</p>
+<blockquote>
+<ul class="simple">
+<li>the morphological categories are morphological categories are sampled to reduce homonymy. For example, for verb present tense the Google set includes pairs like <em>walk:walks</em>, which could be both verbs and nouns. BATS only includes words that have no more than one part-of-speech in WordNet.</li>
+<li>where applicable, BATS contains several acceptable answers (sourced from WordNet). For example, both <em>mammal</em> and <em>canine</em> are hypernyms of dog. In some cases alternative spellings are also listed (e.g. <em>organize: reorganize/reorganise</em>).</li>
+</ul>
+</blockquote>
+<div class="figure">
+<img alt="/assets/img/bats_stats.png" src="/assets/img/bats_stats.png"><p class="caption">Figure 2. Performance on BATS: GloVe word embeddings vs count-based vectors condensed with SVD</p>
+</div>
+<p>The initial results with BATS were striking: GloVe, the model that claimed over 80% accuracy on the Google syntactic analogies, achieved under 30% on BATS. Furthermore, only inflectional morphology categories can be reliably detected, and the famous <em>country:capital</em> category is a clear outlier among the semantic categories, most of which have very low accuracy.</p>
+<p>Interestingly, the above figure also shows that GloVe is generally not that different from a traditional count-based SVD: although it performs 5-10% better in many cases, the overall pattern of categories that are easy/difficult is clearly the same for both models.</p>
+<p>Subsequent projects used the balanced structure of BATS to show the following:</p>
+<blockquote>
+<ul class="simple">
+<li>the vector offset method is not the best way to solve word analogies, with <a class="reference external" href="http://www.aclweb.org/anthology/C16-1332">LRCos method achieving up to 35% improvement</a> in some categories <a class="footnote-reference" href="/projects/BATS/#f5" id="id6">[5]</a> ;</li>
+<li>all the current methods are heavily biased by cosine similarity between the source words, which means that <a class="reference external" href="http://www.aclweb.org/anthology/S17-1017">the results on word analogy task indicate which relations a given model favors in vector neighborhoods</a> (and <em>not</em> some general "goodness" of the model) <a class="footnote-reference" href="/projects/BATS/#f6" id="id7">[6]</a> .</li>
+<li>
+<a class="reference external" href="http://www.aclweb.org/anthology/W18-1205">subword-level models such as Fasttext achieve much higher accuracy on derivational morphology</a>, as compared to the word-level models such as SkipGram <a class="footnote-reference" href="/projects/BATS/#f7" id="id8">[7]</a> .</li>
+</ul>
+<p>A comparable dataset for Japanese is now also <a class="reference external" href="http://vecto.space/projects/jBATS">available</a>. It was used to show the effectiveness of leveraging subcharacter information to produce more meaningful representations for Japanese characters.</p>
+<blockquote>
+<!-- (which turned out to be `domain-dependent, and not as high as that claimed for Chinese <https://sites.google.com/view/relsnnlp/home/accepted-papers>`_). -->
+</blockquote>
+</blockquote>
+<p class="rubric">Footnotes</p>
+<table class="docutils footnote" frame="void" id="f1" rules="none">
+<colgroup>
+<col class="label">
+<col>
+</colgroup>
+<tbody valign="top"><tr>
+<td class="label">[1]</td>
+<td>
+<em>(<a class="fn-backref" href="/projects/BATS/#id1">1</a>, <a class="fn-backref" href="/projects/BATS/#id2">2</a>)</em> Mikolov, T., Yih, W., &amp; Zweig, G. (2013). Linguistic Regularities in Continuous Space Word Representations. In Proceedings of NAACL-HLT 2013 (pp. 746–751). Atlanta, Georgia, 9–14 June 2013. Retrieved from <a class="reference external" href="https://www.aclweb.org/anthology/N13-1090">https://www.aclweb.org/anthology/N13-1090</a>
+</td>
+</tr></tbody>
+</table>
+<table class="docutils footnote" frame="void" id="f2" rules="none">
+<colgroup>
+<col class="label">
+<col>
+</colgroup>
+<tbody valign="top"><tr>
+<td class="label"><a class="fn-backref" href="/projects/BATS/#id3">[2]</a></td>
+<td>Pennington, J., Socher, R., &amp; Manning, C. D. (2014). Glove: Global vectors for word representation. In Proceedings of the 2014 Conference on Empirical Methods in Natural Language Processing (EMNLP) (Vol. 12, pp. 1532–1543). <a class="reference external" href="https://www.aclweb.org/anthology/D14-1162">https://www.aclweb.org/anthology/D14-1162</a>
+</td>
+</tr></tbody>
+</table>
+<table class="docutils footnote" frame="void" id="f3" rules="none">
+<colgroup>
+<col class="label">
+<col>
+</colgroup>
+<tbody valign="top"><tr>
+<td class="label"><a class="fn-backref" href="/projects/BATS/#id4">[3]</a></td>
+<td>Gladkova, A., Drozd, A., &amp; Matsuoka, S. (2016). Analogy-based detection of morphological and semantic relations with word embeddings: what works and what doesn’t. In Proceedings of the NAACL-HLT SRW (pp. 47–54). San Diego, California, June 12-17, 2016: ACL. <a class="reference external" href="https://www.aclweb.org/anthology/N/N16/N16-2002.pdf">https://www.aclweb.org/anthology/N/N16/N16-2002.pdf</a>
+</td>
+</tr></tbody>
+</table>
+<table class="docutils footnote" frame="void" id="f4" rules="none">
+<colgroup>
+<col class="label">
+<col>
+</colgroup>
+<tbody valign="top"><tr>
+<td class="label"><a class="fn-backref" href="/projects/BATS/#id5">[4]</a></td>
+<td>The abstract of the original paper has a mistake: the total number of questions in BATS is 99,200.</td>
+</tr></tbody>
+</table>
+<table class="docutils footnote" frame="void" id="f5" rules="none">
+<colgroup>
+<col class="label">
+<col>
+</colgroup>
+<tbody valign="top"><tr>
+<td class="label"><a class="fn-backref" href="/projects/BATS/#id6">[5]</a></td>
+<td>Drozd, A., Gladkova, A., &amp; Matsuoka, S. (2016). Word embeddings, analogies, and machine learning: beyond king - man + woman = queen. In Proceedings of COLING 2016, the 26th International Conference on Computational Linguistics: Technical Papers (pp. 3519–3530). Osaka, Japan, December 11-17. <a class="reference external" href="https://www.aclweb.org/anthology/C/C16/C16-1332.pdf">https://www.aclweb.org/anthology/C/C16/C16-1332.pdf</a>
+</td>
+</tr></tbody>
+</table>
+<table class="docutils footnote" frame="void" id="f6" rules="none">
+<colgroup>
+<col class="label">
+<col>
+</colgroup>
+<tbody valign="top"><tr>
+<td class="label"><a class="fn-backref" href="/projects/BATS/#id7">[6]</a></td>
+<td>Rogers, A., Drozd, A., &amp; Li, B. (2017). The (Too Many) Problems of Analogical Reasoning with Word Vectors. In Proceedings of the 6th Joint Conference on Lexical and Computational Semantics (* SEM 2017) (pp. 135–148). <a class="reference external" href="http://www.aclweb.org/anthology/S17-1017">http://www.aclweb.org/anthology/S17-1017</a>
+</td>
+</tr></tbody>
+</table>
+<table class="docutils footnote" frame="void" id="f7" rules="none">
+<colgroup>
+<col class="label">
+<col>
+</colgroup>
+<tbody valign="top"><tr>
+<td class="label"><a class="fn-backref" href="/projects/BATS/#id8">[7]</a></td>
+<td>Li, B., Drozd, A., Liu, T., &amp; Du, X. (n.d.). Subword-level Composition Functions for Learning Word Embeddings. In Proceedings of the Second Workshop on Subword/Character LEvel Models (pp. 38–48). New Orleans, Louisiana, June 6, 2018. <a class="reference external" href="http://www.aclweb.org/anthology/W18-1205">http://www.aclweb.org/anthology/W18-1205</a>
+</td>
+</tr></tbody>
+</table>
+</div>
+    </div>
+    
+        
+        <script src="https://cdnjs.cloudflare.com/ajax/libs/mathjax/2.7.1/MathJax.js?config=TeX-AMS-MML_HTMLorMML" integrity="sha256-SDRP1VVYu+tgAGKhddBSl5+ezofHKZeI+OzxakbIe/Y=" crossorigin="anonymous"></script><script type="text/x-mathjax-config">
+MathJax.Hub.Config({
+    tex2jax: {
+        inlineMath: [ ['$','$'], ["\\(","\\)"] ],
+        displayMath: [ ['$$','$$'], ["\\[","\\]"] ],
+        processEscapes: true
+    },
+    displayAlign: 'center', // Change this to 'left' if you want left-aligned equations.
+    "HTML-CSS": {
+        styles: {'.MathJax_Display': {"margin": 0}}
+    }
+});
+</script></article><!--End of body content--><footer id="footer">
+            Maintained by <a href="mailto:alex@blackbird.pw">vecto community</a>         
+            
+        </footer>
+</div>
+</div>
+
+
+        <script src="/assets/js/all-nocdn.js"></script><!-- fancy dates --><script>
+    moment.locale("en");
+    fancydates(0, "YYYY-MM-DD HH:mm");
+    </script><!-- end fancy dates --><script>
+    baguetteBox.run('div#content', {
+        ignoreClass: 'islink',
+        captions: function(element) {
+            return element.getElementsByTagName('img')[0].alt;
+    }});
+    </script><script defer src="https://use.fontawesome.com/releases/v5.0.10/js/all.js" integrity="sha384-slN8GvtUJGnv6ca26v8EzVaR9DC58QEwsIk9q1QXdCU8Yu8ck/tL/5szYlBbqmS+" crossorigin="anonymous"></script>
+</body>
+</html>
