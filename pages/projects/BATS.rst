@@ -6,6 +6,7 @@
 .. pretty_url: True
 .. template: BATS.tmpl
 
+.. role:: emph
 
 ==================================
 The Bigger Analogy Test Set (BATS)
@@ -38,9 +39,9 @@ These numbers look convincingly large, but language has thousands of relations o
 
 BATS [#f2]_ is an improvement over this dataset in several aspects:
 
- * **balanced and representative**: BATS covers inflectional and derivational morphology, and lexicographic and encyclopedic semantics. Each relation is represented with 10 categories, and each category contains 50 unique word pairs. This makes for 99,200 [#f3]_ questions for the vector offset method.
- * **reduced homonymy**: the morphological categories were sampled to reduce homonymy. For example, for verb present tense the Google set includes pairs like *walk:walks*, which could be both verbs and nouns.
- * **multiple correct answers** where applicable. For example, both *mammal* and *canine* are hypernyms of dog. In some cases alternative spellings are listed (e.g. *organize: reorganize/reorganise*).
+ * :emph:`balanced and representative`: BATS covers inflectional and derivational morphology, and lexicographic and encyclopedic semantics. Each relation is represented with 10 categories, and each category contains 50 unique word pairs. This makes for 99,200 [#f3]_ questions for the vector offset method.
+ * :emph:`reduced homonymy`: the morphological categories were sampled to reduce homonymy. For example, for verb present tense the Google set includes pairs like *walk:walks*, which could be both verbs and nouns.
+ * :emph:`multiple correct answers` where applicable. For example, both *mammal* and *canine* are hypernyms of dog. In some cases alternative spellings are listed (e.g. *organize: reorganize/reorganise*).
 
 .. include:: ./files/assets/files/bats-table.html
 
