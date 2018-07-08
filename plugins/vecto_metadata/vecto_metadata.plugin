@@ -1,0 +1,12 @@
+[Core]
+Name = vecto_metadata
+Module = vecto_metadata
+
+[Nikola]
+PluginCategory = Task
+
+[Documentation]
+Author = Anna Rogers
+Version = 0.1
+Website = https://vecto.space
+Description = Generate documentation pages from Vecto metadata files.
