@@ -1,69 +1,108 @@
 # -*- coding: utf-8 -*-
 
-# Copyright © 2012-2013 Roberto Alsina
-
-# Permission is hereby granted, free of charge, to any
-# person obtaining a copy of this software and associated
-# documentation files (the "Software"), to deal in the
-# Software without restriction, including without limitation
-# the rights to use, copy, modify, merge, publish,
-# distribute, sublicense, and/or sell copies of the
-# Software, and to permit persons to whom the Software is
-# furnished to do so, subject to the following conditions:
-#
-# The above copyright notice and this permission notice
-# shall be included in all copies or substantial portions of
-# the Software.
-#
-# THE SOFTWARE IS PROVIDED "AS IS", WITHOUT WARRANTY OF ANY
-# KIND, EXPRESS OR IMPLIED, INCLUDING BUT NOT LIMITED TO THE
-# WARRANTIES OF MERCHANTABILITY, FITNESS FOR A PARTICULAR
-# PURPOSE AND NONINFRINGEMENT. IN NO EVENT SHALL THE AUTHORS
-# OR COPYRIGHT HOLDERS BE LIABLE FOR ANY CLAIM, DAMAGES OR
-# OTHER LIABILITY, WHETHER IN AN ACTION OF CONTRACT, TORT OR
-# OTHERWISE, ARISING FROM, OUT OF OR IN CONNECTION WITH THE
-# SOFTWARE OR THE USE OR OTHER DEALINGS IN THE SOFTWARE.
-
 import json
 import os
+import sys
+from nikola.plugin_categories import Task, RestExtension
+
+from docutils import nodes
+from docutils.parsers.rst import Directive, directives
+
+from nikola.utils import LOGGER
+from git import Repo
+from mako.template import Template
+
 
 plugin_path = os.path.dirname(os.path.realpath(__file__))
 base_path = plugin_path.split("plugins")[0]
 
 
-from nikola.plugin_categories import Task
-from nikola.utils import LOGGER
-from git import Repo
+def load_json(path):
+    f = open(path)
+    s_data = f.read()
+    data = json.loads(s_data)
+    f.close()
+    return data
+
+def filter_entry(metadata):
+    if "description" not in metadata:
+        metadata["description"] = "__temp"
+    for key in ["url", "project_page"]:
+        if key not in metadata:
+            metadata[key] = ""
+    keys = ["class", "description", "url", "project_page"]
+    filtered = {key: metadata[key] for key in keys}
+    return filtered
 
 
+def get_entries(path):
+    for dirName, subdirList, fileList in os.walk(path, topdown=False):
+        for fname in fileList:
+            yield(os.path.join(dirName, fname))
 
 
-class Plugin(Task):
+class MetadataProcessor():
+    def read_files(self):
+        self.rows = []
+        for fname in get_entries(os.path.join(base_path, "aux/resources/vecto-resources/resources")):
+            data = load_json(fname)
+            self.rows.append(filter_entry(data))
+    
+    def render(self):
+        self.read_files()
+        mytemplate = Template(filename=os.path.join(plugin_path,'data.tmpl'))
+        result = mytemplate.render(rows=self.rows)
+        return result
+
+
+class Plugin(RestExtension):
 
     name = "vecto_metadata"
 
-    def gen_tasks(self):
+    def set_site(self, site):
+        self.site = site
+        directives.register_directive('vecto_metadata', VectoMetadata)
+        VectoMetadata.site = self.site
+        # PublicationList.output_folder = self.site.config['OUTPUT_FOLDER']
+        return super(Plugin, self).set_site(site)
+
+
+class VectoMetadata(Directive):
+    has_content = False
+    # required_arguments = 1
+    optional_arguments = sys.maxsize
+    option_spec = {
+    }
+
+    def run(self):
+        mp = MetadataProcessor()
+        html =  mp.render()
+        return [nodes.raw('', html, format='html'), ]
+
+#class Plugin(Task):
+#    name = "vecto_metadata"
+#    def gen_tasks(self):
 
         # This function will be called when the task is executed
 
         # clone repo
-        def clone_repo():
+#        def clone_repo():
 
-            cache_dir = base_path+"cache/git-resources"
-            if not os.path.exists(cache_dir):
-                os.mkdir(cache_dir)
-                Repo.clone_from("https://github.com/vecto-ai/vecto-resources.git", cache_dir)
+#            cache_dir = base_path+"cache/git-resources"
+#            if not os.path.exists(cache_dir):
+#                os.mkdir(cache_dir)
+#                Repo.clone_from("https://github.com/vecto-ai/vecto-resources.git", cache_dir)
 
         # generate corpora page
 
         # generate embeddings page
 
         # generate datasets page
-        def get_datasets():
-            dir = base_path+"cache/git-resources/resources.datasets"
-            dlist = os.listdir(dir)
-            for f in dlist:
-                fpath = dir+"/"+f+"/metadata.json"
+#        def get_datasets():
+#            dir = base_path+"cache/git-resources/resources.datasets"
+#            dlist = os.listdir(dir)
+#            for f in dlist:
+#                fpath = dir+"/"+f+"/metadata.json"
         # to be continued
 
 
@@ -74,9 +113,19 @@ class Plugin(Task):
         # remove git cache
 
         # Yield a task for Doit
-        yield {
-            'basename': 'vecto_metadata',
-#            'actions': [(make_file, [base_path+"pages/data/test/test.rst"])],
-            'actions': [(clone_repo, [])],
-            'uptodate': [False],
-        }
+        # yield {
+        #    'basename': 'vecto_metadata',
+#       #     'actions': [(make_file, [base_path+"pages/data/test/test.rst"])],
+        #    'actions': [(clone_repo, [])],
+        #    'uptodate': [False],
+        #}
+
+
+def main(): # for developing 
+    print("hi")
+
+
+if __name__ == "__main__":
+    main()
+    mp = MetadataProcessor()
+    mp.render()

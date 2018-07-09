@@ -13,7 +13,6 @@ Publications related to Vecto project
 =====================================
 
 
-
 .. publication_list:: vecto.bib
    :style: unsrt
    :detail_page_dir:

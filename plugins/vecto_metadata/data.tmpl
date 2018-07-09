@@ -1,0 +1,24 @@
+<table class="table table-striped">
+	<thead>
+    <tr>
+      <th scope="col">Description</th>
+      <th scope="col">Download</th>
+      <th scope="col">Project page</th>
+    </tr>
+  	</thead>
+    % for row in rows:
+        ${makerow(row)}
+    % endfor
+</table>
+
+<%def name="makerow(row)">
+    <tr>
+        <td>${row["description"]}</td> 
+        <td>
+          ${"<a href="+row["url"]+"><i class=\"fa fa-download\"></i></a>" if len(row["url"])>1 else ""}
+        </td>
+        <td>
+          ${"<a href="+row["project_page"]+"><i class=\"fa fa-info-circle\"></i></a>" if len(row["project_page"])>1 else ""}
+        </td>
+    </tr>
+</%def>
