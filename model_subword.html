@@ -3,13 +3,14 @@
 " lang="en">
 <head>
 <meta charset="utf-8">
+<meta name="description" content="Vecto team">
 <meta name="viewport" content="width=device-width, initial-scale=1">
-<title>The Japanese Bigger Analogy Test Set (jBATS) | vecto</title>
+<title>model_subword | vecto</title>
 <link href="/assets/css/all-nocdn.css" rel="stylesheet" type="text/css">
 <meta name="theme-color" content="#5670d4">
 <meta name="generator" content="Nikola (getnikola.com)">
 <link rel="alternate" type="application/rss+xml" title="RSS" href="/rss.xml">
-<link rel="canonical" href="http://vecto.space/projects/jBATS/">
+<link rel="canonical" href="http://vecto.space/model_subword.html">
 <script type="text/x-mathjax-config">
 MathJax.Hub.Config({
     tex2jax: {
@@ -22,14 +23,14 @@ MathJax.Hub.Config({
         styles: {'.MathJax_Display': {"margin": 0}}
     }
 });
-</script><!--[if lt IE 9]><script src="/assets/js/html5.js"></script><![endif]--><meta name="author" content="vecto community">
+</script><!--[if lt IE 9]><script src="/assets/js/html5.js"></script><![endif]--><meta name="description" itemprop="description" content="Vecto team">
+<meta name="author" content="The Vecto Team">
 <meta property="og:site_name" content="vecto">
-<meta property="og:title" content="The Japanese Bigger Analogy Test Set (jBATS)">
-<meta property="og:url" content="http://vecto.space/projects/jBATS/">
-<meta property="og:description" content="TBD">
+<meta property="og:title" content="model_subword">
+<meta property="og:url" content="http://vecto.space/model_subword.html">
+<meta property="og:description" content="Vecto team">
 <meta property="og:type" content="article">
-<meta property="article:published_time" content="2018-07-09T02:34:28-04:00">
-<meta property="article:tag" content="mathjax">
+<meta property="article:published_time" content="2018-06-08T09:39:34Z">
 </head>
 <body>
 <a href="#content" class="sr-only sr-only-focusable">Skip to main content</a>
@@ -95,23 +96,70 @@ MathJax.Hub.Config({
         
         
 <article class="post-text storypage" itemscope="itemscope" itemtype="http://schema.org/Article"><header></header><div class="e-content entry-content" itemprop="articleBody text">
-    <p>TBD</p>
+    <h1>Subword-level word embeddings</h1>
+<div class="section" id="motivation">
+    <h3>Motivation</h3>
+    <p>capture morphology information</p>
+    <p>assign meaningful vectors for out-of-vocabulary (OOV) words</p>
+</div>
+<div class="section" id="fasttext">
+    <h3>FastText</h3>
+    <p>FastText is probably the most influential and effective recent model. It represents each word as a
+        bag-of-character n-grams. Representations for character n-grams, once they are learned, can be combined (via
+        simple summation) to represent out-of-vocabulary (OOV) words. </p>
+    <p>More details about FastText can be found here <a href="https://fasttext.cc/">link</a></p>
+    <p>We implemented FastText in Chainer, please see Usage section for more information.</p>
+    <p></p>
+    <p></p>
+    <p></p>
+</div>
+<div class="section" id="our">
+    <h3>CNN and RNN subword-level composition functions</h3>
+    <p>We contribute to the discussion of composition functions for constructing subword-level embeddings.
+        We propose CNN- and RNN-based subword-level word embedding models, which can embed
+        arbitrary character sequences into vectors.</p>
+    <p>We also propose a hybrid training scheme, which makes these neural networks directly integrated into Skip-Gram
+        model.
+        We train two sets of word embeddings simultaneously:
+        one is from a lookup table as in traditional Skip-Gram,
+        and another is from convolutional or recurrent neural network.
+        The former is better at capturing semantic similarity.
+        The latter is more focused on morphology and can learn embeddings for OOV words. </p>
+    <p><img src="/assets/img/models.png" style="width: 400px"></p>
+    <p>The overall achitecture of the original Skip-Gram, FastText, and our subword-level models are shown in the above
+        figure.</p>
+    <p></p>
+    <p></p>
+</div>
+<div class="section" id="implementation">
+    <h3>Implementation Details</h3>
+    <p></p>
+    <p></p>
+    <p></p>
+    <p></p>
+    <p></p>
+</div>
+<div class="section" id="usage">
+    <h3>Usage</h3>
+    <p><a href="http://vecto.readthedocs.io/en/docs/tutorial/training_vectors.html">http://vecto.readthedocs.io/en/docs/tutorial/training_vectors.html</a>
+    </p>
+    <p></p>
+    <p></p>
+    <p></p>
+    <p></p>
+</div>
+<div class="section" id="experiments">
+    <h3>Experiments</h3>
+    <p></p>
+    <p></p>
+    <p></p>
+    <p></p>
+    <p></p>
+</div>
     </div>
     
-        
-        <script src="https://cdnjs.cloudflare.com/ajax/libs/mathjax/2.7.1/MathJax.js?config=TeX-AMS-MML_HTMLorMML" integrity="sha256-SDRP1VVYu+tgAGKhddBSl5+ezofHKZeI+OzxakbIe/Y=" crossorigin="anonymous"></script><script type="text/x-mathjax-config">
-MathJax.Hub.Config({
-    tex2jax: {
-        inlineMath: [ ['$','$'], ["\\(","\\)"] ],
-        displayMath: [ ['$$','$$'], ["\\[","\\]"] ],
-        processEscapes: true
-    },
-    displayAlign: 'center', // Change this to 'left' if you want left-aligned equations.
-    "HTML-CSS": {
-        styles: {'.MathJax_Display': {"margin": 0}}
-    }
-});
-</script></article><!--End of body content--><footer id="footer">
+
+</article><!--End of body content--><footer id="footer">
             Maintained by <a href="mailto:alex@blackbird.pw">vecto community</a>         
             
         </footer>
