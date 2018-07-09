@@ -47,35 +47,31 @@ ${row["bibtex"]}
 
 
 <%def name="make_meta_btn(row)">
-% if len(row["bibtex"])>0:
         <a href="javascript:void(0)" onclick="
         (function(target, id) {
           if ($('#' + id).css('display') == 'block')
              {
                $('#' + id).hide('fast');
-               $(target).text('all metadata&#x25BC;')
+               $(target).text('metadata&#x25BC;')
              }
           else
              {
                $('#' + id).show('fast');
-               $(target).text('all metadata&#x25B2;')
+               $(target).text('metadata&#x25B2;')
              }
           }
         )(this, 'meta-${row["id"]}');">
-        all metadata&#x25BC;
+        metadata&#x25BC;
         </a>
-% endif
 </%def>
 
 
 <%def name="make_meta_div(row)">
-% if len(row["bibtex"])>0:
 <div id="meta-${row['id']}" style="display:none">
 <pre>
-${json.dumps(row, sort_keys=False, indent=4)}
+${json.dumps(row["meta"], sort_keys=False, indent=4)}
 </pre>
 </div>
-% endif
 </%def>
 
 <%def name="make_download_btn(row)">
@@ -83,17 +79,17 @@ ${"<a href="+row["url"]+"><i class=\"fa fa-download\"></i></a>&nbsp;" if len(row
 </%def>
 
 <%def name="make_home_btn(row)">
-          ${"<a href="+row["project_page"]+"><i class=\"fa fa-info-circle\"></i></a>&nbsp;" if len(row["project_page"])>1 else ""}
+          ${"<a href="+row["project_page"]+"><i class=\"fa fa-home\"></i></a>&nbsp;" if len(row["project_page"])>1 else ""}
 </%def>
 
 <%def name="makerow(row)">
     <tr>
-        <td>${row["description"]}
+        <td>${row["meta"]["description"]}
           <br />
           ${make_download_btn(row)}
           ${make_home_btn(row)}
-          ${make_bib_btn(row)}
           ${make_meta_btn(row)}
+          ${make_bib_btn(row)}
           ${make_bib_div(row)}
           ${make_meta_div(row)}
         </td> 

@@ -29,7 +29,6 @@ def bibjson_to_bibtex(entry):
     result = f"@{entry['type']}{{{entry['id']},"
     entry.pop("type", None)
     entry.pop("id", None)
-    print(entry["author"], type(entry["author"]))
     if isinstance(entry["author"], str):
         result += f"\n   author = {entry['author']}"
     else:
@@ -55,15 +54,16 @@ def bibjson_to_bibtex(entry):
 
 def filter_entry(metadata):
     if "description" not in metadata:
-        metadata["description"] = "__temp"
+        metadata["description"] = ""
+    filtered = {}
     for key in ["url", "project_page"]:
-        if key not in metadata:
-            metadata[key] = ""
-    # keys = ["class", "description", "url", "project_page"]
-    # filtered = {key: metadata[key] for key in keys}
-    filtered = metadata
-    if "cite" in filtered:
-        filtered["bibtex"] = bibjson_to_bibtex(filtered["cite"])
+        if key in metadata:
+            filtered[key] = metadata[key]
+        else:
+            filtered[key] = ""
+    filtered["meta"] = metadata
+    if "cite" in metadata:
+        filtered["bibtex"] = bibjson_to_bibtex(metadata["cite"])
     else:
         filtered["bibtex"] = ""
     return filtered
