@@ -24,14 +24,48 @@ def load_json(path):
     f.close()
     return data
 
+
+def bibjson_to_bibtex(entry):
+    result = f"@{entry['type']}{{{entry['id']},"
+    entry.pop("type", None)
+    entry.pop("id", None)
+    print(entry["author"], type(entry["author"]))
+    if isinstance(entry["author"], str):
+        result += f"\n   author = {entry['author']}"
+    else:
+        result += "\n   author = \""
+        for name in entry["author"]:
+            result += f"{name['name']} and "
+        result = result[:-5]
+        result += "\""
+    entry.pop("author", None)
+
+    for key in entry:
+        result += f"\n   {key} = \"{entry[key]}\""
+    result += "\n}"
+    #@inproceedings{karpinska2018RelNLP,
+    #author = "Karpinska, Marzena and Li, Bofang and Rogers, Anna and Drozd, Aleksandr",
+    #title = "Subcharacter Information in Japanese Embeddings: When Is It Worth It?",
+    #booktitle = "In Proceedings of the Workshop on Relevance of Linguistic Structure in Neural Architectures for NLP (RELNLP) 2018",
+    #pages = "to appear",
+    #year = "2018",
+    #organization = "ACL"
+    #}
+    return result
+
 def filter_entry(metadata):
     if "description" not in metadata:
         metadata["description"] = "__temp"
     for key in ["url", "project_page"]:
         if key not in metadata:
             metadata[key] = ""
-    keys = ["class", "description", "url", "project_page"]
-    filtered = {key: metadata[key] for key in keys}
+    # keys = ["class", "description", "url", "project_page"]
+    # filtered = {key: metadata[key] for key in keys}
+    filtered = metadata
+    if "cite" in filtered:
+        filtered["bibtex"] = bibjson_to_bibtex(filtered["cite"])
+    else:
+        filtered["bibtex"] = ""
     return filtered
 
 
@@ -44,10 +78,14 @@ def get_entries(path):
 class MetadataProcessor():
     def read_files(self):
         self.rows = []
+        cnt = 0
         for fname in get_entries(os.path.join(base_path, "aux/resources/vecto-resources/resources")):
             data = load_json(fname)
-            self.rows.append(filter_entry(data))
-    
+            data = filter_entry(data)
+            data["id"] = cnt
+            cnt += 1
+            self.rows.append(data)
+
     def render(self):
         self.read_files()
         mytemplate = Template(filename=os.path.join(plugin_path,'data.tmpl'))
