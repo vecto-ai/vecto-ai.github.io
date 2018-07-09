@@ -2,7 +2,8 @@
 
 nikola-powered version of vecto website
 
-use nikola>8, if pip install, use --pre
-nikola build to see output in output folder or nikola serve/auto
-
 clone with --recurse-submodules
+
+nikola version >8 is required, if using pip install, add --pre option
+`nikola build` to see output in output folder or `nikola auto` 
+
