@@ -9,7 +9,6 @@ from docutils import nodes
 from docutils.parsers.rst import Directive, directives
 
 from nikola.utils import LOGGER
-from git import Repo
 from mako.template import Template
 
 

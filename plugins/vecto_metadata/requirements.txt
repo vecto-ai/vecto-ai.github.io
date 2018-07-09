@@ -1,5 +1,1 @@
-Nikola
-doit
-logbook
-gitpython
-json
+docutils

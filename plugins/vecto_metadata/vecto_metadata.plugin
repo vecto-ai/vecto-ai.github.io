@@ -8,6 +8,6 @@ Compiler = rest
 
 [Documentation]
 Author = Anna Rogers, Aleksandr Drozd
-Version = 0.2
+Version = 0.3
 Website = https://vecto.space
 Description = Generate documentation pages from Vecto metadata files.
