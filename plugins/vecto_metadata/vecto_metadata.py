@@ -3,14 +3,14 @@
 import json
 import os
 import sys
-from nikola.plugin_categories import Task, RestExtension
+from nikola.plugin_categories import RestExtension
+from nikola.utils import LOGGER
 
 from docutils import nodes
 from docutils.parsers.rst import Directive, directives
 
-from nikola.utils import LOGGER
 from mako.template import Template
-
+from pylatexenc.latexencode import utf8tolatex
 
 plugin_path = os.path.dirname(os.path.realpath(__file__))
 base_path = plugin_path.split("plugins")[0]
@@ -33,7 +33,7 @@ def bibjson_to_bibtex(entry):
     else:
         result += "\n   author = \""
         for name in entry["author"]:
-            result += f"{name['name']} and "
+            result += f"{utf8tolatex(name['name'])} and "
         result = result[:-5]
         result += "\""
     entry.pop("author", None)
