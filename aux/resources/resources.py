@@ -38,8 +38,8 @@ def main():
         rows.append(filtered)
     mytemplate = Template(filename='./data.tmpl')
     result = mytemplate.render(rows=rows)
-    with open("index.html", "w") as f:
-        f.write(result)
+    #with open("index.html", "w") as f:
+    #    f.write(result)
 
 
 if __name__ == '__main__':
