@@ -1,0 +1,125 @@
+<!--
+.. date: 2018-06-08 09:39:34 UTC
+.. tags:
+.. category:
+.. link:
+.. description: Vecto team
+.. type: text
+.. hidetitle: True
+.. author: The Vecto Team
+-->
+
+
+<h1>Subword-level word embeddings</h1>
+<div class="section" id="motivation">
+    <h3>Motivation</h3>
+    <p>capture morphology information</p>
+    <p>assign meaningful vectors for out-of-vocabulary (OOV) words</p>
+</div>
+<div class="section" id="fasttext">
+    <h3>FastText (summation composition function)</h3>
+    <p>FastText is probably the most influential and effective recent model. It represents each word as a
+        bag-of-character n-grams. Representations for character n-grams, once they are learned, can be combined (via
+        simple summation) to represent out-of-vocabulary (OOV) words. </p>
+    <p>More details about FastText can be found here <a href="https://fasttext.cc/">link</a></p>
+    <p></p>
+    <p></p>
+    <p></p>
+</div>
+<div class="section" id="our">
+    <h3>CNN and RNN subword-level composition functions</h3>
+    <p>We contribute to the discussion of composition functions for constructing subword-level embeddings.
+        We propose CNN- and RNN-based subword-level word embedding models, which can embed
+        arbitrary character sequences into vectors.</p>
+    <p>We also propose a hybrid training scheme, which makes these neural networks directly integrated into Skip-Gram
+        model.
+        We train two sets of word embeddings simultaneously:
+        one is from a lookup table as in traditional Skip-Gram,
+        and another is from convolutional or recurrent neural network.
+        The former is better at capturing semantic similarity.
+        The latter is more focused on morphology and can learn embeddings for OOV words. </p>
+    <p><img src="/assets/img/subword/models.png" style="width: 400px"></p>
+    <p>The overall achitecture of the original Skip-Gram, FastText, and our subword-level models are shown in the above
+        figure.</p>
+    <p></p>
+    <p></p>
+</div>
+
+<div class="section" id="jap">
+    <h3>Japanese subword-level embeddings</h3>
+    <p>We also implement the subword-level composition functions to Japanese. </p>
+    <p><img src="/assets/img/subword/jap/models.png" style="width: 400px"></p>
+    <p>The overall achitecture of Japanese embedding models are shown in the above figure.
+        For Japanese language, We investigate the effect of explicit inclusion of kanjis and kanji components (bushu). </p>
+    <p><img src="/assets/img/subword/jap/bushu_example.png" style="width: 400px"></p>
+</div>
+<div class="section" id="usage">
+    <h3>Usage</h3>
+    <p>We implement all the subword-level models (including FastText) using Chainer deep learning framework.</p>
+    <p>Sample script for training word-level word embeddings:</p>
+    <p><code>> python3 -m vecto.embeddings.train_word2vec --path_corpus path_corpus --path_out /tmp/vecto/embeddings/</code></p>
+    <p>Sample script for training subword-level word embeddings (FastText):</p>
+    <p><code>> python3 -m vecto.embeddings.train_word2vec --path_corpus path_corpus --path_out /tmp/vecto/embeddings/ --subword sum</code></p>
+    <p>Sample script for training subword-level word embeddings (CNN):</p>
+    <p><code>> python3 -m vecto.embeddings.train_word2vec --path_corpus path_corpus --path_out /tmp/vecto/embeddings/ --subword cnn1d</code></p>
+    <p>Sample script for training subword-level word embeddings (Bi-directional LSTM):</p>
+    <p><code>> python3 -m vecto.embeddings.train_word2vec --path_corpus path_corpus --path_out /tmp/vecto/embeddings/ --subword bilstm</code></p>
+    <br/>
+    <p>Sample script for training Japanese word-level word embeddings:</p>
+    <p><code>> python3 -m vecto.embeddings.train_word2vec --path_corpus path_corpus --path_out /tmp/vecto/embeddings/ --subword none --language jap</code></p>
+    <p>Sample script for training Japanese subword-level word embeddings (word+kanji):</p>
+    <p><code>> python3 -m vecto.embeddings.train_word2vec --path_corpus path_corpus --path_out /tmp/vecto/embeddings/ --subword sum --language jap</code></p>
+    <p>Sample script for training Japanese subword-level word embeddings (word+kanji):</p>
+    <p><code>> python3 -m vecto.embeddings.train_word2vec --path_corpus path_corpus --path_out /tmp/vecto/embeddings/ --subword sum --language jap --path_word2chars path_word2chars</code></p>
+    <p></p>
+    <p></p>
+    <p></p>
+    <p></p>
+</div>
+<div class="section" id="experiments">
+    <h3>Experiments</h3>
+    <p><img src="/assets/img/subword/similarity_analogy.png" style="width: 400px"></p>
+    <p>Results on word similarity and word analogy datasets.
+        For hybrid training scheme, we denote the embeddings that come from word vector lookup table as ``Model_word'',
+        and the embeddings which come from the composition function as ``Model_subword''.
+        We denote the vanilla (non-hybrid) models as ``Model_vanilla''.
+        The ``FastText_external'' is the public available FastText embeddings,
+        which are trained on the full Wikipedia corpus. We also test the version where OOV words are expanded,
+        and denote as ``Model+OOV''. Model combinations are denoted as gray rows,
+        and best results among them are marked Bold. Rare words dataset in blue column}have 43.3% OOV rate,
+        while other word similarity datasets have maximum 4.6% OOV rate. Morphology related categories are denoted as almond columns.cd</p>
+    <p><img src="/assets/img/subword/vis.png" style="width: 400px"></p>
+    <p>Visualization of learned word embeddings, each dot represents a word,
+        different colors represent different affixes.
+        We use t-SNE to project the word vectors from 300 dimension to 2 dimension.</p>
+    <p><img src="/assets/img/subword/affix_sl.png" style="width: 400px"></p>
+    <p>Results on affix prediction (AP) and sequence labeling (SL) tasks. Sequence labeling tasks have 16.5%, 27.1%, 28.5% OOV rate respectively.</p>
+    <br/>
+    <p><img src="/assets/img/subword/jap/similarity.png" style="width: 400px"></p>
+    <p>Spearman's correlation with human similarity judgements.</p>
+    <p><img src="/assets/img/subword/jap/analogy.png" style="width: 400px"></p>
+    <p>Word analogy task accuracy (LRCos).</p>
+    <p></p>
+    <p></p>
+    <p></p>
+    <p></p>
+    <p></p>
+</div>
+<div class="section" id="pretrain">
+    <h3>Pre-trained embeddings</h3>
+    <p>Please refer to the following page <a href="/data">Link</a></p>
+</div>
+
+
+<!--
+Guys, I have an idea for the vecto site - namely for @fun. We now have project pages for the datasets we made. Why not also for the models? Namely, the subcharacter and subword models from your recent papers. Nothing too fancy:
+
+(1) a couple of paragraphs describing the motivation,
+(2) links to relevant other models it's similar to,
+(3) a fig with the architecture,
+(4) implementation details in vecto,
+5) usage (how others can use vecto to train the same thing),
+(5) results table
+
+then we can have links to these pages to the models metadata files, just like for datasets
+-->
