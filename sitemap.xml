@@ -31,11 +31,7 @@
  </url>
  <url>
   <loc>http://vecto.space/data/</loc>
-  <lastmod>2018-07-09T13:49:00Z</lastmod>
- </url>
- <url>
-  <loc>http://vecto.space/data/test/test.html</loc>
-  <lastmod>2018-07-09T13:49:00Z</lastmod>
+  <lastmod>2018-07-09T14:40:00Z</lastmod>
  </url>
  <url>
   <loc>http://vecto.space/model_subword.html</loc>
@@ -60,6 +56,10 @@
  <url>
   <loc>http://vecto.space/projects/problems.html</loc>
   <lastmod>2018-07-09T13:49:00Z</lastmod>
+ </url>
+ <url>
+  <loc>http://vecto.space/projects/subword.html</loc>
+  <lastmod>2018-07-12T12:15:00Z</lastmod>
  </url>
  <url>
   <loc>http://vecto.space/publications.html</loc>
