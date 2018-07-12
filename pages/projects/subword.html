@@ -13,8 +13,8 @@
 <h1>Subword-level word embeddings</h1>
 <div class="section" id="motivation">
     <h3>Motivation</h3>
-    <p>capture morphology information</p>
-    <p>assign meaningful vectors for out-of-vocabulary (OOV) words</p>
+    <p>Word-level word embedding models consider word as smallest unit, and often ignores the morphology information.</p>
+    <p>Word-level word embedding models could not assign meaningful vectors to out-of-vocabulary (OOV) words.</p>
 </div>
 <div class="section" id="fasttext">
     <h3>FastText (summation composition function)</h3>
@@ -86,7 +86,7 @@
         The "FastText_external" is the public available FastText embeddings,
         which are trained on the full Wikipedia corpus. We also test the version where OOV words are expanded,
         and denote as "Model+OOV". Model combinations are denoted as gray rows,
-        and best results among them are marked Bold. Rare words dataset in blue column}have 43.3% OOV rate,
+        and best results among them are marked Bold. Rare words dataset in blue column have 43.3% OOV rate,
         while other word similarity datasets have maximum 4.6% OOV rate. Morphology related categories are denoted as almond columns.</p>
     <p><img src="/assets/img/subword/vis.png" style="width: 700px"></p>
     <p>Visualization of learned word embeddings, each dot represents a word,
@@ -118,7 +118,7 @@ Guys, I have an idea for the vecto site - namely for @fun. We now have project p
 (2) links to relevant other models it's similar to,
 (3) a fig with the architecture,
 (4) implementation details in vecto,
-5) usage (how others can use vecto to train the same thing),
+(5) usage (how others can use vecto to train the same thing),
 (5) results table
 
 then we can have links to these pages to the models metadata files, just like for datasets
