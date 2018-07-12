@@ -23,3 +23,9 @@ Similarity
 
 :doc:`jSIM: Recategorized Word Similarity Dataset (Japanese) <jSIM>`
 
+---------------
+Word Embeddings
+---------------
+
+:doc:`Subword-level Word Embeddings <subword>`
+
