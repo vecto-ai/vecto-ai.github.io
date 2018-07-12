@@ -22,14 +22,71 @@ MathJax.Hub.Config({
         styles: {'.MathJax_Display': {"margin": 0}}
     }
 });
-</script><!--[if lt IE 9]><script src="/assets/js/html5.js"></script><![endif]--><meta name="author" content="vecto community">
-<meta property="og:site_name" content="vecto">
-<meta property="og:title" content="The Japanese Bigger Analogy Test Set (jBATS)">
-<meta property="og:url" content="http://vecto.space/projects/jBATS/">
-<meta property="og:description" content="TBD">
-<meta property="og:type" content="article">
-<meta property="article:published_time" content="2018-07-08T20:31:35-04:00">
-<meta property="article:tag" content="mathjax">
+</script><!--[if lt IE 9]><script src="/assets/js/html5.js"></script><![endif]--><style>
+
+* {
+    font-family: Georgia, 'Times New Roman', Times, serif;
+  }
+
+.simple {
+    font-size: medium;
+  }
+
+.emph {
+    font-weight: bold;
+  }
+
+div.twocol{
+}
+
+div.rightside {
+    padding: 0px 3px 0px 0px;
+    float: right;
+}
+
+div.leftside {
+}
+
+td {
+    border: 1px #dddddd solid;
+    padding: 5px;
+}
+
+th {
+    border: 1px #dddddd solid; }
+
+.rotate {
+  text-align: center;
+  white-space: nowrap;
+  vertical-align: middle;
+  width: 1.5em;
+}
+.rotate div {
+     -moz-transform: rotate(-90.0deg);  /* FF3.5+ */
+       -o-transform: rotate(-90.0deg);  /* Opera 10.5 */
+  -webkit-transform: rotate(-90.0deg);  /* Saf3.1+, Chrome */
+             filter:  progid:DXImageTransform.Microsoft.BasicImage(rotation=0.083);  /* IE6,IE7 */
+         -ms-filter: "progid:DXImageTransform.Microsoft.BasicImage(rotation=0.083)"; /* IE8 */
+         margin-left: -10em;
+         margin-right: -10em;
+}
+
+h2 {
+    padding-top: 5%;
+    padding-bottom: 20px;
+}
+
+h3, rubric {
+    padding-top: 3% ;
+    padding-bottom: 3% ;
+}
+
+table.docutils {
+    font-size: smaller;
+    }
+
+
+</style>
 </head>
 <body>
 <a href="#content" class="sr-only sr-only-focusable">Skip to main content</a>
@@ -90,36 +147,318 @@ MathJax.Hub.Config({
     </div>
 <!-- /.container -->
 </nav><!-- End of Menubar --><div class="container" id="content" role="main">
-    <div class="body-content">
+
+<div class="container">
+  <div class="row">
+    <div class="col-2" style="margin-right: 8%">
+
+<a class="btn btn-dark" role="button" style="margin-top:
+      50px; margin-bottom: 15px;" href="#">Dataset
+</a>
+      <a role="button" class="btn btn-dark" style="margin-top: 15px;
+      margin-bottom: 15px;
+      50px" href="http://vecto.readthedocs.io/en/docs/tutorial/evaluating.html#word-analogy-task">Test scripts</a>
+      <!--a role="button" class="btn btn-dark" style="margin-top: 15px;
+      margin-bottom: 15px" href="https://www.aclweb.org/anthology/N/N16/N16-2002.pdf">Dataset structure</a-->
+      <a role="button" class="btn btn-dark" style="margin-top: 15px;
+      margin-bottom: 15px;
+      50px" href="https://www.aclweb.org/anthology/N/N16/N16-2002.pdf">Paper</a><br><button class="btn btn-dark" type="button" data-toggle="collapse" data-target="#collapseExample" aria-expanded="false" aria-controls="collapseExample" style="margin-top: 15px;
+      margin-bottom: 15px;">
+    BibTex
+  </button>
+<div class="collapse" id="collapseExample">
+  <div class="card card-body" style="font-size: x-small; word-wrap: break-spaces">
+To be added
+  </div>
+</div>
+
+        <a role="button" class="btn btn-dark" style="margin-top: 15px;
+      margin-bottom: 15px;
+      50px; text-align:left" href="http://vecto.space/projects/BATS">English BATS</a>
+
+
+
+    </div>
+
+    <div class="col">
+
+    <div class="body-content" style="width:100%;&gt;
         <!--Body content-->
         
         
-<article class="post-text storypage" itemscope="itemscope" itemtype="http://schema.org/Article"><header></header><div class="e-content entry-content" itemprop="articleBody text">
-    <p>TBD</p>
-    </div>
-    
-        
-        <script src="https://cdnjs.cloudflare.com/ajax/libs/mathjax/2.7.1/MathJax.js?config=TeX-AMS-MML_HTMLorMML" integrity="sha256-SDRP1VVYu+tgAGKhddBSl5+ezofHKZeI+OzxakbIe/Y=" crossorigin="anonymous"></script><script type="text/x-mathjax-config">
-MathJax.Hub.Config({
-    tex2jax: {
-        inlineMath: [ ['$','$'], ["\\(","\\)"] ],
-        displayMath: [ ['$$','$$'], ["\\[","\\]"] ],
-        processEscapes: true
-    },
-    displayAlign: 'center', // Change this to 'left' if you want left-aligned equations.
-    "HTML-CSS": {
-        styles: {'.MathJax_Display': {"margin": 0}}
-    }
-});
-</script></article><!--End of body content--><footer id="footer">
+        &lt;body&gt;&lt;div class=" section id="the-japanese-bigger-analogy-test-set-jbats">
+<h2>The Japanese Bigger Analogy Test Set (jBATS)</h2>
+<p>Word analogy task has been one of the standard benchmarks for word embeddings since the striking demonstration of “linguistic regularities” by Mikolov et al. (2013) <a class="footnote-reference" href="/projects/jBATS/#f1" id="id1">[1]</a>. Their big finding was that linear vector offsets seem to mirror linguistic relations, and can be used to perform analogical reasoning.</p>
+<div class="figure align-center">
+<img alt="/assets/img/queen.png" src="/assets/img/queen.png" style="height: 100px;"><p class="caption">Figure 1. Linear vector offsets as model of linguistic relations (Mikolov et al., 2013) <a class="footnote-reference" href="/projects/jBATS/#f1" id="id2">[1]</a></p>
+</div>
+<p>For example, consider a pair of words <em>a : a' :: b : b</em> such as <em>man:
+woman :: king : queen</em>. Mikolov et al. proposed that the <em>b'</em> word could be found with the help of the offset between the word vectors <em>b</em> and <em>a</em>. In this case, the word vector <em>queen</em> should be the vector that is the closest to the result of calculation <em>king - man + woman</em>.</p>
+<blockquote>
+<!-- $$b'=argmax_{~d\in{V}}(cos(b',b-a+a'))$$ -->
+</blockquote>
+<p>Mikolov et al. demonstrated their findings on the Google analogy dataset, which consists of 9 morphological and 5 semantic categories, with 20-70 unique word pairs per category: 8,869 semantic and 10,675 syntactic questions in total. However, this set was unbalanced, and some categories were overrepresented (particularly the country:capital relation constituted over 50% of all word pairs in the semantic category).
+Gladkova et al. (2016) proposed <a class="reference external" href="http://vecto.space/projects/BATS/">BATS</a> (The Better Analogy Test Set), which covers eaqually derivational and inflectional morphology, as well as lexicographic and encyclopedic semantics. Each of these relations consists of 10 categories and each of the categories is being represented by 50 unique word pairs giving a total of 99,200 questions <a class="footnote-reference" href="/projects/jBATS/#f3" id="id3">[3]</a> for the vector offset method.</p>
+<div class="section" id="what-is-jbats">
+<h3>What is jBATS?</h3>
+<p>jBATS was designed based on <a class="reference external" href="http://vecto.space/projects/BATS/">BATS</a> and is, to our best knowledge, the first analogy test set for Japanese. Similarly to BATS it features 4 linguistcs relations: (1) derivational morphology, (2) inflectional morphology, (3) lexicographic semantics, and (4) encyclopedic semantics.</p>
+<p>jBATS was structured to be:</p>
+<ul class="simple">
+<li>
+<strong>balanced and representative</strong> - similarly to BATS, jBATS also offers 4 linguistics relations, each of which consists of 10 categories featuring 50 distinguish pairs (with an exception of the <em>city</em>:<em>prefecture</em> pairing, which contains 47 pairs since there are only 47 prefectures). This gives a total of 97,712 questions for the vector offset method.</li>
+<li>
+<strong>tokenization friendly</strong> - all the pairs were desinged so that they can be used with a MeCab-like tokenization. Pairs, in which tokenization could introduce ambiguity, were avoided.</li>
+<li>
+<strong>frequency balanced</strong> - the mean of frequencies from the <a class="reference external" href="http://pj.ninjal.ac.jp/corpus_center/bccwj/en/">Balance Corpus of Conterprorary Written Japanese</a> and the <a class="reference external" href="http://www.nichigai.co.jp/sales/mainichi/mainichi-data.html">Mainichi Newspaper</a> corpus were computed and only items with mean frequencies between 1,000 and 10,000 were chosen, whenever possible.</li>
+<li>
+<strong>alternative spelling</strong> - the correct answers are provided in both <em>kanji</em> and <em>hiragana</em>/<em>katakana</em> forms. For example, 出す is being represented as 出す and だす.</li>
+<li>
+<strong>multiple correct answers</strong> - similarly to BATS, jBATS is not penalizing the model for the complicity of human language. For example, 服, アパレル and お召し物  will all be listed among others as hypernyms of スカート.</li>
+</ul>
+<button class="btn btn-dark" type="button" data-toggle="collapse" data-target="#collapsetable" aria-expanded="false" aria-controls="collapseExample" style="margin-top: 15p; margin-bottom: 15px;">
+The structure of Japanese Bigger Analogy Test Set
+</button>
+<div class="collapse" id="collapsetable">
+<div class="card card-body" style="border-color: transparent">
+<table border="1px" cellpadding="5px" style="font-size: smaller;" align="center" font-family: arial border-collapse: collapse width:>
+<!--caption style = "caption-side: top; text-align: center; color: black; font-size: medium">Table 1. The structure of Japanese Bigger Analogy Test Set</caption--><tbody>
+<!--NAGLOWEK pierwsza linijka--><tr style="background-color: #1a1a1a; color: white">
+<th><strong></strong></th>
+<td><strong>Subcategory</strong></td>
+<td><strong>Relations</strong></td>
+<td><strong></strong></td>
+<td><strong>Subcategory</strong></td>
+<td><strong>Relations</strong></td>
+</tr>
+<tr>
+<td class="rotate" rowspan="10"><div style="font-weight: bold; padding-top: 10px; padding-bottom: 10px;">Morphology (inflections)</div></td>
+<td rowspan="7">verbs</td>
+<td>
+<b>I01</b>: u-form &gt; a-form (書く : 書か)</td>
+<td class="rotate" rowspan="10"><div style="font-weight: bold; padding-top: 10px; padding-bottom: 10px;">Semantics (lexicography)</div></td>
+<td rowspan="2">hypernyms</td>
+<td>
+<b>L01</b>: animals (カニ : 甲殻類 / こうかくるい / ...)</td>
+</tr>
+<tr>
+<td>
+<b>I02</b>: u-form &gt; o-form (受ける : 受けよ)</td>
+<td>
+<b>L02</b>: miscellaneous (椅子 : 家具 / かぐ / ...)</td>
+</tr>
+<tr>
+<td>
+<b>I03</b>: u-form &gt; e-form (起きる : 起きれ)</td>
+<td>hyponyms</td>
+<td>
+<b>L03</b>: miscellaneous (肉 : 牛肉 / ぎゅうにく / ...)</td>
+</tr>
+<tr>
+<td>
+<b>I04</b>: u-form &gt; te-form (会う : 会っ)</td>
+<td rowspan="3">meronyms</td>
+<td>
+<b>I04</b>: substance (バッグ : 革 / かわ / ...)</td>
+</tr>
+<tr>
+<td>
+<b>I05</b>: a-form &gt; o-form (書か : 書こ)</td>
+<td>
+<b>L05</b>: member (メンバー : クラブ / チーム / ...)</td>
+</tr>
+<tr>
+<td>
+<b>I06</b>: o-form &gt; e-form (歌お:歌え)</td>
+<td>
+<b>L06</b>: part-whole (魚 : フィン / 骨 / ...)</td>
+</tr>
+<tr>
+<td>
+<b>I07</b>: e-form &gt; te-form (勝て:勝っ)</td>
+<td rowspan="2">synonyms</td>
+<td>
+<b>L07</b>: intensity (怖い : 恐ろしい / おそろしい / ...)</td>
+</tr>
+<tr>
+<td rowspan="3">i-adjectives</td>
+<td>
+<b>I08</b>: i-form &gt; ku-form (良い:良く)</td>
+<td>
+<b>L08</b>: exact (言う : 述べる / のべる / ...)</td>
+</tr>
+<tr>
+<td>
+<b>I09</b>: i-form &gt; ta-form (良い:良かっ)</td>
+<td rowspan="2">antonyms</td>
+<td>
+<b>L09</b>: gradable (強い : 弱い / よわい / ...)</td>
+</tr>
+<tr>
+<td>
+<b>I10</b>: ku-form &gt; ta-form (良く:良かっ)</td>
+<td>
+<b>L10</b>: binary (大きい : 小さい / ちいさい)</td>
+</tr>
+<tr>
+<td class="rotate" rowspan="10"><div style="font-weight: bold; padding-top: 10px; padding-bottom: 10px;">Morphology (derivation)</div></td>
+<td rowspan="7"> suffix </td>
+<td>
+<b>D01</b>: na-adj. + 化(活性:活性化)</td>
+<td class="rotate" rowspan="10"><div style="font-weight: bold; padding-top: 10px; padding-bottom: 10px;">Semantics (encyclopedia)</div></td>
+<td rowspan="3">geography</td>
+<td>
+<b>E01</b>: capitals (ロンドン : イギリス / 英国 / えいこく / ...)</td>
+</tr>
+<tr>
+<td>
+<b>D02</b>: i-adj. + さ (良い:良さ)</td>
+<td>
+<b>E02</b>: country:language (韓国 : 韓国語 / かんこくご)</td>
+</tr>
+<tr>
+<td>
+<b>D03</b>: noun + 者 (消費:消費者)</td>
+<td>
+<b>E03</b>: city:prefecture (秩父 : 埼玉県)</td>
+</tr>
+<tr>
+<td>
+<b>D04</b>: noun + 会 (運動:運動会)</td>
+<td rowspan="2">people</td>
+<td>
+<b>E04</b>: nationalities (ショパン : ポーランド人 / ポーランドじん)</td>
+</tr>
+<tr>
+<td>
+<b>D05</b>: noun/na-adj.+ 感 (存在:存在感)</td>
+<td>
+<b>E05</b>: occupation (アリストテレス : 哲学者 / てつがくしゃ / ...)</td>
+</tr>
+<tr>
+<td>
+<b>D06</b>: noun/na-adj.+ 性 (可能:可能性)</td>
+<td rowspan="5">other</td>
+<td>
+<b>E06</b>: company:product (日産 : 自動車 / じどうしゃ / ...)</td>
+</tr>
+<tr>
+<td>
+<b>D07</b>: noun/na-adj.+ 力 (影響:影響力)</td>
+<td>
+<b>E07</b>: onomatopoeia:feeling (イライラ : 嫌悪 / けんお / ...)</td>
+</tr>
+<tr>
+<td rowspan="2"> prefix　</td>
+<td>
+<b>D08</b>: 不 + noun (十分:不十分)</td>
+<td>
+<b>E08</b>: thing:color  (あざ : 青 / あお / ...)</td>
+</tr>
+<tr>
+<td>
+<b>D09</b>: 大 + noun/na-adj. (好き:大好き)</td>
+<td>
+<b>E09</b>: object:usage (ギター : 弾く / ひく / ...)</td>
+</tr>
+<tr>
+<td rowspan="1"> other　</td>
+<td>
+<b>D10</b>: (in)transitive verb (落ちる:落とす)</td>
+<td>
+<b>E10</b>: polite terms (言う : おっしゃる / ...)</td>
+</tr>
+</tbody>
+</table>
+<br>
+</div>
+</div>
+</div>
+<div class="section" id="performance-on-jbats">
+<h3>Performance on jBATS</h3>
+<p>jBATS was initially used to evaluate the performance of the subcharacter and character level models in Japanese <a class="footnote-reference" href="/projects/jBATS/#f7" id="id5">[6]</a>. These models take advantage of the information in Chinese characters - <em>kanji</em> (SG + <em>kanji</em>) and their components, called <em>bushu</em> (SG + <em>kanji</em> + <em>bushu</em>). The overall performance of both models was compared with the traditional Skip-Gram model (SG) and FastText.</p>
+<div class="figure">
+<img alt="/assets/img/jbats.png" src="/assets/img/jbats.png"><p class="caption">Figure 2. Performance on jBATS: SG, SG + <em>kanji</em>, and SG + <em>kanji</em> + <em>bushu</em> as measure by the 3CosAdd (upper figure) and LRCos (lower figure) methods.</p>
+</div>
+<p>Including the <em>bushu</em> information has proven to be beneficial especially for the inflectional and derivational relations, where most tokens were written using a single <em>kanji</em> or a <em>kanji</em> affix, related to the word meaning. The smallest improvement was observed for the lexicographic semantics categories, where traditional Skip-Gram model performed better in most cases. Semantic relations were also the most difficult to capture, which is consistent with the finidings for English in Gladkova et al. (2016) <a class="footnote-reference" href="/projects/jBATS/#f2" id="id6">[2]</a> and Drozd et al. (2016) <a class="footnote-reference" href="/projects/jBATS/#f5" id="id7">[4]</a>. Moreover, the LRCos method <a class="footnote-reference" href="/projects/jBATS/#f5" id="id8">[4]</a> yielded overall better results than 3CosAdd achieving up to <strong>over 36% better accuracy</strong>, which was also shown for English in Drozd et al. (2016) <a class="footnote-reference" href="/projects/jBATS/#f5" id="id9">[4]</a>. The overall accuracy on word analogy task (LRCos method) of all the models (including FastText) for different corpus size can be found in Karpinska et al. (2018) <a class="footnote-reference" href="/projects/jBATS/#f7" id="id10">[6]</a></p>
+<p class="rubric">Footnotes</p>
+<table class="docutils footnote" frame="void" id="f1" rules="none">
+<colgroup>
+<col class="label">
+<col>
+</colgroup>
+<tbody valign="top"><tr>
+<td class="label">[1]</td>
+<td>
+<em>(<a class="fn-backref" href="/projects/jBATS/#id1">1</a>, <a class="fn-backref" href="/projects/jBATS/#id2">2</a>)</em> Mikolov, T., Yih, W., &amp; Zweig, G. (2013). Linguistic Regularities in Continuous Space Word Representations. In Proceedings of NAACL-HLT 2013 (pp. 746–751). Atlanta, Georgia, 9–14 June 2013. Retrieved from <a class="reference external" href="https://www.aclweb.org/anthology/N13-1090">https://www.aclweb.org/anthology/N13-1090</a>
+</td>
+</tr></tbody>
+</table>
+<table class="docutils footnote" frame="void" id="f2" rules="none">
+<colgroup>
+<col class="label">
+<col>
+</colgroup>
+<tbody valign="top"><tr>
+<td class="label"><a class="fn-backref" href="/projects/jBATS/#id6">[2]</a></td>
+<td>Gladkova, A., Drozd, A., &amp; Matsuoka, S. (2016). Analogy-based detection of morphological and semantic relations with word embeddings: what works and what doesn’t. In Proceedings of the NAACL-HLT SRW (pp. 47–54). San Diego, California, June 12-17, 2016: ACL. <a class="reference external" href="https://www.aclweb.org/anthology/N/N16/N16-2002.pdf">https://www.aclweb.org/anthology/N/N16/N16-2002.pdf</a>
+</td>
+</tr></tbody>
+</table>
+<table class="docutils footnote" frame="void" id="f3" rules="none">
+<colgroup>
+<col class="label">
+<col>
+</colgroup>
+<tbody valign="top"><tr>
+<td class="label"><a class="fn-backref" href="/projects/jBATS/#id3">[3]</a></td>
+<td>The abstract of the original paper has a mistake: the total number of questions in BATS is 99,200.</td>
+</tr></tbody>
+</table>
+<table class="docutils footnote" frame="void" id="f5" rules="none">
+<colgroup>
+<col class="label">
+<col>
+</colgroup>
+<tbody valign="top"><tr>
+<td class="label">[4]</td>
+<td>
+<em>(<a class="fn-backref" href="/projects/jBATS/#id7">1</a>, <a class="fn-backref" href="/projects/jBATS/#id8">2</a>, <a class="fn-backref" href="/projects/jBATS/#id9">3</a>)</em> Drozd, A., Gladkova, A., &amp; Matsuoka, S. (2016). Word embeddings, analogies, and machine learning: beyond king - man + woman = queen. In Proceedings of COLING 2016, the 26th International Conference on Computational Linguistics: Technical Papers (pp. 3519–3530). Osaka, Japan, December 11-17. <a class="reference external" href="https://www.aclweb.org/anthology/C/C16/C16-1332.pdf">https://www.aclweb.org/anthology/C/C16/C16-1332.pdf</a>
+</td>
+</tr></tbody>
+</table>
+<table class="docutils footnote" frame="void" id="f6" rules="none">
+<colgroup>
+<col class="label">
+<col>
+</colgroup>
+<tbody valign="top"><tr>
+<td class="label">[5]</td>
+<td>Rogers, A., Drozd, A., &amp; Li, B. (2017). The (Too Many) Problems of Analogical Reasoning with Word Vectors. In Proceedings of the 6th Joint Conference on Lexical and Computational Semantics (* SEM 2017) (pp. 135–148). <a class="reference external" href="http://www.aclweb.org/anthology/S17-1017">http://www.aclweb.org/anthology/S17-1017</a>
+</td>
+</tr></tbody>
+</table>
+<table class="docutils footnote" frame="void" id="f7" rules="none">
+<colgroup>
+<col class="label">
+<col>
+</colgroup>
+<tbody valign="top"><tr>
+<td class="label">[6]</td>
+<td>
+<em>(<a class="fn-backref" href="/projects/jBATS/#id5">1</a>, <a class="fn-backref" href="/projects/jBATS/#id10">2</a>)</em> Karpinska, M., Li, B., Rogers, A., &amp; Drozd, A. (2018) Subcharacter information in japanese embeddings: when is it worth it? In In Proceedings of the Workshop on Relevance of Linguistic Structure in Neural Architectures for NLP (RELNLP) 2018, to appear. ACL, 2018.</td>
+</tr></tbody>
+</table>
+</div>
+</div>
+</div>
+</div>
+</div>
+</div>
+</body>
+<!--End of body content--><footer id="footer">
             Maintained by <a href="mailto:alex@blackbird.pw">vecto community</a>         
             
-        </footer>
-</div>
-</div>
-
-
-        <script src="/assets/js/all-nocdn.js"></script><!-- fancy dates --><script>
+        </footer><script src="/assets/js/all-nocdn.js"></script><!-- fancy dates --><script>
     moment.locale("en");
     fancydates(0, "YYYY-MM-DD HH:mm");
     </script><!-- end fancy dates --><script>
@@ -129,5 +468,4 @@ MathJax.Hub.Config({
             return element.getElementsByTagName('img')[0].alt;
     }});
     </script><script defer src="https://use.fontawesome.com/releases/v5.0.10/js/all.js" integrity="sha384-slN8GvtUJGnv6ca26v8EzVaR9DC58QEwsIk9q1QXdCU8Yu8ck/tL/5szYlBbqmS+" crossorigin="anonymous"></script>
-</body>
 </html>
