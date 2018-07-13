@@ -55,7 +55,7 @@ Experiments
 
 We first test the ability of subword-level embeddings to predict what affix is present in a morphologically complex word.
 Figure 2 shows a t-SNE projection of the words with different affixes.
-It is clear that both CNN- and RNN-based models are able to distinguish different derivation types, with the advantage of the former.
+It is clear that both CNN- and RNN-based models are able to distinguish different derivation types.
 
 ..
     .. figure:: /assets/img/subword/affix_sl.png
