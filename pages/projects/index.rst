@@ -27,5 +27,7 @@ Similarity
 Word Embeddings
 ---------------
 
-:doc:`Subword-level Word Embeddings <subword>`
+:doc:`Subword-level Word Embeddings (English) <subword>`
+
+:doc:`Subword-level Word Embeddings (Japanese) <subword_jap>`
 
