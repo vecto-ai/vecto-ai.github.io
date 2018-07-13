@@ -54,6 +54,7 @@ Since our CNN\ :sub:`subword` and RNN\ :sub:`subword` models are more focused on
 
 .. However, compared to Skip-Gram, CNN\ :sub:`word` and RNN\ :sub:`word` (the versions with word vector lookup table) achieve comparable or even better results.
 
+.. _BATS: /projects/BATS
 
 
 ..
