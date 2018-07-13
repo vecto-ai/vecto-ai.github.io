@@ -1,0 +1,327 @@
+<!DOCTYPE html>
+<html prefix="og: http://ogp.me/ns# article: http://ogp.me/ns/article#
+" lang="en">
+<head>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width, initial-scale=1">
+<title>Japanese subcharacter-level embeddings | vecto</title>
+<link href="/assets/css/all-nocdn.css" rel="stylesheet" type="text/css">
+<meta name="theme-color" content="#5670d4">
+<meta name="generator" content="Nikola (getnikola.com)">
+<link rel="alternate" type="application/rss+xml" title="RSS" href="/rss.xml">
+<link rel="canonical" href="http://vecto.space/projects/subword_jp/">
+<script type="text/x-mathjax-config">
+MathJax.Hub.Config({
+    tex2jax: {
+        inlineMath: [ ['$','$'], ["\\(","\\)"] ],
+        displayMath: [ ['$$','$$'], ["\\[","\\]"] ],
+        processEscapes: true
+    },
+    displayAlign: 'center', // Change this to 'left' if you want left-aligned equations.
+    "HTML-CSS": {
+        styles: {'.MathJax_Display': {"margin": 0}}
+    }
+});
+</script><!--[if lt IE 9]><script src="/assets/js/html5.js"></script><![endif]--><style>
+
+* {
+    font-family: Georgia, 'Times New Roman', Times, serif;
+  }
+
+.simple {
+    font-size: medium;
+  }
+
+.emph {
+    font-weight: bold;
+  }
+
+.note_block {
+    font-size: smaller;
+}
+
+div.twocol{
+}
+
+div.rightside {
+    padding: 0px 3px 0px 0px;
+    float: right;
+}
+
+div.leftside {
+}
+
+td {
+    border: 1px #dddddd solid;
+    padding: 5px;
+}
+
+th {
+    border: 1px #dddddd solid; }
+
+.rotate {
+  text-align: center;
+  white-space: nowrap;
+  vertical-align: middle;
+  width: 1.5em;
+}
+.rotate div {
+     -moz-transform: rotate(-90.0deg);  /* FF3.5+ */
+       -o-transform: rotate(-90.0deg);  /* Opera 10.5 */
+  -webkit-transform: rotate(-90.0deg);  /* Saf3.1+, Chrome */
+             filter:  progid:DXImageTransform.Microsoft.BasicImage(rotation=0.083);  /* IE6,IE7 */
+         -ms-filter: "progid:DXImageTransform.Microsoft.BasicImage(rotation=0.083)"; /* IE8 */
+         margin-left: -10em;
+         margin-right: -10em;
+}
+
+h2 {
+    padding-top: 5%;
+    padding-bottom: 20px;
+}
+
+h3, rubric {
+    padding-top: 3% ;
+    padding-bottom: 3% ;
+}
+
+table.docutils {
+    font-size: smaller;
+    }
+
+
+</style>
+</head>
+<body>
+<a href="#content" class="sr-only sr-only-focusable">Skip to main content</a>
+
+<!-- Menubar -->
+
+<nav class="navbar navbar-expand-md navbar-dark bg-dark static-top mb-4"><div class="container">
+<!-- This keeps the margins nice -->
+        <a class="navbar-brand" href="http://vecto.space/">
+
+            <span id="blog-title">vecto</span>
+        </a>
+        <button class="navbar-toggler" type="button" data-toggle="collapse" data-target="#bs-navbar" aria-controls="bs-navbar" aria-expanded="false" aria-label="Toggle navigation">
+            <span class="navbar-toggler-icon"></span>
+        </button>
+
+        <div class="collapse navbar-collapse" id="bs-navbar">
+            <ul class="navbar-nav mr-auto">
+<li class="nav-item dropdown">
+<a href="#" class="nav-link dropdown-toggle" data-toggle="dropdown" aria-haspopup="true" aria-expanded="false">Docs</a>
+            <div class="dropdown-menu">
+                    <a href="http://vecto.readthedocs.io/en/docs/" class="dropdown-item">API reference</a>
+                    <a href="http://vecto.readthedocs.io/en/docs/tutorial/index.html" class="dropdown-item">Tutorial</a>
+            </div>
+            </li>
+<li class="nav-item dropdown">
+<a href="#" class="nav-link dropdown-toggle" data-toggle="dropdown" aria-haspopup="true" aria-expanded="false">Code</a>
+            <div class="dropdown-menu">
+                    <a href="https://github.com/vecto-ai/vecto/" class="dropdown-item">vecto on GitHub</a>
+                    <a href="/contribute.html" class="dropdown-item">how to contribute</a>
+            </div>
+            </li>
+<li class="nav-item dropdown">
+<a href="#" class="nav-link dropdown-toggle" data-toggle="dropdown" aria-haspopup="true" aria-expanded="false">Models &amp; Data Library </a>
+            <div class="dropdown-menu">
+                    <a href="/data/" class="dropdown-item">Corpora</a>
+                    <a href="/data/" class="dropdown-item">Pre-trained emmbeddings</a>
+                    <a href="/data/" class="dropdown-item">Tasks</a>
+                    <a href="/data/" class="dropdown-item">Datasets</a>
+                    <a href="/data/" class="dropdown-item">Share your work and increase its visibility</a>
+            </div>
+                </li>
+<li class="nav-item">
+<a href="/projects/index" class="nav-link">Projects</a>
+                </li>
+<li class="nav-item">
+<a href="/publications.html" class="nav-link">Publications</a>
+                </li>
+<li class="nav-item">
+<a href="/team.html" class="nav-link">About Us</a>
+
+                
+            </li>
+</ul>
+<ul class="navbar-nav navbar-right"></ul>
+</div>
+<!-- /.navbar-collapse -->
+    </div>
+<!-- /.container -->
+</nav><!-- End of Menubar --><div class="container" id="content" role="main">
+
+<div class="container">
+  <div class="row">
+    <div class="col-2" style="margin-right: 8%">
+
+      <a role="button" class="btn btn-dark" style="margin-top: 15px;
+      margin-bottom: 15px;
+      50px" href="#">Paper</a><br><button class="btn btn-dark" type="button" data-toggle="collapse" data-target="#collapseExample" aria-expanded="false" aria-controls="collapseExample" style="margin-top: 15px;
+      margin-bottom: 15px;">
+    BibTex
+  </button>
+
+        <div class="collapse" id="collapseExample">
+  <div class="card card-body" style="font-size: x-small; word-wrap: break-spaces">
+      TBD
+  </div> </div>
+        <a role="button" class="btn btn-dark" style="margin-top: 15px;
+      margin-bottom: 15px;
+      50px" href="http://localhost:8000/projects/subword_jp/#implementation">Implementation</a>
+</div>
+
+
+
+    <div class="col">
+
+    <div class="body-content" style="width:100%;&gt;
+        <!--Body content-->
+        
+        
+        &lt;body&gt;&lt;div class=" section id="japanese-subcharacter-level-embeddings">
+<h2>Japanese subcharacter-level embeddings</h2>
+<p>Languages with logographic writing systems present a difficulty for traditional character-level models. Leveraging the subcharacter information was recently shown to be beneficial for a number of intrinsic and extrinsic tasks in Chinese <a class="footnote-reference" href="/projects/subword_jp/#f1" id="id1">[1]</a> <a class="footnote-reference" href="/projects/subword_jp/#f2" id="id2">[2]</a> <a class="footnote-reference" href="/projects/subword_jp/#f3" id="id3">[3]</a>. We examine whether the same strategies could be applied for Japanese.</p>
+<p>In scope of this work, we also developed a new analogy dataset (<a class="reference external" href="/projects/jBATS">jBATS</a>) for Japanese, and contributed new versions of its only similarity dataset (<a class="reference external" href="/projects/jSIM">jSIM</a>). Our <a class="reference internal" href="/projects/subword_jp/#implementation">implementation</a> is available in the Vecto library.</p>
+<p>The bushu information was injected by pre-processing the training corpora, as shown in Figure 1. Each complex character was prepended a list of its components, according to <a class="reference external" href="http://en.glyphwiki.org">KanjiGlyph database</a></p>
+<div class="figure align-center">
+<img alt="/assets/img/subword/jap/bushu.png" src="/assets/img/subword/jap/bushu.png" style="width: 750px;"><p class="caption">Figure 1. Incorporating subcharacter information in Japanese.</p>
+</div>
+<p>The overall architecture of Japanese embedding models are shown in Figure 1.</p>
+<ul class="simple">
+<li>The original <strong>SG</strong> (Skip-Gram) <a class="footnote-reference" href="/projects/subword_jp/#f4" id="id4">[4]</a> model (Figure 1-a) uses only word-level information.</li>
+<li>
+<strong>SG+kanji</strong> model (Figure 1-b) is a special case of FastText <a class="footnote-reference" href="/projects/subword_jp/#f5" id="id5">[5]</a>, where the minimal n-gram size and maximum n-gram size are both set to $1$. This enables us to take individual kanji into account.</li>
+<li>
+<strong>SG+kanji+bushu</strong> (Figure 1-c) model sums the vector of the target word, its constituent characters, and their constituent bushu to incorporate the bushu information. For example, the vector of the word 仲間, the vectors of characters 仲 and 間, and the vectors of bushu 亻, 中, 門, 日 are summed to predict the contextual words.</li>
+</ul>
+<div class="figure align-center">
+<img alt="/assets/img/subword/jap/models.png" src="/assets/img/subword/jap/models.png" style="width: 600px;"><p class="caption">Figure 2. Model architecture of SG, SG+kanji, and SG+kanji+bushu <a class="footnote-reference" href="/projects/subword_jp/#f6" id="id6">[6]</a> .
+Example sentence: いつも~~忙しい~~仲間~~と~~やっと~~会え~~た (I have finally met with my busy colleague.), window size 2.</p>
+</div>
+<div class="section" id="results-subcharacter-information-does-help-to-construct-oov-representations">
+<h3>Results: subcharacter information does help to construct OOV representations</h3>
+<div class="figure align-center">
+<img alt="/assets/img/subword/jap/similarity.png" src="/assets/img/subword/jap/similarity.png" style="width: 600px;"><p class="caption">Table 1. Spearman's correlation with human similarity judgements.</p>
+</div>
+<p>Table 1 shows the results on word similarity task (<a class="reference external" href="/projects/jSIM">jSIM</a>). Models are trained on the full <a class="reference external" href="http://www.nichigai.co.jp/sales/mainichi/mainichi-data.html">Mainichi corpus</a> <a class="footnote-reference" href="/projects/subword_jp/#f7" id="id7">[7]</a>, a half Mainichi corpus, and <a class="reference external" href="https://www.wikipedia.org/">Wikipedia</a>.
+The strongest effect for inclusion of bushu is observed in the OOV condition: in all datasets the Spearman's correlations are higher for SG+kanji+bushu
+than for other SG models, which suggests that this information is indeed meaningful and helpful. The gains are also the most consistent for the adjective category, which has the highest percentage of single-kanji words. Multiple-kanji words may contain kanjis that are irrelevant to the meaning of the whole word, and that could be expected to increase the noise for bushu-aware models.</p>
+</div>
+<div class="section" id="results-subcharacter-information-is-helpful-for-morphological-task">
+<h3>Results: subcharacter information is helpful for morphological task</h3>
+<div class="figure align-center">
+<img alt="/assets/img/subword/jap/analogy.png" src="/assets/img/subword/jap/analogy.png" style="width: 300px;"><p class="caption">Table 2. Word analogy task accuracy (LRCos).</p>
+</div>
+<p>Table 2 shows the results on 4 categories of word analogy task (<a class="reference external" href="/projects/jBATS">jBATS</a>).
+The morphology categories behave similarly to adjectives in the similarity task:
+the SG+kanji beats the original SG by a large margin on inflectional and derivational morphology categories, and bushu improve accuracy even further. However, like with the similarity task, note that these are the categories in which the task is to identify a single kanji with a clear semantic role in the compound. In semantic categories, vanilla SG has a clear advantage.</p>
+<p>At the same time, in both experiments, the FastText model performs comparably or better with the subcharacter models, which suggests the need for re-evaluation of the previous results for Chinese that did not explicitly compare with FastText.</p>
+</div>
+<div class="section" id="implementation">
+<h3>Implementation</h3>
+<p>We implement all the subword-level models using Chainer deep learning framework.</p>
+<p>Sample script for training Japanese word-level word embeddings (SG):</p>
+<p><code>python3 -m vecto.embeddings.train_word2vec --path_corpus $path_corpus --path_out $path_out --subword none --language jap</code></p>
+<p>Sample script for training Japanese subword-level word embeddings (SG+kanji):</p>
+<p><code>python3 -m vecto.embeddings.train_word2vec --path_corpus $path_corpus --path_out $path_out --subword sum --language jap</code></p>
+<p>Sample script for training Japanese subword-level word embeddings (SG+kanji+bushu):</p>
+<p><code>python3 -m vecto.embeddings.train_word2vec --path_corpus $path_corpus --path_out $path_out --subword sum --language jap --path_word2chars path_word2chars</code></p>
+<p class="rubric">Footnotes</p>
+<table class="docutils footnote" frame="void" id="f1" rules="none">
+<colgroup>
+<col class="label">
+<col>
+</colgroup>
+<tbody valign="top"><tr>
+<td class="label"><a class="fn-backref" href="/projects/subword_jp/#id1">[1]</a></td>
+<td>Yaming  Sun,  Lei  Lin,  Nan  Yang,  Zhenzhou  Ji,  and Xiaolong Wang. 2014.   Radical-Enhanced Chinese Character Embedding.  In Neural Information Processing, Lecture Notes in Computer Science, pages 279–286. Springer, Cham. <a class="reference external" href="http://citeseerx.ist.psu.edu/viewdoc/download?doi=10.1.1.752.2770&amp;rep=rep1&amp;type=pdf">http://citeseerx.ist.psu.edu/viewdoc/download?doi=10.1.1.752.2770&amp;rep=rep1&amp;type=pdf</a>
+</td>
+</tr></tbody>
+</table>
+<table class="docutils footnote" frame="void" id="f2" rules="none">
+<colgroup>
+<col class="label">
+<col>
+</colgroup>
+<tbody valign="top"><tr>
+<td class="label"><a class="fn-backref" href="/projects/subword_jp/#id2">[2]</a></td>
+<td>Yanran   Li,   Wenjie   Li,   Fei   Sun,   and   Sujian   Li. 2015.  Component-enhanced Chinese character embeddings. In Proceedings of the 2015 Conference on Empirical Methods in Natural Language Processing,  pages  829–834,  Lisbon,  Portugal,  17-21 September 2015. Association for Computationa lLinguistics. <a class="reference external" href="http://anthology.aclweb.org/D/D15/D15-1098.pdf">http://anthology.aclweb.org/D/D15/D15-1098.pdf</a>
+</td>
+</tr></tbody>
+</table>
+<table class="docutils footnote" frame="void" id="f3" rules="none">
+<colgroup>
+<col class="label">
+<col>
+</colgroup>
+<tbody valign="top"><tr>
+<td class="label"><a class="fn-backref" href="/projects/subword_jp/#id3">[3]</a></td>
+<td>Frederick Liu,  Han Lu,  Chieh Lo,  and Graham Neubig. 2017. Learning Character-level Compositionality with Visual Features.  pages 2059–2068. Association for Computational Linguistics. <a class="reference external" href="http://www.aclweb.org/anthology/P17-1188">http://www.aclweb.org/anthology/P17-1188</a>
+</td>
+</tr></tbody>
+</table>
+<table class="docutils footnote" frame="void" id="f4" rules="none">
+<colgroup>
+<col class="label">
+<col>
+</colgroup>
+<tbody valign="top"><tr>
+<td class="label"><a class="fn-backref" href="/projects/subword_jp/#id4">[4]</a></td>
+<td>Mikolov, T., Yih, W., &amp; Zweig, G. (2013). Linguistic Regularities in Continuous Space Word Representations. In Proceedings of NAACL-HLT 2013 (pp. 746–751). Atlanta, Georgia, 9–14 June 2013. Retrieved from <a class="reference external" href="https://www.aclweb.org/anthology/N13-1090">https://www.aclweb.org/anthology/N13-1090</a>
+</td>
+</tr></tbody>
+</table>
+<table class="docutils footnote" frame="void" id="f5" rules="none">
+<colgroup>
+<col class="label">
+<col>
+</colgroup>
+<tbody valign="top"><tr>
+<td class="label"><a class="fn-backref" href="/projects/subword_jp/#id5">[5]</a></td>
+<td>Bojanowski, P., Grave, E., Joulin, A., &amp; Mikolov, T. (2017). Enriching Word Vectors with Subword Information. Transactions of the Association for Computational Linguistics, 5, 135-146. <a class="reference external" href="http://www.aclweb.org/anthology/Q17-1010">http://www.aclweb.org/anthology/Q17-1010</a>
+</td>
+</tr></tbody>
+</table>
+<table class="docutils footnote" frame="void" id="f6" rules="none">
+<colgroup>
+<col class="label">
+<col>
+</colgroup>
+<tbody valign="top"><tr>
+<td class="label"><a class="fn-backref" href="/projects/subword_jp/#id6">[6]</a></td>
+<td>Karpinska, M., Li, B., Rogers, A., &amp; Drozd, A. (2018) Subcharacter information in japanese embeddings: when is it worth it? In Proceedings of the Workshop on Relevance of Linguistic Structure in Neural Architectures for NLP (RELNLP) 2018, to appear. ACL, 2018.</td>
+</tr></tbody>
+</table>
+<table class="docutils footnote" frame="void" id="f7" rules="none">
+<colgroup>
+<col class="label">
+<col>
+</colgroup>
+<tbody valign="top"><tr>
+<td class="label"><a class="fn-backref" href="/projects/subword_jp/#id7">[7]</a></td>
+<td>Nichigai  Associate.  1994-2009.   CD-Mainichi  Shimbun de-ta shu (1994-2009).</td>
+</tr></tbody>
+</table>
+</div>
+</div>
+</div>
+</div>
+</div>
+</div>
+</body>
+<!--End of body content--><footer id="footer">
+            Maintained by <a href="mailto:alex@blackbird.pw">vecto community</a>         
+            
+        </footer><script src="/assets/js/all-nocdn.js"></script><!-- fancy dates --><script>
+    moment.locale("en");
+    fancydates(0, "YYYY-MM-DD HH:mm");
+    </script><!-- end fancy dates --><script>
+    baguetteBox.run('div#content', {
+        ignoreClass: 'islink',
+        captions: function(element) {
+            return element.getElementsByTagName('img')[0].alt;
+    }});
+    </script><script defer src="https://use.fontawesome.com/releases/v5.0.10/js/all.js" integrity="sha384-slN8GvtUJGnv6ca26v8EzVaR9DC58QEwsIk9q1QXdCU8Yu8ck/tL/5szYlBbqmS+" crossorigin="anonymous"></script>
+</html>

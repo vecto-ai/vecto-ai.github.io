@@ -1,0 +1,302 @@
+<!DOCTYPE html>
+<html prefix="og: http://ogp.me/ns# article: http://ogp.me/ns/article#
+" lang="en">
+<head>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width, initial-scale=1">
+<title>Subword-level word embeddings | vecto</title>
+<link href="/assets/css/all-nocdn.css" rel="stylesheet" type="text/css">
+<meta name="theme-color" content="#5670d4">
+<meta name="generator" content="Nikola (getnikola.com)">
+<link rel="alternate" type="application/rss+xml" title="RSS" href="/rss.xml">
+<link rel="canonical" href="http://vecto.space/projects/subword/">
+<script type="text/x-mathjax-config">
+MathJax.Hub.Config({
+    tex2jax: {
+        inlineMath: [ ['$','$'], ["\\(","\\)"] ],
+        displayMath: [ ['$$','$$'], ["\\[","\\]"] ],
+        processEscapes: true
+    },
+    displayAlign: 'center', // Change this to 'left' if you want left-aligned equations.
+    "HTML-CSS": {
+        styles: {'.MathJax_Display': {"margin": 0}}
+    }
+});
+</script><!--[if lt IE 9]><script src="/assets/js/html5.js"></script><![endif]--><style>
+
+* {
+    font-family: Georgia, 'Times New Roman', Times, serif;
+  }
+
+.simple {
+    font-size: medium;
+  }
+
+.emph {
+    font-weight: bold;
+  }
+
+.note_block {
+    font-size: smaller;
+}
+
+div.twocol{
+}
+
+div.rightside {
+    padding: 0px 3px 0px 0px;
+    float: right;
+}
+
+div.leftside {
+}
+
+td {
+    border: 1px #dddddd solid;
+    padding: 5px;
+}
+
+th {
+    border: 1px #dddddd solid; }
+
+.rotate {
+  text-align: center;
+  white-space: nowrap;
+  vertical-align: middle;
+  width: 1.5em;
+}
+.rotate div {
+     -moz-transform: rotate(-90.0deg);  /* FF3.5+ */
+       -o-transform: rotate(-90.0deg);  /* Opera 10.5 */
+  -webkit-transform: rotate(-90.0deg);  /* Saf3.1+, Chrome */
+             filter:  progid:DXImageTransform.Microsoft.BasicImage(rotation=0.083);  /* IE6,IE7 */
+         -ms-filter: "progid:DXImageTransform.Microsoft.BasicImage(rotation=0.083)"; /* IE8 */
+         margin-left: -10em;
+         margin-right: -10em;
+}
+
+h2 {
+    padding-top: 5%;
+    padding-bottom: 20px;
+}
+
+h3, rubric {
+    padding-top: 3% ;
+    padding-bottom: 3% ;
+}
+
+table.docutils {
+    font-size: smaller;
+    }
+
+
+</style>
+</head>
+<body>
+<a href="#content" class="sr-only sr-only-focusable">Skip to main content</a>
+
+<!-- Menubar -->
+
+<nav class="navbar navbar-expand-md navbar-dark bg-dark static-top mb-4"><div class="container">
+<!-- This keeps the margins nice -->
+        <a class="navbar-brand" href="http://vecto.space/">
+
+            <span id="blog-title">vecto</span>
+        </a>
+        <button class="navbar-toggler" type="button" data-toggle="collapse" data-target="#bs-navbar" aria-controls="bs-navbar" aria-expanded="false" aria-label="Toggle navigation">
+            <span class="navbar-toggler-icon"></span>
+        </button>
+
+        <div class="collapse navbar-collapse" id="bs-navbar">
+            <ul class="navbar-nav mr-auto">
+<li class="nav-item dropdown">
+<a href="#" class="nav-link dropdown-toggle" data-toggle="dropdown" aria-haspopup="true" aria-expanded="false">Docs</a>
+            <div class="dropdown-menu">
+                    <a href="http://vecto.readthedocs.io/en/docs/" class="dropdown-item">API reference</a>
+                    <a href="http://vecto.readthedocs.io/en/docs/tutorial/index.html" class="dropdown-item">Tutorial</a>
+            </div>
+            </li>
+<li class="nav-item dropdown">
+<a href="#" class="nav-link dropdown-toggle" data-toggle="dropdown" aria-haspopup="true" aria-expanded="false">Code</a>
+            <div class="dropdown-menu">
+                    <a href="https://github.com/vecto-ai/vecto/" class="dropdown-item">vecto on GitHub</a>
+                    <a href="/contribute.html" class="dropdown-item">how to contribute</a>
+            </div>
+            </li>
+<li class="nav-item dropdown">
+<a href="#" class="nav-link dropdown-toggle" data-toggle="dropdown" aria-haspopup="true" aria-expanded="false">Models &amp; Data Library </a>
+            <div class="dropdown-menu">
+                    <a href="/data/" class="dropdown-item">Corpora</a>
+                    <a href="/data/" class="dropdown-item">Pre-trained emmbeddings</a>
+                    <a href="/data/" class="dropdown-item">Tasks</a>
+                    <a href="/data/" class="dropdown-item">Datasets</a>
+                    <a href="/data/" class="dropdown-item">Share your work and increase its visibility</a>
+            </div>
+                </li>
+<li class="nav-item">
+<a href="/projects/index" class="nav-link">Projects</a>
+                </li>
+<li class="nav-item">
+<a href="/publications.html" class="nav-link">Publications</a>
+                </li>
+<li class="nav-item">
+<a href="/team.html" class="nav-link">About Us</a>
+
+                
+            </li>
+</ul>
+<ul class="navbar-nav navbar-right"></ul>
+</div>
+<!-- /.navbar-collapse -->
+    </div>
+<!-- /.container -->
+</nav><!-- End of Menubar --><div class="container" id="content" role="main">
+
+<div class="container">
+  <div class="row">
+    <div class="col-2" style="margin-right: 8%">
+
+      <a role="button" class="btn btn-dark" style="margin-top: 15px;
+      margin-bottom: 15px;
+      50px" href="http://www.aclweb.org/anthology/W18-1205">Paper</a><br><button class="btn btn-dark" type="button" data-toggle="collapse" data-target="#collapseExample" aria-expanded="false" aria-controls="collapseExample" style="margin-top: 15px;
+      margin-bottom: 15px;">
+    BibTex
+  </button>
+
+        <div class="collapse" id="collapseExample">
+  <div class="card card-body" style="font-size: x-small; word-wrap: break-spaces">
+      @inproceedings{LiDrozdEtAl_2018,
+  title = {Subword-Level Composition Functions for Learning Word Embeddings},
+  author = {Li, Bofang and Drozd, Aleksandr and Liu, Tao and Du, Xiaoyong},
+  year = {2018},
+  url = {http://www.aclweb.org/anthology/W18-1205},
+  booktitle = {Proceedings of the {{Second Workshop}} on {{Subword}}/{{Character LEvel Models}}},
+  address = {New Orleans, Louisiana, June 6, 2018},
+  pages = {38-48}
+}
+  </div> </div>
+        <a role="button" class="btn btn-dark" style="margin-top: 15px;
+      margin-bottom: 15px;
+      50px" href="http://localhost:8000/projects/subword/#implementation">Implementation</a>
+</div>
+
+
+
+    <div class="col">
+
+    <div class="body-content" style="width:100%;&gt;
+        <!--Body content-->
+        
+        
+        &lt;body&gt;&lt;div class=" section id="subword-level-word-embeddings">
+<h2>Subword-level word embeddings</h2>
+<p>Subword-level information is crucial for capturing morphology and improving compositional representations for out-of-vocabulary entries. We propose CNN- and RNN-based subword-level word embedding models, which <strong>considerably outperform Skip-Gram</strong> <a class="footnote-reference" href="/projects/subword/#f1" id="id1">[1]</a> <strong>and FastText</strong> <a class="footnote-reference" href="/projects/subword/#f2" id="id2">[2]</a> <strong>on morphology-related tasks</strong>. Figure 1 shows the architecture of our models in comparison with the original Skip-Gram and FastText. Our <a class="reference internal" href="/projects/subword/#implementation">implementation</a> is available in the Vecto library.</p>
+<div class="figure align-center">
+<img alt="/assets/img/subword/models.png" src="/assets/img/subword/models.png" style="width: 600px;"><p class="caption">Figure 1. Illustration of original Skip-Gram and subword-level models. (Li et al., 2018) <a class="footnote-reference" href="/projects/subword/#f3" id="id3">[3]</a></p>
+</div>
+<p>Compared to FastText, our CNN- and RNN-based subword-level word embedding models use neural network instead of simple summation. We also propose a hybrid training scheme, which makes these neural networks directly integrated into Skip-Gram model.
+We train two sets of word embeddings simultaneously:</p>
+<blockquote>
+<ul class="simple">
+<li>one from a lookup table as in traditional Skip-Gram,</li>
+<li>one from convolutional or recurrent neural network.</li>
+</ul>
+</blockquote>
+<p>We hypothesize that the former is better at capturing distributional similarity, which is mirroring semantic similarity. The latter should be more focused on morphology and can be used to create embeddings for OOV words.</p>
+<div class="section" id="results-better-recognition-of-different-derivation-categories">
+<h3>Results: better recognition of different derivation categories</h3>
+<p>Figure 2 shows a t-SNE projection of the words with different affixes.
+It is clear that both CNN- and RNN-based models are able to distinguish different derivation types, and predict which affix is present in a morphologically complex word.</p>
+<div class="figure align-center">
+<img alt="/assets/img/subword/vis.png" src="/assets/img/subword/vis.png" style="width: 700px;"><p class="caption">Figure 2. Visualization of learned word embeddings, each dot represents a word,
+different colors represent different affixes.</p>
+</div>
+</div>
+<div class="section" id="results-improved-performance-on-morphological-word-analogies">
+<h3>Results: improved performance on morphological word analogies</h3>
+<p>We test our models on the standard word similarity and analogy tasks, including the (<a class="reference external" href="/projects/BATS">BATS</a>) dataset that provides a balanced selection of analogy questions in inflectional and derivational morphology categories.</p>
+<p>We find that the morphological component is getting a significant boost, as shown by performance on the inflectional and derivational morphology categories of BATS. It is especially obvious on derivation morphology category, where Skip-Gram only achieves 9.6% accuracy and subword-level models achieve minimal 57.8% accuracy (excluding the lookup table versions). Our best subword models achieve up to 12% advantage over a comparable FastText model.</p>
+<p>Since our CNN<sub>subword</sub> and RNN<sub>subword</sub> models are more focused on word morphology, they could be expected to not perform well on word similarity task. However, we find that the versions of our CNN and RNN models with vector lookup table achieve comparable or even better results on semantic tasks as the Skip-Gram model. Thus <strong>our models maintain the semantic aspects of the representations while considerably enhancing their morphological aspects</strong>.</p>
+<!-- However, compared to Skip-Gram, CNN\ :sub:`word` and RNN\ :sub:`word` (the versions with word vector lookup table) achieve comparable or even better results. -->
+<!-- .. figure:: /assets/img/subword/affix_sl.png
+   :width: 400 px
+   :align: center
+
+   Table 2. Results on affix prediction (AP) and sequence labeling (SL) tasks. Sequence labeling tasks have 16.5%, 27.1%, 28.5% OOV rate respectively. -->
+<div class="figure align-center">
+<img alt="/assets/img/subword/similarity_analogy.png" src="/assets/img/subword/similarity_analogy.png" style="width: 600px;"><p class="caption">Table 1. Results on word similarity and word analogy datasets.
+Model combinations are denoted as gray rows, and best results among them are marked Bold. Morphology related categories are denoted as almond columns.</p>
+</div>
+<div class="note-block docutils container">
+<blockquote>
+For hybrid training scheme, we denote the embeddings that come from word vector lookup table as "Model<sub>word</sub>", and the embeddings which come from the composition function as "Model<sub>subword</sub>". Non-hybrid models are denoted as as "Model<sub>vanilla</sub>". The "FastText<sub>external</sub>" is the public available FastText embeddings, which are trained on the full Wikipedia corpus. We also test the version where OOV words are expanded, and denote as "Model<sub>+OOV</sub>".</blockquote>
+<!-- Rare words dataset in blue column have 43.3% OOV rate, while other word similarity datasets have maximum 4.6% OOV rate. -->
+</div>
+</div>
+<div class="section" id="implementation">
+<h3>Implementation</h3>
+<p>We implemented all the subword-level models using Chainer deep learning framework.
+All the code are available in the <a class="reference external" href="/">Vecto</a> project.</p>
+<p>Sample script for training word-level word embeddings:</p>
+<p><code>python3 -m vecto.embeddings.train_word2vec --path_corpus $path_corpus --path_out $path_out</code></p>
+<p>Sample script for training subword-level word embeddings (FastText, Summation):</p>
+<p><code>python3 -m vecto.embeddings.train_word2vec --path_corpus $path_corpus --path_out $path_out --subword sum</code></p>
+<p>Sample script for training subword-level word embeddings (CNN):</p>
+<p><code>python3 -m vecto.embeddings.train_word2vec --path_corpus $path_corpus --path_out $path_out --subword cnn1d`</code></p>
+<p>Sample script for training subword-level word embeddings (Bi-directional LSTM):</p>
+<p><code>python3 -m vecto.embeddings.train_word2vec --path_corpus $path_corpus --path_out $path_out --subword bilstm</code></p>
+<p class="rubric">Footnotes</p>
+<table class="docutils footnote" frame="void" id="f1" rules="none">
+<colgroup>
+<col class="label">
+<col>
+</colgroup>
+<tbody valign="top"><tr>
+<td class="label"><a class="fn-backref" href="/projects/subword/#id1">[1]</a></td>
+<td>Mikolov, T., Yih, W., &amp; Zweig, G. (2013). Linguistic Regularities in Continuous Space Word Representations. In Proceedings of NAACL-HLT 2013 (pp. 746–751). Atlanta, Georgia, 9–14 June 2013. Retrieved from <a class="reference external" href="https://www.aclweb.org/anthology/N13-1090">https://www.aclweb.org/anthology/N13-1090</a>
+</td>
+</tr></tbody>
+</table>
+<table class="docutils footnote" frame="void" id="f2" rules="none">
+<colgroup>
+<col class="label">
+<col>
+</colgroup>
+<tbody valign="top"><tr>
+<td class="label"><a class="fn-backref" href="/projects/subword/#id2">[2]</a></td>
+<td>Bojanowski, P., Grave, E., Joulin, A., &amp; Mikolov, T. (2017). Enriching Word Vectors with Subword Information. Transactions of the Association for Computational Linguistics, 5, 135-146. <a class="reference external" href="http://www.aclweb.org/anthology/Q17-1010">http://www.aclweb.org/anthology/Q17-1010</a>
+</td>
+</tr></tbody>
+</table>
+<table class="docutils footnote" frame="void" id="f3" rules="none">
+<colgroup>
+<col class="label">
+<col>
+</colgroup>
+<tbody valign="top"><tr>
+<td class="label"><a class="fn-backref" href="/projects/subword/#id3">[3]</a></td>
+<td>Li, B., Drozd, A., Liu, T., &amp; Du, X. (n.d.). Subword-level Composition Functions for Learning Word Embeddings. In Proceedings of the Second Workshop on Subword/Character LEvel Models (pp. 38–48). New Orleans, Louisiana, June 6, 2018. <a class="reference external" href="http://www.aclweb.org/anthology/W18-1205">http://www.aclweb.org/anthology/W18-1205</a>
+</td>
+</tr></tbody>
+</table>
+</div>
+</div>
+</div>
+</div>
+</div>
+</div>
+</body>
+<!--End of body content--><footer id="footer">
+            Maintained by <a href="mailto:alex@blackbird.pw">vecto community</a>         
+            
+        </footer><script src="/assets/js/all-nocdn.js"></script><!-- fancy dates --><script>
+    moment.locale("en");
+    fancydates(0, "YYYY-MM-DD HH:mm");
+    </script><!-- end fancy dates --><script>
+    baguetteBox.run('div#content', {
+        ignoreClass: 'islink',
+        captions: function(element) {
+            return element.getElementsByTagName('img')[0].alt;
+    }});
+    </script><script defer src="https://use.fontawesome.com/releases/v5.0.10/js/all.js" integrity="sha384-slN8GvtUJGnv6ca26v8EzVaR9DC58QEwsIk9q1QXdCU8Yu8ck/tL/5szYlBbqmS+" crossorigin="anonymous"></script>
+</html>
