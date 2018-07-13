@@ -4,7 +4,7 @@
 .. use_math: true
 .. hidetitle: True
 .. pretty_url: True
-.. template: BATS.tmpl
+.. template: subword_en.tmpl
 
 .. role:: emph
 
@@ -12,14 +12,7 @@
 Subword-level word embeddings
 =============================
 
-Subword-level information is crucial for capturing the meaning and morphology of words, especially for out-of-vocabulary entries.
-We propose CNN- and RNN-based subword-level word embedding models, which perform better than Skip-Gram [#f1]_ and FastText [#f2]_ on morphology related tasks.
-
-
-------
-Models
-------
-
+Subword-level information is crucial for capturing morphology and improving compositional representations for out-of-vocabulary entries. We propose CNN- and RNN-based subword-level word embedding models, which **considerably outperform Skip-Gram** [#f1]_ **and FastText** [#f2]_ **on morphology-related tasks**. Figure 1 shows the architecture of our models in comparison with the original Skip-Gram and FastText. Our `implementation`_ is available in the Vecto library.
 
 .. figure:: /assets/img/subword/models.png
    :width: 600 px
@@ -27,23 +20,20 @@ Models
 
    Figure 1. Illustration of original Skip-Gram and subword-level models. (Li et al., 2018) [#f3]_
 
-The overall architecture of the original Skip-Gram, FastText, and our subword-level models are shown in Figure 1.
-
-Compared to FastText, our CNN- and RNN-based subword-level word embedding models use neural network instead of simple summation,
-which is more suitable for capturing morphology information.
-
-We also propose a hybrid training scheme, which makes these neural networks directly integrated into Skip-Gram model.
+Compared to FastText, our CNN- and RNN-based subword-level word embedding models use neural network instead of simple summation. We also propose a hybrid training scheme, which makes these neural networks directly integrated into Skip-Gram model.
 We train two sets of word embeddings simultaneously:
-one is from a lookup table as in traditional Skip-Gram,
-and another is from convolutional or recurrent neural network.
-The former is better at capturing semantic similarity.
-The latter is more focused on morphology and can learn embeddings for OOV words.
 
+ * one from a lookup table as in traditional Skip-Gram,
+ * one from convolutional or recurrent neural network.
 
+We hypothesize that the former is better at capturing distributional similarity, which is mirroring semantic similarity. The latter should be more focused on morphology and can be used to create embeddings for OOV words.
 
------------
-Experiments
------------
+--------------------------------------------------------------
+Results: better recognition of different derivation categories
+--------------------------------------------------------------
+
+Figure 2 shows a t-SNE projection of the words with different affixes.
+It is clear that both CNN- and RNN-based models are able to distinguish different derivation types, and predict which affix is present in a morphologically complex word.
 
 .. figure:: /assets/img/subword/vis.png
    :width: 700 px
@@ -52,10 +42,19 @@ Experiments
    Figure 2. Visualization of learned word embeddings, each dot represents a word,
    different colors represent different affixes.
 
+-------------------------------------------------------------
+Results: improved performance on morphological word analogies
+-------------------------------------------------------------
 
-We first test the ability of subword-level embeddings to predict what affix is present in a morphologically complex word.
-Figure 2 shows a t-SNE projection of the words with different affixes.
-It is clear that both CNN- and RNN-based models are able to distinguish different derivation types.
+We test our models on the standard word similarity and analogy tasks, including the (BATS_) dataset that provides a balanced selection of analogy questions in inflectional and derivational morphology categories.
+
+We find that the morphological component is getting a significant boost, as shown by performance on the inflectional and derivational morphology categories of BATS. It is especially obvious on derivation morphology category, where Skip-Gram only achieves 9.6% accuracy and subword-level models achieve minimal 57.8% accuracy (excluding the lookup table versions). Our best subword models achieve up to 12% advantage over a comparable FastText model.
+
+Since our CNN\ :sub:`subword` and RNN\ :sub:`subword` models are more focused on word morphology, they could be expected to not perform well on word similarity task. However, we find that the versions of our CNN and RNN models with vector lookup table achieve comparable or even better results on semantic tasks as the Skip-Gram model. Thus **our models maintain the semantic aspects of the representations while considerably enhancing their morphological aspects**.
+
+.. However, compared to Skip-Gram, CNN\ :sub:`word` and RNN\ :sub:`word` (the versions with word vector lookup table) achieve comparable or even better results.
+
+
 
 ..
     .. figure:: /assets/img/subword/affix_sl.png
@@ -72,29 +71,17 @@ It is clear that both CNN- and RNN-based models are able to distinguish differen
    :align: center
 
    Table 1. Results on word similarity and word analogy datasets.
-   Model combinations are denoted as gray rows,
-   and best results among them are marked Bold. Rare words dataset in blue column have 43.3% OOV rate,
-   while other word similarity datasets have maximum 4.6% OOV rate. Morphology related categories are denoted as almond columns.
-   For hybrid training scheme, we denote the embeddings that come from word vector lookup table as "Model\ :sub:`word`",
-   and the embeddings which come from the composition function as "Model\ :sub:`subword`".
-   We denote the vanilla (non-hybrid) models as "Model\ :sub:`vanilla`".
-   The "FastText\ :sub:`external`" is the public available FastText embeddings,
-   which are trained on the full Wikipedia corpus. We also test the version where OOV words are expanded,
-   and denote as "Model\ :sub:`+OOV`".
+   Model combinations are denoted as gray rows, and best results among them are marked Bold. Morphology related categories are denoted as almond columns.
 
+.. container:: note_block
 
-We also test our models on word similarity and anlogy tasks. CNN\ :sub:`subword` and RNN\ :sub:`subword` are more focused on word morphology, and thus do not perform well on word similarity task.
-However, compared to Skip-Gram, CNN\ :sub:`word` and RNN\ :sub:`word` (the versions with word vector lookup table) achieve comparable or even better results.
+    For hybrid training scheme, we denote the embeddings that come from word vector lookup table as "Model\ :sub:`word`", and the embeddings which come from the composition function as "Model\ :sub:`subword`". Non-hybrid models are denoted as as "Model\ :sub:`vanilla`". The "FastText\ :sub:`external`" is the public available FastText embeddings, which are trained on the full Wikipedia corpus. We also test the version where OOV words are expanded, and denote as "Model\ :sub:`+OOV`".
 
-Note that on word analogy datasets, the inflectional and derivational morphology categories demonstrate the effectiveness of subword-level word models.
-It is especially obvious on derivation morphology category,
-where Skip-Gram only achieves 9.6\% accuracy and subword-level models achieve minimal 57.8\% accuracy (excluding the lookup table versions)
+ ..    Rare words dataset in blue column have 43.3% OOV rate, while other word similarity datasets have maximum 4.6% OOV rate.
 
-
-
------
-Usage
------
+--------------
+Implementation
+--------------
 
 We implemented all the subword-level models using Chainer deep learning framework.
 All the code are available in the Vecto_ project.
