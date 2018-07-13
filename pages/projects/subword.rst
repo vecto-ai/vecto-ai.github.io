@@ -19,14 +19,14 @@ and systematically compare them on a range of NLP tasks.
 -----------------------------------------
 Motivation for using subword-level models
 -----------------------------------------
-* Word-level models consider word as smallest unit, and often ignores the morphology information.
+* Word-level models such as Word2Vec [#f1]_ consider word as smallest unit, and often ignores the morphology information.
 
-* Word-level models could not assign meaningful vectors to out-of-vocabulary (OOV) words.
+* Most of them could not assign meaningful vectors to out-of-vocabulary (OOV) words.
 
 -----------------------------------------
 FastText (summation composition function)
 -----------------------------------------
-FastText [#f1]_ is probably the most influential and effective recent model. It represents each word as a
+FastText [#f2]_ is probably the most influential and effective recent model. It represents each word as a
 bag-of-character n-grams. Representations for character n-grams, once they are learned, can be combined (via
 simple summation) to represent out-of-vocabulary (OOV) words.
 
@@ -45,7 +45,7 @@ The overall achitecture of the original Skip-Gram, FastText, and our subword-lev
    :width: 600 px
    :align: center
 
-   Figure 1. llustration of original Skip-Gram and subword-level models. (Li et al., 2018) [#f2]_
+   Figure 1. llustration of original Skip-Gram and subword-level models. (Li et al., 2018) [#f3]_
 
 We also propose a hybrid training scheme, which makes these neural networks directly integrated into Skip-Gram model.
 We train two sets of word embeddings simultaneously:
@@ -62,28 +62,20 @@ We implement all the subword-level models (including FastText) using Chainer dee
 
 Sample script for training word-level word embeddings:
 
-.. code-block::
-
-   python3 -m vecto.embeddings.train_word2vec --path_corpus path_corpus --path_out /tmp/vecto/embeddings/
+:code:`python3 -m vecto.embeddings.train_word2vec --path_corpus $path_corpus --path_out $path_out`
 
 
-Sample script for training subword-level word embeddings (FastText):
+Sample script for training subword-level word embeddings (FastText, Summation):
 
-.. code-block::
-
-   python3 -m vecto.embeddings.train_word2vec --path_corpus path_corpus --path_out /tmp/vecto/embeddings/ --subword sum
+:code:`python3 -m vecto.embeddings.train_word2vec --path_corpus $path_corpus --path_out $path_out --subword sum`
 
 Sample script for training subword-level word embeddings (CNN):
 
-.. code-block::
-
-   python3 -m vecto.embeddings.train_word2vec --path_corpus path_corpus --path_out /tmp/vecto/embeddings/ --subword cnn1d
+:code:`python3 -m vecto.embeddings.train_word2vec --path_corpus $path_corpus --path_out $path_out --subword cnn1d``
 
 Sample script for training subword-level word embeddings (Bi-directional LSTM):
 
-.. code-block::
-
-   python3 -m vecto.embeddings.train_word2vec --path_corpus path_corpus --path_out /tmp/vecto/embeddings/ --subword bilstm
+:code:`python3 -m vecto.embeddings.train_word2vec --path_corpus $path_corpus --path_out $path_out --subword bilstm`
 
 
 -----------
@@ -101,7 +93,7 @@ and denote as "Model\ :sub:`+OOV`".
    :width: 600 px
    :align: center
 
-   Figure 2. Results on word similarity and word analogy datasets.
+   Table 1. Results on word similarity and word analogy datasets.
    Model combinations are denoted as gray rows,
    and best results among them are marked Bold. Rare words dataset in blue column have 43.3% OOV rate,
    while other word similarity datasets have maximum 4.6% OOV rate. Morphology related categories are denoted as almond columns.
@@ -118,12 +110,12 @@ where Skip-Gram only achieves 9.6\% accuracy and subword-level models achieve mi
    :width: 700 px
    :align: center
 
-   Figure 3. Visualization of learned word embeddings, each dot represents a word,
+   Figure 2. Visualization of learned word embeddings, each dot represents a word,
    different colors represent different affixes.
 
 
 We test the ability of subword-level embeddings to predict what affix is present in a morphologically complex word.
-Figure 3 shows a t-SNE projection of the words with different affixes.
+Figure 2 shows a t-SNE projection of the words with different affixes.
 It is clear that both CNN and RNN are able to distinguish different derivation types, with the advantage of the former.
 
 ..
@@ -131,7 +123,7 @@ It is clear that both CNN and RNN are able to distinguish different derivation t
        :width: 400 px
        :align: center
 
-       Figure 4. Results on affix prediction (AP) and sequence labeling (SL) tasks. Sequence labeling tasks have 16.5%, 27.1%, 28.5% OOV rate respectively.
+       Table 2. Results on affix prediction (AP) and sequence labeling (SL) tasks. Sequence labeling tasks have 16.5%, 27.1%, 28.5% OOV rate respectively.
 
 
 ----------
@@ -145,5 +137,6 @@ The resulting embeddings also achieved high accuracy on a range of benchmarks an
 
 .. rubric:: Footnotes
 
-.. [#f1] Bojanowski, P., Grave, E., Joulin, A., & Mikolov, T. (2017). Enriching Word Vectors with Subword Information. Transactions of the Association for Computational Linguistics, 5, 135-146. http://www.aclweb.org/anthology/Q17-1010
-.. [#f2] Li, B., Drozd, A., Liu, T., & Du, X. (n.d.). Subword-level Composition Functions for Learning Word Embeddings. In Proceedings of the Second Workshop on Subword/Character LEvel Models (pp. 38–48). New Orleans, Louisiana, June 6, 2018. http://www.aclweb.org/anthology/W18-1205
+.. [#f1] Mikolov, T., Yih, W., & Zweig, G. (2013). Linguistic Regularities in Continuous Space Word Representations. In Proceedings of NAACL-HLT 2013 (pp. 746–751). Atlanta, Georgia, 9–14 June 2013. Retrieved from https://www.aclweb.org/anthology/N13-1090
+.. [#f2] Bojanowski, P., Grave, E., Joulin, A., & Mikolov, T. (2017). Enriching Word Vectors with Subword Information. Transactions of the Association for Computational Linguistics, 5, 135-146. http://www.aclweb.org/anthology/Q17-1010
+.. [#f3] Li, B., Drozd, A., Liu, T., & Du, X. (n.d.). Subword-level Composition Functions for Learning Word Embeddings. In Proceedings of the Second Workshop on Subword/Character LEvel Models (pp. 38–48). New Orleans, Louisiana, June 6, 2018. http://www.aclweb.org/anthology/W18-1205
