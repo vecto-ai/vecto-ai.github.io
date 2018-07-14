@@ -9,6 +9,10 @@
 Projects related to the Vecto library
 =====================================
 
+.. raw:: html
+
+   <br/>
+
 --------------------
 Analogical reasoning
 --------------------
@@ -17,17 +21,17 @@ Analogical reasoning
 
 :doc:`jBATS: Bigger Analogy Test Set (Japanese) <jBATS>`
 
-----------
-Similarity
-----------
+---------------
+Word Similarity
+---------------
 
 :doc:`jSIM: Recategorized Word Similarity Dataset (Japanese) <jSIM>`
 
----------------
-Word Embeddings
----------------
+----------------
+Embedding Models
+----------------
 
 :doc:`Subword-level Word Embeddings (English) <subword>`
 
-:doc:`Subword-level Word Embeddings (Japanese) <subword_jp>`
+:doc:`Subcharacter-level Embeddings for Japanese <subword_jp>`
 

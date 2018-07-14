@@ -4,7 +4,7 @@
 <head>
 <meta charset="utf-8">
 <meta name="viewport" content="width=device-width, initial-scale=1">
-<title>Japanese Subword-level word embeddings | vecto</title>
+<title>Japanese subcharacter-level embeddings | vecto</title>
 <link href="/assets/css/all-nocdn.css" rel="stylesheet" type="text/css">
 <meta name="theme-color" content="#5670d4">
 <meta name="generator" content="Nikola (getnikola.com)">
@@ -158,15 +158,24 @@ table.docutils {
 
       <a role="button" class="btn btn-dark" style="margin-top: 15px;
       margin-bottom: 15px;
-      50px" href="#">Paper</a><br><button class="btn btn-dark" type="button" data-toggle="collapse" data-target="#collapseExample" aria-expanded="false" aria-controls="collapseExample" style="margin-top: 15px;
+      50px" href="http://aclweb.org/anthology/W18-2905">Paper</a><br><button class="btn btn-dark" type="button" data-toggle="collapse" data-target="#collapseExample" aria-expanded="false" aria-controls="collapseExample" style="margin-top: 15px;
       margin-bottom: 15px;">
     BibTex
   </button>
-
-        <div class="collapse" id="collapseExample">
+<div class="collapse" id="collapseExample">
   <div class="card card-body" style="font-size: x-small; word-wrap: break-spaces">
-      TBD
-  </div> </div>
+@inproceedings{KarpinskaLiEtAl_2018,<br>
+  author = {Karpinska, Marzena and Li, Bofang and Rogers, Anna and Drozd, Aleksandr},<br>
+  title = {Subcharacter {{Information}} in {{Japanese Embeddings}}: {{When Is It Worth It}}?},<br>
+  booktitle = {Proceedings of the {{Workshop}} on the {{Relevance}} of {{Linguistic Structure}} in {{Neural Architectures}} for {{NLP}}},<br>
+  publisher = {{Association for Computational Linguistics}},<br>
+  address = {Melbourne, Australia},<br>
+  url = {http://aclweb.org/anthology/W18-2905},<br>
+  year = {2018},<br>
+  pages = {28-37}<br>
+}
+  </div>
+</div>
         <a role="button" class="btn btn-dark" style="margin-top: 15px;
       margin-bottom: 15px;
       50px" href="http://localhost:8000/projects/subword_jp/#implementation">Implementation</a>
@@ -180,8 +189,8 @@ table.docutils {
         <!--Body content-->
         
         
-        &lt;body&gt;&lt;div class=" section id="japanese-subword-level-word-embeddings">
-<h2>Japanese Subword-level word embeddings</h2>
+        &lt;body&gt;&lt;div class=" section id="japanese-subcharacter-level-embeddings">
+<h2>Japanese subcharacter-level embeddings</h2>
 <p>Languages with logographic writing systems present a difficulty for traditional character-level models. Leveraging the subcharacter information was recently shown to be beneficial for a number of intrinsic and extrinsic tasks in Chinese <a class="footnote-reference" href="/projects/subword_jp/#f1" id="id1">[1]</a> <a class="footnote-reference" href="/projects/subword_jp/#f2" id="id2">[2]</a> <a class="footnote-reference" href="/projects/subword_jp/#f3" id="id3">[3]</a>. We examine whether the same strategies could be applied for Japanese.</p>
 <p>In scope of this work, we also developed a new analogy dataset (<a class="reference external" href="/projects/jBATS">jBATS</a>) for Japanese, and contributed new versions of its only similarity dataset (<a class="reference external" href="/projects/jSIM">jSIM</a>). Our <a class="reference internal" href="/projects/subword_jp/#implementation">implementation</a> is available in the Vecto library.</p>
 <p>The bushu information was injected by pre-processing the training corpora, as shown in Figure 1. Each complex character was prepended a list of its components, according to <a class="reference external" href="http://en.glyphwiki.org">KanjiGlyph database</a></p>
