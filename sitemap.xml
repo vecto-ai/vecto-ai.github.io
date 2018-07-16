@@ -7,70 +7,74 @@
                         http://www.sitemaps.org/schemas/sitemap/0.9/sitemap.xsd">
  <url>
   <loc>http://vecto.space/</loc>
-  <lastmod>2018-07-04T22:41:00Z</lastmod>
+  <lastmod>2018-07-09T05:48:00Z</lastmod>
  </url>
  <url>
   <loc>http://vecto.space/404.html</loc>
-  <lastmod>2018-07-05T19:17:00Z</lastmod>
+  <lastmod>2018-07-09T05:48:00Z</lastmod>
  </url>
  <url>
   <loc>http://vecto.space/archive.html</loc>
-  <lastmod>2018-07-05T17:31:00Z</lastmod>
+  <lastmod>2018-07-09T05:43:00Z</lastmod>
  </url>
  <url>
   <loc>http://vecto.space/blog/</loc>
-  <lastmod>2018-07-04T21:55:00Z</lastmod>
+  <lastmod>2018-07-09T05:43:00Z</lastmod>
  </url>
  <url>
   <loc>http://vecto.space/categories/</loc>
-  <lastmod>2018-07-04T21:55:00Z</lastmod>
+  <lastmod>2018-07-09T05:43:00Z</lastmod>
  </url>
  <url>
   <loc>http://vecto.space/contribute.html</loc>
-  <lastmod>2018-07-05T19:17:00Z</lastmod>
+  <lastmod>2018-07-09T05:48:00Z</lastmod>
  </url>
  <url>
   <loc>http://vecto.space/data/</loc>
-  <lastmod>2018-07-12T13:07:00Z</lastmod>
+  <lastmod>2018-07-09T05:48:00Z</lastmod>
+ </url>
+ <url>
+  <loc>http://vecto.space/data/test/test.html</loc>
+  <lastmod>2018-07-09T05:57:00Z</lastmod>
  </url>
  <url>
   <loc>http://vecto.space/projects/BATS/</loc>
-  <lastmod>2018-07-05T16:11:00Z</lastmod>
+  <lastmod>2018-07-09T05:48:00Z</lastmod>
  </url>
  <url>
   <loc>http://vecto.space/projects/index/</loc>
-  <lastmod>2018-07-05T16:20:00Z</lastmod>
+  <lastmod>2018-07-09T05:48:00Z</lastmod>
  </url>
  <url>
   <loc>http://vecto.space/projects/jBATS/</loc>
-  <lastmod>2018-07-06T12:17:00Z</lastmod>
+  <lastmod>2018-07-09T05:48:00Z</lastmod>
  </url>
  <url>
   <loc>http://vecto.space/projects/jSIM/</loc>
-  <lastmod>2018-07-05T16:29:00Z</lastmod>
+  <lastmod>2018-07-09T05:48:00Z</lastmod>
  </url>
  <url>
   <loc>http://vecto.space/projects/problems.html</loc>
-  <lastmod>2018-07-12T12:25:00Z</lastmod>
+  <lastmod>2018-07-09T05:57:00Z</lastmod>
  </url>
  <url>
   <loc>http://vecto.space/projects/subword/</loc>
-  <lastmod>2018-07-13T12:41:00Z</lastmod>
+  <lastmod>2018-07-13T02:23:00Z</lastmod>
  </url>
  <url>
   <loc>http://vecto.space/projects/subword_bak.html</loc>
-  <lastmod>2018-07-13T12:41:00Z</lastmod>
+  <lastmod>2018-07-13T02:23:00Z</lastmod>
  </url>
  <url>
   <loc>http://vecto.space/projects/subword_jp/</loc>
-  <lastmod>2018-07-13T14:53:00Z</lastmod>
+  <lastmod>2018-07-16T10:14:00Z</lastmod>
  </url>
  <url>
   <loc>http://vecto.space/publications.html</loc>
-  <lastmod>2018-07-12T12:25:00Z</lastmod>
+  <lastmod>2018-07-09T05:57:00Z</lastmod>
  </url>
  <url>
   <loc>http://vecto.space/team.html</loc>
-  <lastmod>2018-07-08T00:57:00Z</lastmod>
+  <lastmod>2018-07-09T05:48:00Z</lastmod>
  </url>
 </urlset>
