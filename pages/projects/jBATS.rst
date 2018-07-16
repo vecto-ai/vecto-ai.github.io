@@ -73,4 +73,4 @@ Including the *bushu* information has proven to be beneficial especially for the
 
 .. [#f6] Rogers, A., Drozd, A., & Li, B. (2017). The (Too Many) Problems of Analogical Reasoning with Word Vectors. In Proceedings of the 6th Joint Conference on Lexical and Computational Semantics (* SEM 2017) (pp. 135–148). http://www.aclweb.org/anthology/S17-1017
 
-.. [#f7] Karpinska, M., Li, B., Rogers, A., & Drozd, A. (2018) Subcharacter information in japanese embeddings: when is it worth it? In In Proceedings of the Workshop on Relevance of Linguistic Structure in Neural Architectures for NLP (RELNLP) 2018, to appear. ACL, 2018.
+.. [#f7] Karpinska, M., Li, B., Rogers, A., & Drozd, A. (2018) Subcharacter information in Japanese embeddings: when is it worth it? In In Proceedings of the Workshop on Relevance of Linguistic Structure in Neural Architectures for NLP (RELNLP) 2018, to appear. ACL, 2018.
