@@ -3,7 +3,6 @@
 .. tags: mathjax
 .. hidetitle: True
 .. pretty_url: True
-.. template: jSIM.tmpl
 
 
 ===================================================
@@ -30,16 +29,15 @@ Introducing the tokenization-friendly dataset
 
 Traditional Japanese tokenization can be very ambiguous and misleading. Basic information, such as past tense or negation are usually lost and phrases are beyond recognition. This may invite plenty of ambiguity into the similarity task and produce misleading results. Therefore, we decided to further process the Japanese Word Similarity Dataset in order minimalize the ambiguity created during the tokenization process. 
 
-We present **jSIM** - a **recategorized** version of the original dataset, which comes in **three different flavors**:
+We present **jSIM** a **recategorized** version of the original dataset, which comes in **three different flavors**: 
 
 (1) **full version**: the orginal dataset with recategorized pairs.
 (2) **tokenized version**: a subset of the "full version" containing only words, which could be still recognized after a MeCab-like tokenization. This version contains also words like 帰っ which may come from 帰った, 帰って, 帰ったり and so on, all of these being a certain form of the verb 帰る. 
 (3) **unambiguous version**: a subset of the "tokenized version" containing only words that can be recognized and are unambiguous.
 
 .. figure:: /assets/img/jsim.png
-   :align: center
 
-   Table 1. The size of the original and modified Japanese similarity datasets (in word pairs).
+Table 1. The size of the original and modified Japanese similarity datasets (in word pairs).
 
 --------------------
 Preformance on jSIM
@@ -49,9 +47,8 @@ Preformance on jSIM
 We use all three versions of jSIM to evaluate the performance of the subcharacter and character level models in Japanese [#f2]_. These models take advantage of the information in Chinese characters - *kanji* (SG + *kanji*) and their components, called *bushu* (SG + *kanji* + *bushu*). The overall performance of both models was compared with the traditional Skip-Gram model (SG) and FastText.
 
 .. figure:: /assets/img/jsim_results.png
-   :align: center
 
-   Table 2. Spearman correlation with human similarity judgements. Boldface indicates the highest result on a given corpus (separately for in-vocabulary and OOV conditions). Shaded numbers indicate the highest result among the three Skip-Gram models.
+Table 2. Spearman correlation with human similarity judgements. Boldface indicates the highest result on a given corpus (separately for in-vocabulary and OOV conditions). Shaded numbers indicate the highest result among the three Skip-Gram models.
 
 Table 2 shows the results on all 3 datasets on all models, trained on the full Mainichi corpus, a half Mainichi corpus, and Wikipedia. The strongest effect for inclusion of bushu is observed in the OOV condition: in all datasets the Spearman correlations are higher for SG+kanji+bushu than for other SG models, which suggests that this information is indeed meaningful and helpful. This even holds for the full version, where up to 90% vocabulary is missing and has to be composed. For in-vocabulary condition this effect is noticeably absent in Wikipedia (perhaps due to the higher ratio of names, where the kanji meanings are often irrelevant).
 However, in most cases the improvement due to inclusion of bushu, even when it is observed, is not sufficient to catch up with the FastText algorithm, and in most cases FastText has substantial advantage.
