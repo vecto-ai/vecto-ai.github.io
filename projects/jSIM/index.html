@@ -22,15 +22,71 @@ MathJax.Hub.Config({
         styles: {'.MathJax_Display': {"margin": 0}}
     }
 });
-</script><!--[if lt IE 9]><script src="/assets/js/html5.js"></script><![endif]--><meta name="author" content="vecto community">
-<meta property="og:site_name" content="vecto">
-<meta property="og:title" content="The Revised Japanese Word Similarity Dataset (jSIM)">
-<meta property="og:url" content="http://vecto.space/projects/jSIM/">
-<meta property="og:description" content="The Revised Similarity Dataset for Japanese (jSIM)
-The dataset for the word similarity task consists of pairs of words evaluated by human annotators in terms of their similarity. Similarity in general">
-<meta property="og:type" content="article">
-<meta property="article:published_time" content="2018-07-16T06:14:46-04:00">
-<meta property="article:tag" content="mathjax">
+</script><!--[if lt IE 9]><script src="/assets/js/html5.js"></script><![endif]--><style>
+
+* {
+    font-family: Georgia, 'Times New Roman', Times, serif;
+  }
+
+.simple {
+    font-size: medium;
+  }
+
+.emph {
+    font-weight: bold;
+  }
+
+div.twocol{
+}
+
+div.rightside {
+    padding: 0px 3px 0px 0px;
+    float: right;
+}
+
+div.leftside {
+}
+
+td {
+    border: 1px #dddddd solid;
+    padding: 5px;
+}
+
+th {
+    border: 1px #dddddd solid; }
+
+.rotate {
+  text-align: center;
+  white-space: nowrap;
+  vertical-align: middle;
+  width: 1.5em;
+}
+.rotate div {
+     -moz-transform: rotate(-90.0deg);  /* FF3.5+ */
+       -o-transform: rotate(-90.0deg);  /* Opera 10.5 */
+  -webkit-transform: rotate(-90.0deg);  /* Saf3.1+, Chrome */
+             filter:  progid:DXImageTransform.Microsoft.BasicImage(rotation=0.083);  /* IE6,IE7 */
+         -ms-filter: "progid:DXImageTransform.Microsoft.BasicImage(rotation=0.083)"; /* IE8 */
+         margin-left: -10em;
+         margin-right: -10em;
+}
+
+h2 {
+    padding-top: 5%;
+    padding-bottom: 20px;
+}
+
+h3, rubric {
+    padding-top: 3% ;
+    padding-bottom: 3% ;
+}
+
+table.docutils {
+    font-size: smaller;
+    }
+
+
+</style>
 </head>
 <body>
 <a href="#content" class="sr-only sr-only-focusable">Skip to main content</a>
@@ -91,12 +147,58 @@ The dataset for the word similarity task consists of pairs of words evaluated by
     </div>
 <!-- /.container -->
 </nav><!-- End of Menubar --><div class="container" id="content" role="main">
-    <div class="body-content">
+
+<div class="container">
+  <div class="row">
+    <div class="col-2" style="margin-right: 8%">
+
+<a class="btn btn-dark" role="button" style="margin-top:
+      50px; margin-bottom: 15px;" href="https://my.pcloud.com/publink/show?code=XZBFz27Ze8jmNnVRw2z60FtGbR8tqjXcfoX7">Dataset (jSIM)
+</a>
+<a class="btn btn-dark" role="button" style="margin-top:
+      15px; margin-bottom: 15px;" href="https://github.com/tmu-nlp/JapaneseWordSimilarityDataset">Dataset (the original)
+</a>
+
+      <a role="button" class="btn btn-dark" style="margin-top: 50px;
+      margin-bottom: 15px;
+      50px" href="http://aclweb.org/anthology/W18-2905">Paper (jSIM)</a><br><a role="button" class="btn btn-dark" style="margin-top: 15px;
+      margin-bottom: 15px;
+      50px" href="http://www.lrec-conf.org/proceedings/lrec2018/pdf/96.pdf">Paper (the original)</a><br><a role="button" class="btn btn-dark" style="margin-top: 50px;
+      margin-bottom: 15px;
+      50px" href="http://vecto.readthedocs.io/en/docs/tutorial/evaluating.html#correlation-with-human-similarity-relatedness-judgements">Test scripts</a>
+      <!--a role="button" class="btn btn-dark" style="margin-top: 15px;
+      margin-bottom: 15px" href="https://www.aclweb.org/anthology/N/N16/N16-2002.pdf">Dataset structure</a-->
+
+  <button class="btn btn-dark" type="button" data-toggle="collapse" data-target="#collapseExample" aria-expanded="false" aria-controls="collapseExample" style="margin-top: 15px;
+      margin-bottom: 15px;">
+    BibTex
+  </button>
+<div class="collapse" id="collapseExample">
+  <div class="card card-body" style="font-size: x-small; word-wrap: break-spaces">
+@inproceedings{KarpinskaLiEtAl_2018,<br>
+  author = {Karpinska, Marzena and Li, Bofang and Rogers, Anna and Drozd, Aleksandr},<br>
+  title = {Subcharacter {{Information}} in {{Japanese Embeddings}}: {{When Is It Worth It}}?},<br>
+  booktitle = {Proceedings of the {{Workshop}} on the {{Relevance}} of {{Linguistic Structure}} in {{Neural Architectures}} for {{NLP}}},<br>
+  publisher = {{Association for Computational Linguistics}},<br>
+  address = {Melbourne, Australia},<br>
+  url = {http://aclweb.org/anthology/W18-2905},<br>
+  year = {2018},<br>
+  pages = {28-37}<br>
+}
+  </div>
+</div>
+
+
+
+    </div>
+
+    <div class="col">
+
+    <div class="body-content" style="width:100%;&gt;
         <!--Body content-->
         
         
-<article class="post-text storypage" itemscope="itemscope" itemtype="http://schema.org/Article"><header></header><div class="e-content entry-content" itemprop="articleBody text">
-    <div class="section" id="the-revised-similarity-dataset-for-japanese-jsim">
+        &lt;body&gt;&lt;div class=" section id="the-revised-similarity-dataset-for-japanese-jsim">
 <h2>The Revised Similarity Dataset for Japanese (jSIM)</h2>
 <p>The dataset for the word similarity task consists of pairs of words evaluated by human annotators in terms of their similarity. Similarity in general is a concept difficult to fully grasp and define. Therefore, the rating process may be challenging and the ratings may be somewhat misleading. Nevertheless, word similarity task, though controversial, remains a widely used method to evaluate word embeddings.
 The Japanese Word Similarity Dataset <a class="footnote-reference" href="/projects/jSIM/#f1" id="id1">[1]</a> is by far the only similarity dataset for the Japanese language. Pairs in this set were divided by part-of-speech into four categories: nouns, adjectives, verbs, and adverbs. Since the set was created based on a paraphrasing dataset a lot of phrases were also introduced.
@@ -109,7 +211,7 @@ Regardless of the possible challenges mentioned above the original dataset conta
 <div class="section" id="introducing-the-tokenization-friendly-dataset">
 <h3>Introducing the tokenization-friendly dataset</h3>
 <p>Traditional Japanese tokenization can be very ambiguous and misleading. Basic information, such as past tense or negation are usually lost and phrases are beyond recognition. This may invite plenty of ambiguity into the similarity task and produce misleading results. Therefore, we decided to further process the Japanese Word Similarity Dataset in order minimalize the ambiguity created during the tokenization process.</p>
-<p>We present <strong>jSIM</strong> a <strong>recategorized</strong> version of the original dataset, which comes in <strong>three different flavors</strong>:</p>
+<p>We present <strong>jSIM</strong> - a <strong>recategorized</strong> version of the original dataset, which comes in <strong>three different flavors</strong>:</p>
 <ol class="arabic simple">
 <li>
 <strong>full version</strong>: the orginal dataset with recategorized pairs.</li>
@@ -118,18 +220,16 @@ Regardless of the possible challenges mentioned above the original dataset conta
 <li>
 <strong>unambiguous version</strong>: a subset of the "tokenized version" containing only words that can be recognized and are unambiguous.</li>
 </ol>
-<div class="figure">
-<img alt="/assets/img/jsim.png" src="/assets/img/jsim.png">
+<div class="figure align-center">
+<img alt="/assets/img/jsim.png" src="/assets/img/jsim.png"><p class="caption">Table 1. The size of the original and modified Japanese similarity datasets (in word pairs).</p>
 </div>
-<p>Table 1. The size of the original and modified Japanese similarity datasets (in word pairs).</p>
 </div>
 <div class="section" id="preformance-on-jsim">
 <h3>Preformance on jSIM</h3>
 <p>We use all three versions of jSIM to evaluate the performance of the subcharacter and character level models in Japanese <a class="footnote-reference" href="/projects/jSIM/#f2" id="id2">[2]</a>. These models take advantage of the information in Chinese characters - <em>kanji</em> (SG + <em>kanji</em>) and their components, called <em>bushu</em> (SG + <em>kanji</em> + <em>bushu</em>). The overall performance of both models was compared with the traditional Skip-Gram model (SG) and FastText.</p>
-<div class="figure">
-<img alt="/assets/img/jsim_results.png" src="/assets/img/jsim_results.png">
+<div class="figure align-center">
+<img alt="/assets/img/jsim_results.png" src="/assets/img/jsim_results.png"><p class="caption">Table 2. Spearman correlation with human similarity judgements. Boldface indicates the highest result on a given corpus (separately for in-vocabulary and OOV conditions). Shaded numbers indicate the highest result among the three Skip-Gram models.</p>
 </div>
-<p>Table 2. Spearman correlation with human similarity judgements. Boldface indicates the highest result on a given corpus (separately for in-vocabulary and OOV conditions). Shaded numbers indicate the highest result among the three Skip-Gram models.</p>
 <p>Table 2 shows the results on all 3 datasets on all models, trained on the full Mainichi corpus, a half Mainichi corpus, and Wikipedia. The strongest effect for inclusion of bushu is observed in the OOV condition: in all datasets the Spearman correlations are higher for SG+kanji+bushu than for other SG models, which suggests that this information is indeed meaningful and helpful. This even holds for the full version, where up to 90% vocabulary is missing and has to be composed. For in-vocabulary condition this effect is noticeably absent in Wikipedia (perhaps due to the higher ratio of names, where the kanji meanings are often irrelevant).
 However, in most cases the improvement due to inclusion of bushu, even when it is observed, is not sufficient to catch up with the FastText algorithm, and in most cases FastText has substantial advantage.</p>
 <p class="rubric">Footnote</p>
@@ -155,30 +255,15 @@ However, in most cases the improvement due to inclusion of bushu, even when it i
 </table>
 </div>
 </div>
-    </div>
-    
-        
-        <script src="https://cdnjs.cloudflare.com/ajax/libs/mathjax/2.7.1/MathJax.js?config=TeX-AMS-MML_HTMLorMML" integrity="sha256-SDRP1VVYu+tgAGKhddBSl5+ezofHKZeI+OzxakbIe/Y=" crossorigin="anonymous"></script><script type="text/x-mathjax-config">
-MathJax.Hub.Config({
-    tex2jax: {
-        inlineMath: [ ['$','$'], ["\\(","\\)"] ],
-        displayMath: [ ['$$','$$'], ["\\[","\\]"] ],
-        processEscapes: true
-    },
-    displayAlign: 'center', // Change this to 'left' if you want left-aligned equations.
-    "HTML-CSS": {
-        styles: {'.MathJax_Display': {"margin": 0}}
-    }
-});
-</script></article><!--End of body content--><footer id="footer">
+</div>
+</div>
+</div>
+</div>
+</body>
+<!--End of body content--><footer id="footer">
             Maintained by <a href="mailto:alex@blackbird.pw">vecto community</a>         
             
-        </footer>
-</div>
-</div>
-
-
-        <script src="/assets/js/all-nocdn.js"></script><!-- fancy dates --><script>
+        </footer><script src="/assets/js/all-nocdn.js"></script><!-- fancy dates --><script>
     moment.locale("en");
     fancydates(0, "YYYY-MM-DD HH:mm");
     </script><!-- end fancy dates --><script>
@@ -188,5 +273,4 @@ MathJax.Hub.Config({
             return element.getElementsByTagName('img')[0].alt;
     }});
     </script><script defer src="https://use.fontawesome.com/releases/v5.0.10/js/all.js" integrity="sha384-slN8GvtUJGnv6ca26v8EzVaR9DC58QEwsIk9q1QXdCU8Yu8ck/tL/5szYlBbqmS+" crossorigin="anonymous"></script>
-</body>
 </html>

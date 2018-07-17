@@ -1,4 +1,4 @@
-.. title: Japanese Subword-level word embeddings
+.. title: Japanese subcharacter-level embeddings
 .. slug: subword_jp
 .. tags: mathjax
 .. use_math: true
@@ -9,7 +9,7 @@
 .. role:: emph
 
 ======================================
-Japanese Subword-level word embeddings
+Japanese subcharacter-level embeddings
 ======================================
 
 Languages with logographic writing systems present a difficulty for traditional character-level models. Leveraging the subcharacter information was recently shown to be beneficial for a number of intrinsic and extrinsic tasks in Chinese [#f1]_ [#f2]_ [#f3]_. We examine whether the same strategies could be applied for Japanese.
