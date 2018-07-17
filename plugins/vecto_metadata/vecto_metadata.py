@@ -64,8 +64,8 @@ def filter_entry(metadata):
             filtered[key] = ""
     filtered["meta"] = metadata
     if "cite" in metadata:
-        str_bibtex = [entry["contribution"] + "\n\n" + bibjson_to_bibtex(entry["bibtex"]) for entry in metadata["cite"]]
-        str_bibtex = "\n\n".join(str_bibtex)
+        str_bibtex = ["\n" + entry["contribution"] + "\n\n" + bibjson_to_bibtex(entry["bibtex"]) for entry in metadata["cite"]]
+        str_bibtex = "\n".join(str_bibtex)
         filtered["bibtex"] = str_bibtex
         # todo: show all metadata entries
     else:
