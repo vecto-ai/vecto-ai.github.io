@@ -4,6 +4,7 @@ import json
 import os
 import sys
 from nikola.plugin_categories import RestExtension
+#from nikola.utils import get_logger, STDERR_HANDLER
 from nikola.utils import LOGGER
 
 from docutils import nodes
@@ -14,6 +15,7 @@ from pylatexenc.latexencode import utf8tolatex
 
 plugin_path = os.path.dirname(os.path.realpath(__file__))
 base_path = plugin_path.split("plugins")[0]
+#LOGGER = get_logger('scan_posts', STDERR_HANDLER)
 
 
 def load_json(path):
@@ -62,7 +64,10 @@ def filter_entry(metadata):
             filtered[key] = ""
     filtered["meta"] = metadata
     if "cite" in metadata:
-        filtered["bibtex"] = bibjson_to_bibtex(metadata["cite"])
+        str_bibtex = [entry["contribution"] + "\n\n" + bibjson_to_bibtex(entry["bibtex"]) for entry in metadata["cite"]]
+        str_bibtex = "\n\n".join(str_bibtex)
+        filtered["bibtex"] = str_bibtex
+        # todo: show all metadata entries
     else:
         filtered["bibtex"] = ""
     return filtered
@@ -79,11 +84,15 @@ class MetadataProcessor():
         self.rows = []
         cnt = 0
         for fname in get_entries(os.path.join(base_path, "aux/resources/vecto-resources/resources")):
-            data = load_json(fname)
-            data = filter_entry(data)
-            data["id"] = cnt
-            cnt += 1
-            self.rows.append(data)
+            LOGGER.info("processing " + fname)
+            try:
+                data = load_json(fname)
+                data = filter_entry(data)
+                data["id"] = cnt
+                cnt += 1
+                self.rows.append(data)
+            except Exception as e:
+                LOGGER.warning("error processing " + fname  + str(e))
 
     def render(self):
         self.read_files()
