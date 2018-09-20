@@ -1,0 +1,228 @@
+<!DOCTYPE html>
+<html prefix="og: http://ogp.me/ns# article: http://ogp.me/ns/article#
+" lang="en">
+<head>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width, initial-scale=1">
+<title>Analogical reasoning with word embeddings | vecto</title>
+<link href="/assets/css/all-nocdn.css" rel="stylesheet" type="text/css">
+<meta name="theme-color" content="#5670d4">
+<meta name="generator" content="Nikola (getnikola.com)">
+<link rel="alternate" type="application/rss+xml" title="RSS" href="/rss.xml">
+<link rel="canonical" href="http://vecto.space/projects/analogy/">
+<script type="text/x-mathjax-config">
+MathJax.Hub.Config({
+    tex2jax: {
+        inlineMath: [ ['$','$'], ["\\(","\\)"] ],
+        displayMath: [ ['$$','$$'], ["\\[","\\]"] ],
+        processEscapes: true
+    },
+    displayAlign: 'center', // Change this to 'left' if you want left-aligned equations.
+    "HTML-CSS": {
+        styles: {'.MathJax_Display': {"margin": 0}}
+    }
+});
+</script><!--[if lt IE 9]><script src="/assets/js/html5.js"></script><![endif]--><meta name="author" content="vecto community">
+<meta property="og:site_name" content="vecto">
+<meta property="og:title" content="Analogical reasoning with word embeddings">
+<meta property="og:url" content="http://vecto.space/projects/analogy/">
+<meta property="og:description" content='The latest in analogical reasoning with word embeddings
+
+
+
+
+
+
+Analogical reasoning has been a "poster child" task for word embeddings ever since the introduction of word2vec. Even at this  point, most'>
+<meta property="og:type" content="article">
+<meta property="article:published_time" content="2018-09-19T20:11:10-04:00">
+<meta property="article:tag" content="mathjax">
+</head>
+<body>
+<a href="#content" class="sr-only sr-only-focusable">Skip to main content</a>
+
+<!-- Menubar -->
+
+<nav class="navbar navbar-expand-md navbar-dark bg-dark static-top mb-4"><div class="container">
+<!-- This keeps the margins nice -->
+        <a class="navbar-brand" href="http://vecto.space/">
+
+            <span id="blog-title">vecto</span>
+        </a>
+        <button class="navbar-toggler" type="button" data-toggle="collapse" data-target="#bs-navbar" aria-controls="bs-navbar" aria-expanded="false" aria-label="Toggle navigation">
+            <span class="navbar-toggler-icon"></span>
+        </button>
+
+        <div class="collapse navbar-collapse" id="bs-navbar">
+            <ul class="navbar-nav mr-auto">
+<li class="nav-item dropdown">
+<a href="#" class="nav-link dropdown-toggle" data-toggle="dropdown" aria-haspopup="true" aria-expanded="false">Docs</a>
+            <div class="dropdown-menu">
+                    <a href="http://vecto.readthedocs.io/en/docs/" class="dropdown-item">API reference</a>
+                    <a href="http://vecto.readthedocs.io/en/docs/tutorial/index.html" class="dropdown-item">Tutorial</a>
+            </div>
+            </li>
+<li class="nav-item dropdown">
+<a href="#" class="nav-link dropdown-toggle" data-toggle="dropdown" aria-haspopup="true" aria-expanded="false">Code</a>
+            <div class="dropdown-menu">
+                    <a href="https://github.com/vecto-ai/vecto/" class="dropdown-item">vecto on GitHub</a>
+                    <a href="/contribute.html" class="dropdown-item">how to contribute</a>
+            </div>
+            </li>
+<li class="nav-item dropdown">
+<a href="#" class="nav-link dropdown-toggle" data-toggle="dropdown" aria-haspopup="true" aria-expanded="false">Models &amp; Data Library </a>
+            <div class="dropdown-menu">
+                    <a href="/data/" class="dropdown-item">Corpora</a>
+                    <a href="/data/" class="dropdown-item">Pre-trained emmbeddings</a>
+                    <a href="/data/" class="dropdown-item">Tasks</a>
+                    <a href="/data/" class="dropdown-item">Datasets</a>
+                    <a href="/data/" class="dropdown-item">Share your work and increase its visibility</a>
+            </div>
+                </li>
+<li class="nav-item">
+<a href="/projects/index" class="nav-link">Projects</a>
+                </li>
+<li class="nav-item">
+<a href="/publications.html" class="nav-link">Publications</a>
+                </li>
+<li class="nav-item">
+<a href="/team.html" class="nav-link">About Us</a>
+
+                
+            </li>
+</ul>
+<ul class="navbar-nav navbar-right"></ul>
+</div>
+<!-- /.navbar-collapse -->
+    </div>
+<!-- /.container -->
+</nav><!-- End of Menubar --><div class="container" id="content" role="main">
+    <div class="body-content">
+        <!--Body content-->
+        
+        
+<article class="post-text storypage" itemscope="itemscope" itemtype="http://schema.org/Article"><header></header><div class="e-content entry-content" itemprop="articleBody text">
+    <div class="section" id="the-latest-in-analogical-reasoning-with-word-embeddings">
+<h2>The latest in analogical reasoning with word embeddings</h2>
+<div class="line-block">
+<div class="line"><br></div>
+</div>
+<div class="line-block">
+<div class="line"><br></div>
+</div>
+<p>Analogical reasoning has been a "poster child" task for word embeddings ever since the introduction of word2vec. Even at this  point, most papers introducing new word embedding models use the Google test set as intrinsic  evaluation benchmark. The big finding by <a class="reference external" href="https://www.aclweb.org/anthology/N13-1090">Mikolov et al. (2013)</a> was that linear vector offsets seem to mirror linguistic relations, and can be used to perform analogical reasoning.</p>
+<div class="figure align-center">
+<img alt="/assets/img/queen.png" src="/assets/img/queen.png" style="height: 100px;"><p class="caption">Linear vector offsets as model of linguistic relations (Mikolov et al., 2013)</p>
+</div>
+<p>For example, consider a pair of words <em>a : a' :: b : b</em> such as <em>man: woman :: king : queen</em>. Mikolov et al. proposed that the <em>b'</em> word could be found with the help of the offset between the word vectors <em>b</em> and <em>a</em>. In this case, the word vector <em>queen</em> should be the vector that is the closest to the result of calculation <em>king - man + woman</em>.</p>
+<blockquote>
+<!-- $$b'=argmax_{~d\in{V}}(cos(b',b-a+a'))$$ -->
+</blockquote>
+<p>However, multiple studies have since highlighted considerable problems with this approach, including 5 studies by <a class="reference external" href="http://vecto.space/team">the Vecto team</a>. This page summarizes the main takeaways from these studies:</p>
+<div class="line-block">
+<div class="line"><br></div>
+</div>
+<div class="line-block">
+<div class="line"><br></div>
+</div>
+<div class="row docutils container">
+<div class="col-4 row figure">
+<img alt="/assets/img/bats_stats.png" class="margin-right" src="/assets/img/bats_stats.png" style="height: 200px;">
+</div>
+<p class="col row">The Google test set is heavily unbalanced (roughly 50% of all the semantic questions are targeting the same country:capital relation). We have developed the Bigger Analogy Test Set (BATS) that covers 40 relations, balanced across inflectional  morphology, derivational morphology, encyclopedic and lexicographic semantics. This dataset shows that most relations not in the original Google test set are not well detected with GloVe (and the overall pattern of performance of the latter is not dissimilar from simple SVD-based representations). Lexicographic semantics and derivational morphology were particularly difficult, with GloVe accuracy not reaching even 10%.
+<a class="reference external" href="http://vecto.space/projects/BATS/">Project page</a>,   <a class="reference external" href="http://www.aclweb.org/anthology/N16-2002">pdf</a></p>
+</div>
+<div class="line-block">
+<div class="line"><br></div>
+</div>
+<div class="line-block">
+<div class="line"><br></div>
+</div>
+<div class="row docutils container">
+<div class="col-4 row figure">
+<img alt="/assets/img/lrcos.png" class="margin-right" src="/assets/img/lrcos.png" style="height: 160px;">
+</div>
+<p class="col row">The analogy task as originally formulated by Mikolov ("king - man + woman = queen") underestimates the amount of information about linguistic relations that can be retrieved from a given representation. We proposed an alternative LRCos method that reformulates the task in a way that allows leveraging machine learning. This method gained a significant boost in performance on BATS (up to 30% gain for some relations and embeddings).
+<a class="reference external" href="http://www.aclweb.org/anthology/C16-1332">pdf</a></p>
+</div>
+<div class="line-block">
+<div class="line"><br></div>
+</div>
+<div class="line-block">
+<div class="line"><br></div>
+</div>
+<div class="row docutils container">
+<div class="col-4 row figure">
+<img alt="/assets/img/honest.png" class="margin-right" src="/assets/img/honest.png" style="height: 150px;">
+</div>
+<p class="col row">At least a part of the problem with the original word analogy task stems from the linear offset model of linguistic relations. This model is not only linguistically/cognitively improbable, but it also biases the results by the cosine similarity between pairs of input words. We show that the linear offset (and, to a lesser degree, LRCos) has much higher chances of finding the correct answer when the source words are close in the vector space, and that the accuracy of the vector offset method depends dramatically on the exclusion of the input words from the pool of candidate.
+<a class="reference external" href="http://www.aclweb.org/anthology/S17-1017">pdf</a></p>
+</div>
+<div class="line-block">
+<div class="line"><br></div>
+</div>
+<div class="line-block">
+<div class="line"><br></div>
+</div>
+<div class="row docutils container">
+<div class="col-4 row figure">
+<img alt="/assets/img/crnn.png" class="margin-right" src="/assets/img/crnn.png" style="height: 160px;">
+</div>
+<p class="col row">Derivational morphology problems in BATS get a significant boost in subword-level models such as FastText.
+<a class="reference external" href="http://vecto.space/projects/subword/">Project page</a>,   <a class="reference external" href="http://www.aclweb.org/anthology/W18-1205">pdf</a></p>
+</div>
+<div class="line-block">
+<div class="line"><br></div>
+</div>
+<div class="line-block">
+<div class="line"><br></div>
+</div>
+<div class="row docutils container">
+<div class="col-4 row figure">
+<img alt="/assets/img/jbats.png" class="margin-right" src="/assets/img/jbats.png" style="height: 200px;">
+</div>
+<p class="col row">The overall pattern of performance observed for BATS in English conforms to the findings for the Japanese version of BATS. Incoroporation of subcharacter-level information for this language was clearly helpful only for morphological questions
+<a class="reference external" href="http://vecto.space/projects/jBATS/">Project page</a>,   <a class="reference external" href="http://aclweb.org/anthology/W18-2905">pdf</a></p>
+</div>
+<div class="line-block">
+<div class="line"><br></div>
+</div>
+<div class="line-block">
+<div class="line"><br></div>
+</div>
+</div>
+    </div>
+    
+        
+        <script src="https://cdnjs.cloudflare.com/ajax/libs/mathjax/2.7.1/MathJax.js?config=TeX-AMS-MML_HTMLorMML" integrity="sha256-SDRP1VVYu+tgAGKhddBSl5+ezofHKZeI+OzxakbIe/Y=" crossorigin="anonymous"></script><script type="text/x-mathjax-config">
+MathJax.Hub.Config({
+    tex2jax: {
+        inlineMath: [ ['$','$'], ["\\(","\\)"] ],
+        displayMath: [ ['$$','$$'], ["\\[","\\]"] ],
+        processEscapes: true
+    },
+    displayAlign: 'center', // Change this to 'left' if you want left-aligned equations.
+    "HTML-CSS": {
+        styles: {'.MathJax_Display': {"margin": 0}}
+    }
+});
+</script></article><!--End of body content--><footer id="footer">
+            Maintained by <a href="mailto:alex@blackbird.pw">vecto community</a>         
+            
+        </footer>
+</div>
+</div>
+
+
+        <script src="/assets/js/all-nocdn.js"></script><!-- fancy dates --><script>
+    moment.locale("en");
+    fancydates(0, "YYYY-MM-DD HH:mm");
+    </script><!-- end fancy dates --><script>
+    baguetteBox.run('div#content', {
+        ignoreClass: 'islink',
+        captions: function(element) {
+            return element.getElementsByTagName('img')[0].alt;
+    }});
+    </script><script defer src="https://use.fontawesome.com/releases/v5.0.10/js/all.js" integrity="sha384-slN8GvtUJGnv6ca26v8EzVaR9DC58QEwsIk9q1QXdCU8Yu8ck/tL/5szYlBbqmS+" crossorigin="anonymous"></script>
+</body>
+</html>
