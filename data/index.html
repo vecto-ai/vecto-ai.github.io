@@ -23,8 +23,7 @@ MathJax.Hub.Config({
         styles: {'.MathJax_Display': {"margin": 0}}
     }
 });
-</script><!--[if lt IE 9]><script src="/assets/js/html5.js"></script><![endif]--><meta name="description" itemprop="description" content="Vecto resource library">
-<meta name="author" content="The Vecto Team">
+</script><!--[if lt IE 9]><script src="/assets/js/html5.js"></script><![endif]--><meta name="author" content="The Vecto Team">
 <meta property="og:site_name" content="vecto">
 <meta property="og:title" content="index">
 <meta property="og:url" content="http://vecto.space/data/">
@@ -37,7 +36,9 @@ MathJax.Hub.Config({
 
 <!-- Menubar -->
 
-<nav class="navbar navbar-expand-md navbar-dark bg-dark static-top mb-4"><div class="container">
+<nav class="navbar navbar-expand-md static-top mb-4
+navbar-dark bg-dark
+"><div class="container">
 <!-- This keeps the margins nice -->
         <a class="navbar-brand" href="http://vecto.space/">
 
@@ -106,11 +107,11 @@ MathJax.Hub.Config({
       <th scope="col"></th>
     </tr>
     </thead--><tr>
-<td>subword model with CNN composition function from Li et al. trained on text8
-          <br><a href="https://drive.google.com/open?id=1iRz6jaP2FxaFHF0NnSZEeBZsKAfOT454"><i class="fa fa-download"></i></a> 
+<td>Japanese Bigger Analogy Test Set
+          <br><a href="https://my.pcloud.com/publink/show?code=XZRFz27Z70qHoqfzvbLDHwf4s5grUBX8mNvy"><i class="fa fa-download"></i></a> 
 
           
-          
+          <a href="http://vecto.space/projects/jBATS"><i class="fa fa-home"></i></a> 
 
           
         <a href="javascript:void(0)" onclick="
@@ -131,16 +132,74 @@ MathJax.Hub.Config({
         </a>
 
           
+        <a href="javascript:void(0)" onclick="
+        (function(target, id) {
+          if ($('#' + id).css('display') == 'block')
+             {
+               $('#' + id).hide('fast');
+               $(target).text('bibtex▼')
+             }
+          else
+             {
+               $('#' + id).show('fast');
+               $(target).text('bibtex▲')
+             }
+          }
+        )(this, 'bibtex-0');">
+        bibtex▼
+        </a> 
 
           
+<div id="bibtex-0" style="display:none">
+<pre>
+
+the original dataset
+
+@inproceedings{KarpinskaLiEtAl_2018,
+   author = "Marzena Karpinska and Bofang Li and Anna Rogers and Aleksandr Drozd"
+   title = "Subcharacter Information in Japanese embeddings: when is it worth it?"
+   year = "2018"
+   booktitle = "Proceedings of the Workshop on the Relevance of Linguistic Structure in Neural Architectures for NLP"
+   url = "http://aclweb.org/anthology/W18-2905"
+   pages = "28-37"
+   address = "Melbourne, Australia"
+   publisher = "Association for Computational Linguistics"
+}
+</pre>
+</div>
 
           
 <div id="meta-0" style="display:none">
 <pre>
 {
-    "class": "embeddings",
-    "url": "https://drive.google.com/open?id=1iRz6jaP2FxaFHF0NnSZEeBZsKAfOT454",
-    "description": "subword model with CNN composition function from Li et al. trained on text8"
+    "class": "dataset",
+    "task": "analogy",
+    "language": [
+        "Japanese"
+    ],
+    "name": "jBATS",
+    "description": "Japanese Bigger Analogy Test Set",
+    "domain": "general",
+    "date": "2018",
+    "source": "original, analagous to Bigger Analogy Test for English",
+    "project_page": "http://vecto.space/projects/jBATS",
+    "version": "1.0",
+    "size": "97712 analogy questions (1,997 word pairs)",
+    "url": "https://my.pcloud.com/publink/show?code=XZRFz27Z70qHoqfzvbLDHwf4s5grUBX8mNvy",
+    "cite": [
+        {
+            "contribution": "the original dataset",
+            "bibtex": {
+                "title": "Subcharacter Information in Japanese embeddings: when is it worth it?",
+                "year": 2018,
+                "booktitle": "Proceedings of the Workshop on the Relevance of Linguistic Structure in Neural Architectures for NLP",
+                "url": "http://aclweb.org/anthology/W18-2905",
+                "pages": "28-37",
+                "address": "Melbourne, Australia",
+                "publisher": "Association for Computational Linguistics"
+            }
+        }
+    ]
 }
 </pre>
 </div>
@@ -148,11 +207,11 @@ MathJax.Hub.Config({
         </td> 
     </tr>
 <tr>
-<td>subword model with LSTM composition function from Li et al. trained on text8
-          <br><a href="https://drive.google.com/open?id=1dH8Pe1dMSr8TXg-d_MCw4iE3g0lm3xqe"><i class="fa fa-download"></i></a> 
+<td>Bigger Analogy Test Set
+          <br><a href="https://my.pcloud.com/publink/show?code=XZOn0J7Z8fzFMt7Tw1mGS6uI1SYfCfTyJQTV"><i class="fa fa-download"></i></a> 
 
           
-          
+          <a href="http://vecto.space/projects/BATS"><i class="fa fa-home"></i></a> 
 
           
         <a href="javascript:void(0)" onclick="
@@ -173,16 +232,74 @@ MathJax.Hub.Config({
         </a>
 
           
+        <a href="javascript:void(0)" onclick="
+        (function(target, id) {
+          if ($('#' + id).css('display') == 'block')
+             {
+               $('#' + id).hide('fast');
+               $(target).text('bibtex▼')
+             }
+          else
+             {
+               $('#' + id).show('fast');
+               $(target).text('bibtex▲')
+             }
+          }
+        )(this, 'bibtex-1');">
+        bibtex▼
+        </a> 
 
           
+<div id="bibtex-1" style="display:none">
+<pre>
+
+the original dataset
+
+@inproceedings{GladkovaDrozdEtAl_2016,
+   author = "Anna Gladkova and Aleksandr Drozd and Satoshi Matsuoka"
+   title = "Analogy-based detection of morphological and semantic relations with word embeddings: what works and what doesn't"
+   doi = "10.18653/v1/N16-2002"
+   url = "https://www.aclweb.org/anthology/N/N16/N16-2002.pdf"
+   booktitle = "Proceedings of the NAACL-HLT SRW"
+   publisher = "ACL"
+   year = "2016"
+   pages = "47-54"
+}
+</pre>
+</div>
 
           
 <div id="meta-1" style="display:none">
 <pre>
 {
-    "class": "embeddings",
-    "url": "https://drive.google.com/open?id=1dH8Pe1dMSr8TXg-d_MCw4iE3g0lm3xqe",
-    "description": "subword model with LSTM composition function from Li et al. trained on text8"
+    "class": "dataset",
+    "task": "analogy",
+    "language": [
+        "English"
+    ],
+    "name": "BATS",
+    "description": "Bigger Analogy Test Set",
+    "domain": "general",
+    "date": "2016",
+    "source": "original",
+    "project_page": "http://vecto.space/projects/BATS",
+    "version": "3.0",
+    "size": "98,200 analogy questions (2,000 word pairs)",
+    "url": "https://my.pcloud.com/publink/show?code=XZOn0J7Z8fzFMt7Tw1mGS6uI1SYfCfTyJQTV",
+    "cite": [
+        {
+            "contribution": "the original dataset",
+            "bibtex": {
+                "title": "Analogy-based detection of morphological and semantic relations with word embeddings: what works and what doesn't",
+                "doi": "10.18653/v1/N16-2002",
+                "url": "https://www.aclweb.org/anthology/N/N16/N16-2002.pdf",
+                "booktitle": "Proceedings of the NAACL-HLT SRW",
+                "publisher": "ACL",
+                "year": 2016,
+                "pages": "47-54"
+            }
+        }
+    ]
 }
 </pre>
 </div>
@@ -190,11 +307,11 @@ MathJax.Hub.Config({
         </td> 
     </tr>
 <tr>
-<td>Japanese word embeddings from Karpinska et al. trained on Mainichi+Wiki
-          <br><a href="https://drive.google.com/open?id=15d3wSBo2q8MHEnU7Q5oxXoUfeOGuz4f4"><i class="fa fa-download"></i></a> 
+<td>Japanese Similarity dataset (subsets for tokenized Japanese corpora)
+          <br><a href="https://my.pcloud.com/publink/show?code=XZBFz27Ze8jmNnVRw2z60FtGbR8tqjXcfoX7"><i class="fa fa-download"></i></a> 
 
           
-          
+          <a href="http://vecto.space/projects/jSIM"><i class="fa fa-home"></i></a> 
 
           
         <a href="javascript:void(0)" onclick="
@@ -215,16 +332,99 @@ MathJax.Hub.Config({
         </a>
 
           
+        <a href="javascript:void(0)" onclick="
+        (function(target, id) {
+          if ($('#' + id).css('display') == 'block')
+             {
+               $('#' + id).hide('fast');
+               $(target).text('bibtex▼')
+             }
+          else
+             {
+               $('#' + id).show('fast');
+               $(target).text('bibtex▲')
+             }
+          }
+        )(this, 'bibtex-2');">
+        bibtex▼
+        </a> 
 
           
+<div id="bibtex-2" style="display:none">
+<pre>
+
+the original dataset
+
+@inproceedings{SakaizawaKomachi2018,
+   author = "Yuya Sakaizawa and Mamoru Komachi"
+   title = "Construction of a Japanese Word Similarity Dataset"
+   url = "http://www.lrec-conf.org/proceedings/lrec2018/pdf/96.pdf"
+   booktitle = "Proceedings of the Eleventh International Conference on Language Resources and Evaluation (LREC 2018)"
+   address = "Miyazaki, Japan"
+   publisher = "European Language Resources Association (ELRA)"
+   year = "2018"
+   pages = "948-951"
+}
+
+subsets for tokenized corpora
+
+@inproceedings{KarpinskaLiEtAl_2018,
+   author = "Marzena Karpinska and Bofang Li and Anna Rogers and Aleksandr Drozd"
+   title = "Subcharacter Information in Japanese embeddings: when is it worth it?"
+   year = "2018"
+   booktitle = "Proceedings of the Workshop on the Relevance of Linguistic Structure in Neural Architectures for NLP"
+   url = "http://aclweb.org/anthology/W18-2905"
+   pages = "28-37"
+   address = "Melbourne, Australia"
+   publisher = "Association for Computational Linguistics"
+}
+</pre>
+</div>
 
           
 <div id="meta-2" style="display:none">
 <pre>
 {
-    "class": "embeddings",
-    "url": "https://drive.google.com/open?id=15d3wSBo2q8MHEnU7Q5oxXoUfeOGuz4f4",
-    "description": "Japanese word embeddings from Karpinska et al. trained on Mainichi+Wiki"
+    "class": "dataset",
+    "task": "similarity",
+    "language": [
+        "Japanese"
+    ],
+    "name": "jSIM",
+    "description": "Japanese Similarity dataset (subsets for tokenized Japanese corpora)",
+    "domain": "general",
+    "date": "2018",
+    "source": "based on Japanese Similarity Dataset (https://github.com/tmu-nlp/JapaneseWordSimilarityDataset)",
+    "project_page": "http://vecto.space/projects/jSIM",
+    "version": "2.0",
+    "size": "1997-4429 word pairs",
+    "url": "https://my.pcloud.com/publink/show?code=XZBFz27Ze8jmNnVRw2z60FtGbR8tqjXcfoX7",
+    "cite": [
+        {
+            "contribution": "the original dataset",
+            "bibtex": {
+                "title": "Construction of a Japanese Word Similarity Dataset",
+                "url": "http://www.lrec-conf.org/proceedings/lrec2018/pdf/96.pdf",
+                "booktitle": "Proceedings of the Eleventh International Conference on Language Resources and Evaluation (LREC 2018)",
+                "address": "Miyazaki, Japan",
+                "publisher": "European Language Resources Association (ELRA)",
+                "year": 2018,
+                "pages": "948-951"
+            }
+        },
+        {
+            "contribution": "subsets for tokenized corpora",
+            "bibtex": {
+                "title": "Subcharacter Information in Japanese embeddings: when is it worth it?",
+                "year": 2018,
+                "booktitle": "Proceedings of the Workshop on the Relevance of Linguistic Structure in Neural Architectures for NLP",
+                "url": "http://aclweb.org/anthology/W18-2905",
+                "pages": "28-37",
+                "address": "Melbourne, Australia",
+                "publisher": "Association for Computational Linguistics"
+            }
+        }
+    ]
 }
 </pre>
 </div>
@@ -232,8 +432,8 @@ MathJax.Hub.Config({
         </td> 
     </tr>
 <tr>
-<td>Japanese subword-level word embeddings (SG+Kanji) from Karpinska et al. trained on Mainichi+Wiki
-          <br><a href="https://drive.google.com/open?id=1N_P4CcbIfVz_n9QjflZYlXVUGfRpbBO_"><i class="fa fa-download"></i></a> 
+<td>fasttext model from Li et al. trained on text8
+          <br><a href="https://drive.google.com/open?id=1PnndcDhyEtVhec-E0ULSOl2lQAHRSYJs"><i class="fa fa-download"></i></a> 
 
           
           
@@ -265,8 +465,8 @@ MathJax.Hub.Config({
 <pre>
 {
     "class": "embeddings",
-    "url": "https://drive.google.com/open?id=1N_P4CcbIfVz_n9QjflZYlXVUGfRpbBO_",
-    "description": "Japanese subword-level word embeddings (SG+Kanji) from Karpinska et al. trained on Mainichi+Wiki"
+    "url": "https://drive.google.com/open?id=1PnndcDhyEtVhec-E0ULSOl2lQAHRSYJs",
+    "description": "fasttext model from Li et al. trained on text8"
 }
 </pre>
 </div>
@@ -274,8 +474,8 @@ MathJax.Hub.Config({
         </td> 
     </tr>
 <tr>
-<td>Japanese subword-level word embeddings (SG+kanji+bushu) from Karpinska et al. trained on Mainichi+Wiki
-          <br><a href="https://drive.google.com/open?id=1vUmCXA9YFXIfUd6qLSuyplq0sSgGhFv8"><i class="fa fa-download"></i></a> 
+<td>Japanese word embeddings from Karpinska et al. trained on Mainichi+Wiki
+          <br><a href="https://drive.google.com/open?id=15d3wSBo2q8MHEnU7Q5oxXoUfeOGuz4f4"><i class="fa fa-download"></i></a> 
 
           
           
@@ -307,8 +507,8 @@ MathJax.Hub.Config({
 <pre>
 {
     "class": "embeddings",
-    "url": "https://drive.google.com/open?id=1vUmCXA9YFXIfUd6qLSuyplq0sSgGhFv8",
-    "description": "Japanese subword-level word embeddings (SG+kanji+bushu) from Karpinska et al. trained on Mainichi+Wiki"
+    "url": "https://drive.google.com/open?id=15d3wSBo2q8MHEnU7Q5oxXoUfeOGuz4f4",
+    "description": "Japanese word embeddings from Karpinska et al. trained on Mainichi+Wiki"
 }
 </pre>
 </div>
@@ -316,8 +516,8 @@ MathJax.Hub.Config({
         </td> 
     </tr>
 <tr>
-<td>fasttext model from Li et al. trained on text8
-          <br><a href="https://drive.google.com/open?id=1PnndcDhyEtVhec-E0ULSOl2lQAHRSYJs"><i class="fa fa-download"></i></a> 
+<td>Japanese subword-level word embeddings (SG+kanji+bushu) from Karpinska et al. trained on Mainichi+Wiki
+          <br><a href="https://drive.google.com/open?id=1vUmCXA9YFXIfUd6qLSuyplq0sSgGhFv8"><i class="fa fa-download"></i></a> 
 
           
           
@@ -349,8 +549,8 @@ MathJax.Hub.Config({
 <pre>
 {
     "class": "embeddings",
-    "url": "https://drive.google.com/open?id=1PnndcDhyEtVhec-E0ULSOl2lQAHRSYJs",
-    "description": "fasttext model from Li et al. trained on text8"
+    "url": "https://drive.google.com/open?id=1vUmCXA9YFXIfUd6qLSuyplq0sSgGhFv8",
+    "description": "Japanese subword-level word embeddings (SG+kanji+bushu) from Karpinska et al. trained on Mainichi+Wiki"
 }
 </pre>
 </div>
@@ -358,8 +558,8 @@ MathJax.Hub.Config({
         </td> 
     </tr>
 <tr>
-<td>skipgram model from Li et al. trained on tex8
-          <br><a href="https://drive.google.com/open?id=1KCQvn2zM1iO8tkGTTFzomvtsWC8TwLsg"><i class="fa fa-download"></i></a> 
+<td>subword model with LSTM composition function from Li et al. trained on text8
+          <br><a href="https://drive.google.com/open?id=1dH8Pe1dMSr8TXg-d_MCw4iE3g0lm3xqe"><i class="fa fa-download"></i></a> 
 
           
           
@@ -388,6 +588,48 @@ MathJax.Hub.Config({
 
           
 <div id="meta-6" style="display:none">
+<pre>
+{
+    "class": "embeddings",
+    "url": "https://drive.google.com/open?id=1dH8Pe1dMSr8TXg-d_MCw4iE3g0lm3xqe",
+    "description": "subword model with LSTM composition function from Li et al. trained on text8"
+}
+</pre>
+</div>
+
+        </td> 
+    </tr>
+<tr>
+<td>skipgram model from Li et al. trained on tex8
+          <br><a href="https://drive.google.com/open?id=1KCQvn2zM1iO8tkGTTFzomvtsWC8TwLsg"><i class="fa fa-download"></i></a> 
+
+          
+          
+
+          
+        <a href="javascript:void(0)" onclick="
+        (function(target, id) {
+          if ($('#' + id).css('display') == 'block')
+             {
+               $('#' + id).hide('fast');
+               $(target).text('metadata▼')
+             }
+          else
+             {
+               $('#' + id).show('fast');
+               $(target).text('metadata▲')
+             }
+          }
+        )(this, 'meta-7');">
+        metadata▼
+        </a>
+
+          
+
+          
+
+          
+<div id="meta-7" style="display:none">
 <pre>
 {
     "class": "embeddings",
@@ -440,136 +682,11 @@ MathJax.Hub.Config({
         </td> 
     </tr>
 <tr>
-<td>Japanese Similarity dataset (subsets for tokenized Japanese corpora)
-          <br><a href="https://my.pcloud.com/publink/show?code=XZBFz27Ze8jmNnVRw2z60FtGbR8tqjXcfoX7"><i class="fa fa-download"></i></a> 
+<td>subword model with CNN composition function from Li et al. trained on text8
+          <br><a href="https://drive.google.com/open?id=1iRz6jaP2FxaFHF0NnSZEeBZsKAfOT454"><i class="fa fa-download"></i></a> 
 
           
-          <a href="http://vecto.space/projects/jSIM"><i class="fa fa-home"></i></a> 
-
           
-        <a href="javascript:void(0)" onclick="
-        (function(target, id) {
-          if ($('#' + id).css('display') == 'block')
-             {
-               $('#' + id).hide('fast');
-               $(target).text('metadata▼')
-             }
-          else
-             {
-               $('#' + id).show('fast');
-               $(target).text('metadata▲')
-             }
-          }
-        )(this, 'meta-7');">
-        metadata▼
-        </a>
-
-          
-        <a href="javascript:void(0)" onclick="
-        (function(target, id) {
-          if ($('#' + id).css('display') == 'block')
-             {
-               $('#' + id).hide('fast');
-               $(target).text('bibtex▼')
-             }
-          else
-             {
-               $('#' + id).show('fast');
-               $(target).text('bibtex▲')
-             }
-          }
-        )(this, 'bibtex-7');">
-        bibtex▼
-        </a> 
-
-          
-<div id="bibtex-7" style="display:none">
-<pre>
-
-the original dataset
-
-@inproceedings{SakaizawaKomachi2018,
-   author = "Yuya Sakaizawa and Mamoru Komachi"
-   title = "Construction of a Japanese Word Similarity Dataset"
-   url = "http://www.lrec-conf.org/proceedings/lrec2018/pdf/96.pdf"
-   booktitle = "Proceedings of the Eleventh International Conference on Language Resources and Evaluation (LREC 2018)"
-   address = "Miyazaki, Japan"
-   publisher = "European Language Resources Association (ELRA)"
-   year = "2018"
-   pages = "948-951"
-}
-
-subsets for tokenized corpora
-
-@inproceedings{KarpinskaLiEtAl_2018,
-   author = "Marzena Karpinska and Bofang Li and Anna Rogers and Aleksandr Drozd"
-   title = "Subcharacter Information in Japanese embeddings: when is it worth it?"
-   year = "2018"
-   booktitle = "Proceedings of the Workshop on the Relevance of Linguistic Structure in Neural Architectures for NLP"
-   url = "http://aclweb.org/anthology/W18-2905"
-   pages = "28-37"
-   address = "Melbourne, Australia"
-   publisher = "Association for Computational Linguistics"
-}
-</pre>
-</div>
-
-          
-<div id="meta-7" style="display:none">
-<pre>
-{
-    "class": "dataset",
-    "task": "similarity",
-    "language": [
-        "Japanese"
-    ],
-    "name": "jSIM",
-    "description": "Japanese Similarity dataset (subsets for tokenized Japanese corpora)",
-    "domain": "general",
-    "date": "2018",
-    "source": "based on Japanese Similarity Dataset (https://github.com/tmu-nlp/JapaneseWordSimilarityDataset)",
-    "project_page": "http://vecto.space/projects/jSIM",
-    "version": "2.0",
-    "size": "1997-4429 word pairs",
-    "url": "https://my.pcloud.com/publink/show?code=XZBFz27Ze8jmNnVRw2z60FtGbR8tqjXcfoX7",
-    "cite": [
-        {
-            "contribution": "the original dataset",
-            "bibtex": {
-                "title": "Construction of a Japanese Word Similarity Dataset",
-                "url": "http://www.lrec-conf.org/proceedings/lrec2018/pdf/96.pdf",
-                "booktitle": "Proceedings of the Eleventh International Conference on Language Resources and Evaluation (LREC 2018)",
-                "address": "Miyazaki, Japan",
-                "publisher": "European Language Resources Association (ELRA)",
-                "year": 2018,
-                "pages": "948-951"
-            }
-        },
-        {
-            "contribution": "subsets for tokenized corpora",
-            "bibtex": {
-                "title": "Subcharacter Information in Japanese embeddings: when is it worth it?",
-                "year": 2018,
-                "booktitle": "Proceedings of the Workshop on the Relevance of Linguistic Structure in Neural Architectures for NLP",
-                "url": "http://aclweb.org/anthology/W18-2905",
-                "pages": "28-37",
-                "address": "Melbourne, Australia",
-                "publisher": "Association for Computational Linguistics"
-            }
-        }
-    ]
-}
-</pre>
-</div>
-
-        </td> 
-    </tr>
-<tr>
-<td>Bigger Analogy Test Set
-          <br><a href="https://my.pcloud.com/publink/show?code=XZOn0J7Z8fzFMt7Tw1mGS6uI1SYfCfTyJQTV"><i class="fa fa-download"></i></a> 
-
-          
-          <a href="http://vecto.space/projects/BATS"><i class="fa fa-home"></i></a> 
 
           
         <a href="javascript:void(0)" onclick="
@@ -590,74 +707,16 @@ subsets for tokenized corpora
         </a>
 
           
-        <a href="javascript:void(0)" onclick="
-        (function(target, id) {
-          if ($('#' + id).css('display') == 'block')
-             {
-               $('#' + id).hide('fast');
-               $(target).text('bibtex▼')
-             }
-          else
-             {
-               $('#' + id).show('fast');
-               $(target).text('bibtex▲')
-             }
-          }
-        )(this, 'bibtex-8');">
-        bibtex▼
-        </a> 
 
           
-<div id="bibtex-8" style="display:none">
-<pre>
-
-the original dataset
-
-@inproceedings{GladkovaDrozdEtAl_2016,
-   author = "Anna Gladkova and Aleksandr Drozd and Satoshi Matsuoka"
-   title = "Analogy-based detection of morphological and semantic relations with word embeddings: what works and what doesn't"
-   doi = "10.18653/v1/N16-2002"
-   url = "https://www.aclweb.org/anthology/N/N16/N16-2002.pdf"
-   booktitle = "Proceedings of the NAACL-HLT SRW"
-   publisher = "ACL"
-   year = "2016"
-   pages = "47-54"
-}
-</pre>
-</div>
 
           
 <div id="meta-8" style="display:none">
 <pre>
 {
-    "class": "dataset",
-    "task": "analogy",
-    "language": [
-        "English"
-    ],
-    "name": "BATS",
-    "description": "Bigger Analogy Test Set",
-    "domain": "general",
-    "date": "2016",
-    "source": "original",
-    "project_page": "http://vecto.space/projects/BATS",
-    "version": "3.0",
-    "size": "98,200 analogy questions (2,000 word pairs)",
-    "url": "https://my.pcloud.com/publink/show?code=XZOn0J7Z8fzFMt7Tw1mGS6uI1SYfCfTyJQTV",
-    "cite": [
-        {
-            "contribution": "the original dataset",
-            "bibtex": {
-                "title": "Analogy-based detection of morphological and semantic relations with word embeddings: what works and what doesn't",
-                "doi": "10.18653/v1/N16-2002",
-                "url": "https://www.aclweb.org/anthology/N/N16/N16-2002.pdf",
-                "booktitle": "Proceedings of the NAACL-HLT SRW",
-                "publisher": "ACL",
-                "year": 2016,
-                "pages": "47-54"
-            }
-        }
-    ]
+    "class": "embeddings",
+    "url": "https://drive.google.com/open?id=1iRz6jaP2FxaFHF0NnSZEeBZsKAfOT454",
+    "description": "subword model with CNN composition function from Li et al. trained on text8"
 }
 </pre>
 </div>
@@ -665,11 +724,11 @@ the original dataset
         </td> 
     </tr>
 <tr>
-<td>Japanese Bigger Analogy Test Set
-          <br><a href="https://my.pcloud.com/publink/show?code=XZRFz27Z70qHoqfzvbLDHwf4s5grUBX8mNvy"><i class="fa fa-download"></i></a> 
+<td>Japanese subword-level word embeddings (SG+Kanji) from Karpinska et al. trained on Mainichi+Wiki
+          <br><a href="https://drive.google.com/open?id=1N_P4CcbIfVz_n9QjflZYlXVUGfRpbBO_"><i class="fa fa-download"></i></a> 
 
           
-          <a href="http://vecto.space/projects/jBATS"><i class="fa fa-home"></i></a> 
+          
 
           
         <a href="javascript:void(0)" onclick="
@@ -690,74 +749,16 @@ the original dataset
         </a>
 
           
-        <a href="javascript:void(0)" onclick="
-        (function(target, id) {
-          if ($('#' + id).css('display') == 'block')
-             {
-               $('#' + id).hide('fast');
-               $(target).text('bibtex▼')
-             }
-          else
-             {
-               $('#' + id).show('fast');
-               $(target).text('bibtex▲')
-             }
-          }
-        )(this, 'bibtex-9');">
-        bibtex▼
-        </a> 
 
           
-<div id="bibtex-9" style="display:none">
-<pre>
-
-the original dataset
-
-@inproceedings{KarpinskaLiEtAl_2018,
-   author = "Marzena Karpinska and Bofang Li and Anna Rogers and Aleksandr Drozd"
-   title = "Subcharacter Information in Japanese embeddings: when is it worth it?"
-   year = "2018"
-   booktitle = "Proceedings of the Workshop on the Relevance of Linguistic Structure in Neural Architectures for NLP"
-   url = "http://aclweb.org/anthology/W18-2905"
-   pages = "28-37"
-   address = "Melbourne, Australia"
-   publisher = "Association for Computational Linguistics"
-}
-</pre>
-</div>
 
           
 <div id="meta-9" style="display:none">
 <pre>
 {
-    "class": "dataset",
-    "task": "analogy",
-    "language": [
-        "Japanese"
-    ],
-    "name": "jBATS",
-    "description": "Japanese Bigger Analogy Test Set",
-    "domain": "general",
-    "date": "2018",
-    "source": "original, analagous to Bigger Analogy Test for English",
-    "project_page": "http://vecto.space/projects/jBATS",
-    "version": "1.0",
-    "size": "97712 analogy questions (1,997 word pairs)",
-    "url": "https://my.pcloud.com/publink/show?code=XZRFz27Z70qHoqfzvbLDHwf4s5grUBX8mNvy",
-    "cite": [
-        {
-            "contribution": "the original dataset",
-            "bibtex": {
-                "title": "Subcharacter Information in Japanese embeddings: when is it worth it?",
-                "year": 2018,
-                "booktitle": "Proceedings of the Workshop on the Relevance of Linguistic Structure in Neural Architectures for NLP",
-                "url": "http://aclweb.org/anthology/W18-2905",
-                "pages": "28-37",
-                "address": "Melbourne, Australia",
-                "publisher": "Association for Computational Linguistics"
-            }
-        }
-    ]
+    "class": "embeddings",
+    "url": "https://drive.google.com/open?id=1N_P4CcbIfVz_n9QjflZYlXVUGfRpbBO_",
+    "description": "Japanese subword-level word embeddings (SG+Kanji) from Karpinska et al. trained on Mainichi+Wiki"
 }
 </pre>
 </div>
@@ -777,10 +778,7 @@ the original dataset
 </div>
 
 
-        <script src="/assets/js/all-nocdn.js"></script><!-- fancy dates --><script>
-    moment.locale("en");
-    fancydates(0, "YYYY-MM-DD HH:mm");
-    </script><!-- end fancy dates --><script>
+        <script src="/assets/js/all-nocdn.js"></script><script>
     baguetteBox.run('div#content', {
         ignoreClass: 'islink',
         captions: function(element) {

@@ -13,8 +13,6 @@ Projects related to the Vecto library
 Analogical reasoning
 --------------------
 
-:doc:`Summary: the latest in analogical reasoning with word embeddings <analogy>`
-
 :doc:`BATS: Bigger Analogy Test Set (English) <BATS>`
 
 :doc:`jBATS: Bigger Analogy Test Set (Japanese) <jBATS>`
