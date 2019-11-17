@@ -13,15 +13,15 @@ Projects related to the Vecto library
 Analogical reasoning
 --------------------
 
-:doc:`BATS: Bigger Analogy Test Set (English) <BATS>`
+:doc:`BATS: Bigger Analogy Test Set (English) <bats>`
 
-:doc:`jBATS: Bigger Analogy Test Set (Japanese) <jBATS>`
+:doc:`jBATS: Bigger Analogy Test Set (Japanese) <jbats>`
 
 ----------
 Similarity
 ----------
 
-:doc:`jSIM: Recategorized Word Similarity Dataset (Japanese) <jSIM>`
+:doc:`jSIM: Recategorized Word Similarity Dataset (Japanese) <jsim>`
 
 ---------------
 Word Embeddings

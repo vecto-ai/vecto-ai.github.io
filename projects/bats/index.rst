@@ -1,5 +1,5 @@
 .. title: The Bigger Analogy Test Set (BATS)
-.. slug: BATS
+.. slug: bats
 .. tags: mathjax
 .. use_math: true
 .. hidetitle: True

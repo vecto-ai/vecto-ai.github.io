@@ -9,7 +9,7 @@
 <meta name="theme-color" content="#5670d4">
 <meta name="generator" content="Nikola (getnikola.com)">
 <link rel="alternate" type="application/rss+xml" title="RSS" href="/rss.xml">
-<link rel="canonical" href="http://vecto.space/projects/jSIM/">
+<link rel="canonical" href="http://vecto.space/projects/jsim/">
 <script type="text/x-mathjax-config">
 MathJax.Hub.Config({
     tex2jax: {
@@ -201,7 +201,7 @@ table.docutils {
         &lt;body&gt;&lt;div class=" section id="the-revised-similarity-dataset-for-japanese-jsim">
 <h2>The Revised Similarity Dataset for Japanese (jSIM)</h2>
 <p>The dataset for the word similarity task consists of pairs of words evaluated by human annotators in terms of their similarity. Similarity in general is a concept difficult to fully grasp and define. Therefore, the rating process may be challenging and the ratings may be somewhat misleading. Nevertheless, word similarity task, though controversial, remains a widely used method to evaluate word embeddings.
-The Japanese Word Similarity Dataset <a class="footnote-reference" href="/projects/jSIM/#f1" id="id1">[1]</a> is by far the only similarity dataset for the Japanese language. Pairs in this set were divided by part-of-speech into four categories: nouns, adjectives, verbs, and adverbs. Since the set was created based on a paraphrasing dataset a lot of phrases were also introduced.
+The Japanese Word Similarity Dataset <a class="footnote-reference" href="/projects/jsim/#f1" id="id1">[1]</a> is by far the only similarity dataset for the Japanese language. Pairs in this set were divided by part-of-speech into four categories: nouns, adjectives, verbs, and adverbs. Since the set was created based on a paraphrasing dataset a lot of phrases were also introduced.
 There are, however, two main problems with that approach: (1) the part-of-speech in Japanese is not always straightforward, and (2) Japanese tokenization introduces a lot of ambiguity and makes phrase processing impossible. Therefore, we have decided to recategorize the existing dataset and make it more tokenization-friendly, so that it can be used on a tokenized corpus.</p>
 <div class="section" id="recategorizings-pos">
 <h3>Recategorizings POS</h3>
@@ -226,7 +226,7 @@ Regardless of the possible challenges mentioned above the original dataset conta
 </div>
 <div class="section" id="preformance-on-jsim">
 <h3>Preformance on jSIM</h3>
-<p>We use all three versions of jSIM to evaluate the performance of the subcharacter and character level models in Japanese <a class="footnote-reference" href="/projects/jSIM/#f2" id="id2">[2]</a>. These models take advantage of the information in Chinese characters - <em>kanji</em> (SG + <em>kanji</em>) and their components, called <em>bushu</em> (SG + <em>kanji</em> + <em>bushu</em>). The overall performance of both models was compared with the traditional Skip-Gram model (SG) and FastText.</p>
+<p>We use all three versions of jSIM to evaluate the performance of the subcharacter and character level models in Japanese <a class="footnote-reference" href="/projects/jsim/#f2" id="id2">[2]</a>. These models take advantage of the information in Chinese characters - <em>kanji</em> (SG + <em>kanji</em>) and their components, called <em>bushu</em> (SG + <em>kanji</em> + <em>bushu</em>). The overall performance of both models was compared with the traditional Skip-Gram model (SG) and FastText.</p>
 <div class="figure align-center">
 <img alt="/assets/img/jsim_results.png" src="/assets/img/jsim_results.png"><p class="caption">Table 2. Spearman correlation with human similarity judgements. Boldface indicates the highest result on a given corpus (separately for in-vocabulary and OOV conditions). Shaded numbers indicate the highest result among the three Skip-Gram models.</p>
 </div>
@@ -239,7 +239,7 @@ However, in most cases the improvement due to inclusion of bushu, even when it i
 <col>
 </colgroup>
 <tbody valign="top"><tr>
-<td class="label"><a class="fn-backref" href="/projects/jSIM/#id1">[1]</a></td>
+<td class="label"><a class="fn-backref" href="/projects/jsim/#id1">[1]</a></td>
 <td>Yuya Sakaizawa and Mamoru Komachi. 2017. Construction of a Japanese Word Similarity Dataset. In Proceedings of the Eleventh International Conference on Language Resources and Evaluation (LREC 2018), Miyazaki, Japan. European Language Resources Association (ELRA).</td>
 </tr></tbody>
 </table>
@@ -249,7 +249,7 @@ However, in most cases the improvement due to inclusion of bushu, even when it i
 <col>
 </colgroup>
 <tbody valign="top"><tr>
-<td class="label"><a class="fn-backref" href="/projects/jSIM/#id2">[2]</a></td>
+<td class="label"><a class="fn-backref" href="/projects/jsim/#id2">[2]</a></td>
 <td>Karpinska, M., Li, B., Rogers, A., &amp; Drozd, A. (2018) Subcharacter information in Japanese embeddings: when is it worth it? In In Proceedings of the Workshop on Relevance of Linguistic Structure in Neural Architectures for NLP (RELNLP) 2018, to appear. ACL, 2018.</td>
 </tr></tbody>
 </table>
