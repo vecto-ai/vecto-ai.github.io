@@ -103,7 +103,7 @@ NAVIGATION_LINKS = {
             'Models & Data Library '
         ),
 
-        ("/projects/index" , "Projects") ,
+        ("/projects/", "Projects"),
 
         ("/publications.html", "Publications"),
         ("/team.html", "About Us"),
