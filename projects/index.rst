@@ -1,9 +1,9 @@
 .. title: Vecto projects
 .. slug: index
+.. link:
 .. tags: mathjax
 .. hidetitle: True
-.. pretty_url: True
-
+.. pretty_url: False
 
 =====================================
 Projects related to the Vecto library
