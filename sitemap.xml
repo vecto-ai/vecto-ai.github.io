@@ -7,78 +7,90 @@
                         http://www.sitemaps.org/schemas/sitemap/0.9/sitemap.xsd">
  <url>
   <loc>http://vecto.space/</loc>
-  <lastmod>2019-12-03T06:17:00Z</lastmod>
+  <lastmod>2019-12-02T06:21:00Z</lastmod>
  </url>
  <url>
   <loc>http://vecto.space/404.html</loc>
-  <lastmod>2019-12-03T06:19:00Z</lastmod>
+  <lastmod>2019-12-05T07:36:00Z</lastmod>
  </url>
  <url>
   <loc>http://vecto.space/archive.html</loc>
-  <lastmod>2019-12-03T06:19:00Z</lastmod>
+  <lastmod>2019-12-05T07:36:00Z</lastmod>
  </url>
  <url>
   <loc>http://vecto.space/blog/</loc>
-  <lastmod>2019-12-03T06:17:00Z</lastmod>
+  <lastmod>2019-12-02T06:21:00Z</lastmod>
  </url>
  <url>
   <loc>http://vecto.space/categories/</loc>
-  <lastmod>2019-12-03T06:17:00Z</lastmod>
+  <lastmod>2019-12-02T06:21:00Z</lastmod>
  </url>
  <url>
   <loc>http://vecto.space/contribute.html</loc>
-  <lastmod>2019-12-03T06:19:00Z</lastmod>
+  <lastmod>2019-12-05T07:36:00Z</lastmod>
  </url>
  <url>
   <loc>http://vecto.space/data/</loc>
-  <lastmod>2019-12-03T06:17:00Z</lastmod>
+  <lastmod>2019-12-02T06:21:00Z</lastmod>
  </url>
  <url>
   <loc>http://vecto.space/projects/</loc>
-  <lastmod>2019-12-03T06:18:00Z</lastmod>
+  <lastmod>2019-12-05T07:47:00Z</lastmod>
+ </url>
+ <url>
+  <loc>http://vecto.space/projects/BATS/</loc>
+  <lastmod>2019-12-05T07:47:00Z</lastmod>
  </url>
  <url>
   <loc>http://vecto.space/projects/bats/</loc>
-  <lastmod>2019-12-03T06:17:00Z</lastmod>
+  <lastmod>2019-12-02T06:21:00Z</lastmod>
  </url>
  <url>
   <loc>http://vecto.space/projects/index/</loc>
-  <lastmod>2019-12-03T06:17:00Z</lastmod>
+  <lastmod>2019-12-02T06:21:00Z</lastmod>
+ </url>
+ <url>
+  <loc>http://vecto.space/projects/jBATS/</loc>
+  <lastmod>2019-12-05T07:37:00Z</lastmod>
+ </url>
+ <url>
+  <loc>http://vecto.space/projects/jSIM/</loc>
+  <lastmod>2019-12-05T07:47:00Z</lastmod>
  </url>
  <url>
   <loc>http://vecto.space/projects/jbats/</loc>
-  <lastmod>2019-12-03T06:17:00Z</lastmod>
+  <lastmod>2019-12-02T06:21:00Z</lastmod>
  </url>
  <url>
   <loc>http://vecto.space/projects/jsim/</loc>
-  <lastmod>2019-12-03T06:17:00Z</lastmod>
+  <lastmod>2019-12-02T06:21:00Z</lastmod>
  </url>
  <url>
   <loc>http://vecto.space/projects/problems.html</loc>
-  <lastmod>2019-12-03T06:19:00Z</lastmod>
+  <lastmod>2019-12-05T07:36:00Z</lastmod>
  </url>
  <url>
   <loc>http://vecto.space/projects/subword/</loc>
-  <lastmod>2019-12-03T06:17:00Z</lastmod>
+  <lastmod>2019-12-02T06:21:00Z</lastmod>
  </url>
  <url>
   <loc>http://vecto.space/projects/subword_bak.html</loc>
-  <lastmod>2019-12-03T06:19:00Z</lastmod>
+  <lastmod>2019-12-05T07:36:00Z</lastmod>
  </url>
  <url>
   <loc>http://vecto.space/projects/subword_jp/</loc>
-  <lastmod>2019-12-03T06:17:00Z</lastmod>
+  <lastmod>2019-12-02T06:21:00Z</lastmod>
  </url>
  <url>
   <loc>http://vecto.space/publications.html</loc>
-  <lastmod>2019-12-03T06:19:00Z</lastmod>
+  <lastmod>2019-12-05T07:36:00Z</lastmod>
  </url>
  <url>
   <loc>http://vecto.space/resources/2019/11_ACML_Tutorial/</loc>
-  <lastmod>2019-12-03T06:17:00Z</lastmod>
+  <lastmod>2019-12-02T06:21:00Z</lastmod>
  </url>
  <url>
   <loc>http://vecto.space/team.html</loc>
-  <lastmod>2019-12-03T06:19:00Z</lastmod>
+  <lastmod>2019-12-05T07:36:00Z</lastmod>
  </url>
 </urlset>

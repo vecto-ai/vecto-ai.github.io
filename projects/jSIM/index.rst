@@ -1,5 +1,5 @@
 .. title: The Revised Japanese Word Similarity Dataset (jSIM)
-.. slug: jsim
+.. slug: jSIM
 .. tags: mathjax
 .. hidetitle: True
 .. pretty_url: True

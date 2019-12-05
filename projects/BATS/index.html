@@ -9,7 +9,7 @@
 <meta name="theme-color" content="#5670d4">
 <meta name="generator" content="Nikola (getnikola.com)">
 <link rel="alternate" type="application/rss+xml" title="RSS" href="/rss.xml">
-<link rel="canonical" href="http://vecto.space/projects/bats/">
+<link rel="canonical" href="http://vecto.space/projects/BATS/">
 <script type="text/x-mathjax-config">
 MathJax.Hub.Config({
     tex2jax: {
@@ -198,9 +198,9 @@ table.docutils {
         
         &lt;body&gt;&lt;div class=" section id="the-bigger-analogy-test-set-bats">
 <h2>The Bigger Analogy Test Set (BATS)</h2>
-<p>Word analogy task has been one of the standard benchmarks for word embeddings since the striking demonstration of “linguistic regularities” by Mikolov et al. (2013) <a class="footnote-reference" href="/projects/bats/#f1" id="id1">[1]</a>. Their big finding was that linear vector offsets seem to mirror linguistic relations, and can be used to perform analogical reasoning.</p>
+<p>Word analogy task has been one of the standard benchmarks for word embeddings since the striking demonstration of “linguistic regularities” by Mikolov et al. (2013) <a class="footnote-reference" href="/projects/BATS/#f1" id="id1">[1]</a>. Their big finding was that linear vector offsets seem to mirror linguistic relations, and can be used to perform analogical reasoning.</p>
 <div class="figure align-center">
-<img alt="/assets/img/queen.png" src="/assets/img/queen.png" style="height: 100px;"><p class="caption">Figure 1. Linear vector offsets as model of linguistic relations (Mikolov et al., 2013) <a class="footnote-reference" href="/projects/bats/#f1" id="id2">[1]</a></p>
+<img alt="/assets/img/queen.png" src="/assets/img/queen.png" style="height: 100px;"><p class="caption">Figure 1. Linear vector offsets as model of linguistic relations (Mikolov et al., 2013) <a class="footnote-reference" href="/projects/BATS/#f1" id="id2">[1]</a></p>
 </div>
 <p>For example, consider a pair of words <em>a : a' :: b : b</em> such as <em>man:
 woman :: king : queen</em>. Mikolov et al. proposed that the <em>b'</em> word could be found with the help of the offset between the word vectors <em>b</em> and <em>a</em>. In this case, the word vector <em>queen</em> should be the vector that is the closest to the result of calculation <em>king - man + woman</em>.</p>
@@ -215,11 +215,11 @@ woman :: king : queen</em>. Mikolov et al. proposed that the <em>b'</em> word co
 <!-- When word embedding models started claiming over 80% accuracy on this dataset [#f2]_, that could be interpreted as suggesting that identifying different linguistic relations is a solved task, and we already have extremely accurate, context-independent distributional semantic representations. -->
 <!-- It has since become clear that this is not the case. -->
 </blockquote>
-<p>BATS <a class="footnote-reference" href="/projects/bats/#f2" id="id3">[2]</a> is an improvement over this dataset in several aspects:</p>
+<p>BATS <a class="footnote-reference" href="/projects/BATS/#f2" id="id3">[2]</a> is an improvement over this dataset in several aspects:</p>
 <blockquote>
 <ul class="simple">
 <li>
-<span class="emph">balanced and representative</span>: BATS covers inflectional and derivational morphology, and lexicographic and encyclopedic semantics. Each relation is represented with 10 categories, and each category contains 50 unique word pairs. This makes for 99,200 <a class="footnote-reference" href="/projects/bats/#f3" id="id4">[3]</a> questions for the vector offset method.</li>
+<span class="emph">balanced and representative</span>: BATS covers inflectional and derivational morphology, and lexicographic and encyclopedic semantics. Each relation is represented with 10 categories, and each category contains 50 unique word pairs. This makes for 99,200 <a class="footnote-reference" href="/projects/BATS/#f3" id="id4">[3]</a> questions for the vector offset method.</li>
 <li>
 <span class="emph">reduced homonymy</span>: the morphological categories were sampled to reduce homonymy. For example, for verb present tense the Google set includes pairs like <em>walk:walks</em>, which could be both verbs and nouns.</li>
 <li>
@@ -389,20 +389,20 @@ The structure of Bigger Analogy Test Set
 </div>
 <div class="section" id="performance-on-bats">
 <h3>Performance on BATS</h3>
-<p>The initial results with BATS were striking: GloVe <a class="footnote-reference" href="/projects/bats/#f4" id="id5">[4]</a>, the model that claimed over 80% accuracy on the Google syntactic analogies, achieved under 30% on BATS. Furthermore, only inflectional morphology categories can be reliably detected, and the famous <em>country:capital</em> category is a clear outlier among the semantic categories, most of which have very low accuracy.</p>
+<p>The initial results with BATS were striking: GloVe <a class="footnote-reference" href="/projects/BATS/#f4" id="id5">[4]</a>, the model that claimed over 80% accuracy on the Google syntactic analogies, achieved under 30% on BATS. Furthermore, only inflectional morphology categories can be reliably detected, and the famous <em>country:capital</em> category is a clear outlier among the semantic categories, most of which have very low accuracy.</p>
 <div class="figure">
 <img alt="/assets/img/bats_stats.png" src="/assets/img/bats_stats.png"><p class="caption">Figure 2. Performance on BATS: GloVe word embeddings vs count-based vectors condensed with SVD</p>
 </div>
-<p>Interestingly, the above figure also shows that GloVe is generally not that different from a traditional count-based SVD: although it performs slightly better in many cases, the overall pattern of categories that are easy/difficult is clearly the same for both models. The same pattern was confirmed in a subsequent study <a class="footnote-reference" href="/projects/bats/#f5" id="id6">[5]</a>.</p>
+<p>Interestingly, the above figure also shows that GloVe is generally not that different from a traditional count-based SVD: although it performs slightly better in many cases, the overall pattern of categories that are easy/difficult is clearly the same for both models. The same pattern was confirmed in a subsequent study <a class="footnote-reference" href="/projects/BATS/#f5" id="id6">[5]</a>.</p>
 <p>BATS thus presents more of a challenge to the modern systems that make use of word embeddings for verbal reasoning tasks. To the best of our knowledge, no system has yet achieved over 50% accuracy on the whole BATS, although there were several significant improvements:</p>
 <blockquote>
 <ul class="simple">
 <li>
-<a class="reference external" href="http://www.aclweb.org/anthology/W18-1205">subword-level models such as Fasttext achieve much higher accuracy on derivational morphology</a>, as compared to the word-level models such as SkipGram <a class="footnote-reference" href="/projects/bats/#f6" id="id7">[6]</a> .</li>
-<li>the vector offset method is not the best way to solve word analogies, with <a class="reference external" href="http://www.aclweb.org/anthology/C16-1332">LRCos method achieving up to 35% improvement</a> in some categories <a class="footnote-reference" href="/projects/bats/#f5" id="id8">[5]</a> ;</li>
+<a class="reference external" href="http://www.aclweb.org/anthology/W18-1205">subword-level models such as Fasttext achieve much higher accuracy on derivational morphology</a>, as compared to the word-level models such as SkipGram <a class="footnote-reference" href="/projects/BATS/#f6" id="id7">[6]</a> .</li>
+<li>the vector offset method is not the best way to solve word analogies, with <a class="reference external" href="http://www.aclweb.org/anthology/C16-1332">LRCos method achieving up to 35% improvement</a> in some categories <a class="footnote-reference" href="/projects/BATS/#f5" id="id8">[5]</a> ;</li>
 </ul>
 </blockquote>
-<p>Future work should take into account that all the current methods are heavily biased by cosine similarity between the source words, which means that <a class="reference external" href="http://www.aclweb.org/anthology/S17-1017">the results on word analogy task indicate which relations a given model favors in vector neighborhoods</a> (and <em>not</em> some general "goodness" of the model) <a class="footnote-reference" href="/projects/bats/#f7" id="id9">[7]</a> .</p>
+<p>Future work should take into account that all the current methods are heavily biased by cosine similarity between the source words, which means that <a class="reference external" href="http://www.aclweb.org/anthology/S17-1017">the results on word analogy task indicate which relations a given model favors in vector neighborhoods</a> (and <em>not</em> some general "goodness" of the model) <a class="footnote-reference" href="/projects/BATS/#f7" id="id9">[7]</a> .</p>
 <p>A comparable dataset for Japanese is now also <a class="reference external" href="http://vecto.space/projects/jBATS">available</a>. It was used to show the effectiveness of leveraging subcharacter information to produce more meaningful representations for Japanese characters.</p>
 <p class="rubric">Footnotes</p>
 <table class="docutils footnote" frame="void" id="f1" rules="none">
@@ -413,7 +413,7 @@ The structure of Bigger Analogy Test Set
 <tbody valign="top"><tr>
 <td class="label">[1]</td>
 <td>
-<em>(<a class="fn-backref" href="/projects/bats/#id1">1</a>, <a class="fn-backref" href="/projects/bats/#id2">2</a>)</em> Mikolov, T., Yih, W., &amp; Zweig, G. (2013). Linguistic Regularities in Continuous Space Word Representations. In Proceedings of NAACL-HLT 2013 (pp. 746–751). Atlanta, Georgia, 9–14 June 2013. Retrieved from <a class="reference external" href="https://www.aclweb.org/anthology/N13-1090">https://www.aclweb.org/anthology/N13-1090</a>
+<em>(<a class="fn-backref" href="/projects/BATS/#id1">1</a>, <a class="fn-backref" href="/projects/BATS/#id2">2</a>)</em> Mikolov, T., Yih, W., &amp; Zweig, G. (2013). Linguistic Regularities in Continuous Space Word Representations. In Proceedings of NAACL-HLT 2013 (pp. 746–751). Atlanta, Georgia, 9–14 June 2013. Retrieved from <a class="reference external" href="https://www.aclweb.org/anthology/N13-1090">https://www.aclweb.org/anthology/N13-1090</a>
 </td>
 </tr></tbody>
 </table>
@@ -423,7 +423,7 @@ The structure of Bigger Analogy Test Set
 <col>
 </colgroup>
 <tbody valign="top"><tr>
-<td class="label"><a class="fn-backref" href="/projects/bats/#id3">[2]</a></td>
+<td class="label"><a class="fn-backref" href="/projects/BATS/#id3">[2]</a></td>
 <td>Gladkova, A., Drozd, A., &amp; Matsuoka, S. (2016). Analogy-based detection of morphological and semantic relations with word embeddings: what works and what doesn’t. In Proceedings of the NAACL-HLT SRW (pp. 47–54). San Diego, California, June 12-17, 2016: ACL. <a class="reference external" href="https://www.aclweb.org/anthology/N/N16/N16-2002.pdf">https://www.aclweb.org/anthology/N/N16/N16-2002.pdf</a>
 </td>
 </tr></tbody>
@@ -434,7 +434,7 @@ The structure of Bigger Analogy Test Set
 <col>
 </colgroup>
 <tbody valign="top"><tr>
-<td class="label"><a class="fn-backref" href="/projects/bats/#id4">[3]</a></td>
+<td class="label"><a class="fn-backref" href="/projects/BATS/#id4">[3]</a></td>
 <td>The abstract of the original paper has a mistake: the total number of questions in BATS is 99,200.</td>
 </tr></tbody>
 </table>
@@ -444,7 +444,7 @@ The structure of Bigger Analogy Test Set
 <col>
 </colgroup>
 <tbody valign="top"><tr>
-<td class="label"><a class="fn-backref" href="/projects/bats/#id5">[4]</a></td>
+<td class="label"><a class="fn-backref" href="/projects/BATS/#id5">[4]</a></td>
 <td>Pennington, J., Socher, R., &amp; Manning, C. D. (2014). Glove: Global vectors for word representation. In Proceedings of the 2014 Conference on Empirical Methods in Natural Language Processing (EMNLP) (Vol. 12, pp. 1532–1543). <a class="reference external" href="https://www.aclweb.org/anthology/D14-1162">https://www.aclweb.org/anthology/D14-1162</a>
 </td>
 </tr></tbody>
@@ -457,7 +457,7 @@ The structure of Bigger Analogy Test Set
 <tbody valign="top"><tr>
 <td class="label">[5]</td>
 <td>
-<em>(<a class="fn-backref" href="/projects/bats/#id6">1</a>, <a class="fn-backref" href="/projects/bats/#id8">2</a>)</em> Drozd, A., Gladkova, A., &amp; Matsuoka, S. (2016). Word embeddings, analogies, and machine learning: beyond king - man + woman = queen. In Proceedings of COLING 2016, the 26th International Conference on Computational Linguistics: Technical Papers (pp. 3519–3530). Osaka, Japan, December 11-17. <a class="reference external" href="https://www.aclweb.org/anthology/C/C16/C16-1332.pdf">https://www.aclweb.org/anthology/C/C16/C16-1332.pdf</a>
+<em>(<a class="fn-backref" href="/projects/BATS/#id6">1</a>, <a class="fn-backref" href="/projects/BATS/#id8">2</a>)</em> Drozd, A., Gladkova, A., &amp; Matsuoka, S. (2016). Word embeddings, analogies, and machine learning: beyond king - man + woman = queen. In Proceedings of COLING 2016, the 26th International Conference on Computational Linguistics: Technical Papers (pp. 3519–3530). Osaka, Japan, December 11-17. <a class="reference external" href="https://www.aclweb.org/anthology/C/C16/C16-1332.pdf">https://www.aclweb.org/anthology/C/C16/C16-1332.pdf</a>
 </td>
 </tr></tbody>
 </table>
@@ -467,7 +467,7 @@ The structure of Bigger Analogy Test Set
 <col>
 </colgroup>
 <tbody valign="top"><tr>
-<td class="label"><a class="fn-backref" href="/projects/bats/#id7">[6]</a></td>
+<td class="label"><a class="fn-backref" href="/projects/BATS/#id7">[6]</a></td>
 <td>Li, B., Drozd, A., Liu, T., &amp; Du, X. (n.d.). Subword-level Composition Functions for Learning Word Embeddings. In Proceedings of the Second Workshop on Subword/Character LEvel Models (pp. 38–48). New Orleans, Louisiana, June 6, 2018. <a class="reference external" href="http://www.aclweb.org/anthology/W18-1205">http://www.aclweb.org/anthology/W18-1205</a>
 </td>
 </tr></tbody>
@@ -478,7 +478,7 @@ The structure of Bigger Analogy Test Set
 <col>
 </colgroup>
 <tbody valign="top"><tr>
-<td class="label"><a class="fn-backref" href="/projects/bats/#id9">[7]</a></td>
+<td class="label"><a class="fn-backref" href="/projects/BATS/#id9">[7]</a></td>
 <td>Rogers, A., Drozd, A., &amp; Li, B. (2017). The (Too Many) Problems of Analogical Reasoning with Word Vectors. In Proceedings of the 6th Joint Conference on Lexical and Computational Semantics (* SEM 2017) (pp. 135–148). <a class="reference external" href="http://www.aclweb.org/anthology/S17-1017">http://www.aclweb.org/anthology/S17-1017</a>
 </td>
 </tr></tbody>

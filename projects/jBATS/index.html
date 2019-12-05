@@ -9,7 +9,7 @@
 <meta name="theme-color" content="#5670d4">
 <meta name="generator" content="Nikola (getnikola.com)">
 <link rel="alternate" type="application/rss+xml" title="RSS" href="/rss.xml">
-<link rel="canonical" href="http://vecto.space/projects/jbats/">
+<link rel="canonical" href="http://vecto.space/projects/jBATS/">
 <script type="text/x-mathjax-config">
 MathJax.Hub.Config({
     tex2jax: {
@@ -197,9 +197,9 @@ table.docutils {
         
         &lt;body&gt;&lt;div class=" section id="the-japanese-bigger-analogy-test-set-jbats">
 <h2>The Japanese Bigger Analogy Test Set (jBATS)</h2>
-<p>Word analogy task has been one of the standard benchmarks for word embeddings since the striking demonstration of “linguistic regularities” by Mikolov et al. (2013) <a class="footnote-reference" href="/projects/jbats/#f1" id="id1">[1]</a>. Their big finding was that linear vector offsets seem to mirror linguistic relations, and can be used to perform analogical reasoning.</p>
+<p>Word analogy task has been one of the standard benchmarks for word embeddings since the striking demonstration of “linguistic regularities” by Mikolov et al. (2013) <a class="footnote-reference" href="/projects/jBATS/#f1" id="id1">[1]</a>. Their big finding was that linear vector offsets seem to mirror linguistic relations, and can be used to perform analogical reasoning.</p>
 <div class="figure align-center">
-<img alt="/assets/img/queen.png" src="/assets/img/queen.png" style="height: 100px;"><p class="caption">Figure 1. Linear vector offsets as model of linguistic relations (Mikolov et al., 2013) <a class="footnote-reference" href="/projects/jbats/#f1" id="id2">[1]</a></p>
+<img alt="/assets/img/queen.png" src="/assets/img/queen.png" style="height: 100px;"><p class="caption">Figure 1. Linear vector offsets as model of linguistic relations (Mikolov et al., 2013) <a class="footnote-reference" href="/projects/jBATS/#f1" id="id2">[1]</a></p>
 </div>
 <p>For example, consider a pair of words <em>a : a' :: b : b</em> such as <em>man:
 woman :: king : queen</em>. Mikolov et al. proposed that the <em>b'</em> word could be found with the help of the offset between the word vectors <em>b</em> and <em>a</em>. In this case, the word vector <em>queen</em> should be the vector that is the closest to the result of calculation <em>king - man + woman</em>.</p>
@@ -207,7 +207,7 @@ woman :: king : queen</em>. Mikolov et al. proposed that the <em>b'</em> word co
 <!-- $$b'=argmax_{~d\in{V}}(cos(b',b-a+a'))$$ -->
 </blockquote>
 <p>Mikolov et al. demonstrated their findings on the Google analogy dataset, which consists of 9 morphological and 5 semantic categories, with 20-70 unique word pairs per category: 8,869 semantic and 10,675 syntactic questions in total. However, this set was unbalanced, and some categories were overrepresented (particularly the country:capital relation constituted over 50% of all word pairs in the semantic category).
-Gladkova et al. (2016) proposed <a class="reference external" href="http://vecto.space/projects/BATS/">BATS</a> (The Better Analogy Test Set), which covers eaqually derivational and inflectional morphology, as well as lexicographic and encyclopedic semantics. Each of these relations consists of 10 categories and each of the categories is being represented by 50 unique word pairs giving a total of 99,200 questions <a class="footnote-reference" href="/projects/jbats/#f3" id="id3">[3]</a> for the vector offset method.</p>
+Gladkova et al. (2016) proposed <a class="reference external" href="http://vecto.space/projects/BATS/">BATS</a> (The Better Analogy Test Set), which covers eaqually derivational and inflectional morphology, as well as lexicographic and encyclopedic semantics. Each of these relations consists of 10 categories and each of the categories is being represented by 50 unique word pairs giving a total of 99,200 questions <a class="footnote-reference" href="/projects/jBATS/#f3" id="id3">[3]</a> for the vector offset method.</p>
 <div class="section" id="what-is-jbats">
 <h3>What is jBATS?</h3>
 <p>jBATS was designed based on <a class="reference external" href="http://vecto.space/projects/BATS/">BATS</a> and is, to our best knowledge, the first analogy test set for Japanese. Similarly to BATS it features 4 linguistcs relations: (1) derivational morphology, (2) inflectional morphology, (3) lexicographic semantics, and (4) encyclopedic semantics.</p>
@@ -384,11 +384,11 @@ The structure of Japanese Bigger Analogy Test Set
 </div>
 <div class="section" id="performance-on-jbats">
 <h3>Performance on jBATS</h3>
-<p>jBATS was initially used to evaluate the performance of the subcharacter and character level models in Japanese <a class="footnote-reference" href="/projects/jbats/#f7" id="id5">[6]</a>. These models take advantage of the information in Chinese characters - <em>kanji</em> (SG + <em>kanji</em>) and their components, called <em>bushu</em> (SG + <em>kanji</em> + <em>bushu</em>). The overall performance of both models was compared with the traditional Skip-Gram model (SG) and FastText.</p>
+<p>jBATS was initially used to evaluate the performance of the subcharacter and character level models in Japanese <a class="footnote-reference" href="/projects/jBATS/#f7" id="id5">[6]</a>. These models take advantage of the information in Chinese characters - <em>kanji</em> (SG + <em>kanji</em>) and their components, called <em>bushu</em> (SG + <em>kanji</em> + <em>bushu</em>). The overall performance of both models was compared with the traditional Skip-Gram model (SG) and FastText.</p>
 <div class="figure">
 <img alt="/assets/img/jbats.png" src="/assets/img/jbats.png"><p class="caption">Figure 2. Performance on jBATS: SG, SG + <em>kanji</em>, and SG + <em>kanji</em> + <em>bushu</em> as measure by the 3CosAdd (upper figure) and LRCos (lower figure) methods.</p>
 </div>
-<p>Including the <em>bushu</em> information has proven to be beneficial especially for the inflectional and derivational relations, where most tokens were written using a single <em>kanji</em> or a <em>kanji</em> affix, related to the word meaning. The smallest improvement was observed for the lexicographic semantics categories, where traditional Skip-Gram model performed better in most cases. Semantic relations were also the most difficult to capture, which is consistent with the finidings for English in Gladkova et al. (2016) <a class="footnote-reference" href="/projects/jbats/#f2" id="id6">[2]</a> and Drozd et al. (2016) <a class="footnote-reference" href="/projects/jbats/#f5" id="id7">[4]</a>. Moreover, the LRCos method <a class="footnote-reference" href="/projects/jbats/#f5" id="id8">[4]</a> yielded overall better results than 3CosAdd achieving up to <strong>over 36% better accuracy</strong>, which was also shown for English in Drozd et al. (2016) <a class="footnote-reference" href="/projects/jbats/#f5" id="id9">[4]</a>. The overall accuracy on word analogy task (LRCos method) of all the models (including FastText) for different corpus size can be found in Karpinska et al. (2018) <a class="footnote-reference" href="/projects/jbats/#f7" id="id10">[6]</a></p>
+<p>Including the <em>bushu</em> information has proven to be beneficial especially for the inflectional and derivational relations, where most tokens were written using a single <em>kanji</em> or a <em>kanji</em> affix, related to the word meaning. The smallest improvement was observed for the lexicographic semantics categories, where traditional Skip-Gram model performed better in most cases. Semantic relations were also the most difficult to capture, which is consistent with the finidings for English in Gladkova et al. (2016) <a class="footnote-reference" href="/projects/jBATS/#f2" id="id6">[2]</a> and Drozd et al. (2016) <a class="footnote-reference" href="/projects/jBATS/#f5" id="id7">[4]</a>. Moreover, the LRCos method <a class="footnote-reference" href="/projects/jBATS/#f5" id="id8">[4]</a> yielded overall better results than 3CosAdd achieving up to <strong>over 36% better accuracy</strong>, which was also shown for English in Drozd et al. (2016) <a class="footnote-reference" href="/projects/jBATS/#f5" id="id9">[4]</a>. The overall accuracy on word analogy task (LRCos method) of all the models (including FastText) for different corpus size can be found in Karpinska et al. (2018) <a class="footnote-reference" href="/projects/jBATS/#f7" id="id10">[6]</a></p>
 <p class="rubric">Footnotes</p>
 <table class="docutils footnote" frame="void" id="f1" rules="none">
 <colgroup>
@@ -398,7 +398,7 @@ The structure of Japanese Bigger Analogy Test Set
 <tbody valign="top"><tr>
 <td class="label">[1]</td>
 <td>
-<em>(<a class="fn-backref" href="/projects/jbats/#id1">1</a>, <a class="fn-backref" href="/projects/jbats/#id2">2</a>)</em> Mikolov, T., Yih, W., &amp; Zweig, G. (2013). Linguistic Regularities in Continuous Space Word Representations. In Proceedings of NAACL-HLT 2013 (pp. 746–751). Atlanta, Georgia, 9–14 June 2013. Retrieved from <a class="reference external" href="https://www.aclweb.org/anthology/N13-1090">https://www.aclweb.org/anthology/N13-1090</a>
+<em>(<a class="fn-backref" href="/projects/jBATS/#id1">1</a>, <a class="fn-backref" href="/projects/jBATS/#id2">2</a>)</em> Mikolov, T., Yih, W., &amp; Zweig, G. (2013). Linguistic Regularities in Continuous Space Word Representations. In Proceedings of NAACL-HLT 2013 (pp. 746–751). Atlanta, Georgia, 9–14 June 2013. Retrieved from <a class="reference external" href="https://www.aclweb.org/anthology/N13-1090">https://www.aclweb.org/anthology/N13-1090</a>
 </td>
 </tr></tbody>
 </table>
@@ -408,7 +408,7 @@ The structure of Japanese Bigger Analogy Test Set
 <col>
 </colgroup>
 <tbody valign="top"><tr>
-<td class="label"><a class="fn-backref" href="/projects/jbats/#id6">[2]</a></td>
+<td class="label"><a class="fn-backref" href="/projects/jBATS/#id6">[2]</a></td>
 <td>Gladkova, A., Drozd, A., &amp; Matsuoka, S. (2016). Analogy-based detection of morphological and semantic relations with word embeddings: what works and what doesn’t. In Proceedings of the NAACL-HLT SRW (pp. 47–54). San Diego, California, June 12-17, 2016: ACL. <a class="reference external" href="https://www.aclweb.org/anthology/N/N16/N16-2002.pdf">https://www.aclweb.org/anthology/N/N16/N16-2002.pdf</a>
 </td>
 </tr></tbody>
@@ -419,7 +419,7 @@ The structure of Japanese Bigger Analogy Test Set
 <col>
 </colgroup>
 <tbody valign="top"><tr>
-<td class="label"><a class="fn-backref" href="/projects/jbats/#id3">[3]</a></td>
+<td class="label"><a class="fn-backref" href="/projects/jBATS/#id3">[3]</a></td>
 <td>The abstract of the original paper has a mistake: the total number of questions in BATS is 99,200.</td>
 </tr></tbody>
 </table>
@@ -431,7 +431,7 @@ The structure of Japanese Bigger Analogy Test Set
 <tbody valign="top"><tr>
 <td class="label">[4]</td>
 <td>
-<em>(<a class="fn-backref" href="/projects/jbats/#id7">1</a>, <a class="fn-backref" href="/projects/jbats/#id8">2</a>, <a class="fn-backref" href="/projects/jbats/#id9">3</a>)</em> Drozd, A., Gladkova, A., &amp; Matsuoka, S. (2016). Word embeddings, analogies, and machine learning: beyond king - man + woman = queen. In Proceedings of COLING 2016, the 26th International Conference on Computational Linguistics: Technical Papers (pp. 3519–3530). Osaka, Japan, December 11-17. <a class="reference external" href="https://www.aclweb.org/anthology/C/C16/C16-1332.pdf">https://www.aclweb.org/anthology/C/C16/C16-1332.pdf</a>
+<em>(<a class="fn-backref" href="/projects/jBATS/#id7">1</a>, <a class="fn-backref" href="/projects/jBATS/#id8">2</a>, <a class="fn-backref" href="/projects/jBATS/#id9">3</a>)</em> Drozd, A., Gladkova, A., &amp; Matsuoka, S. (2016). Word embeddings, analogies, and machine learning: beyond king - man + woman = queen. In Proceedings of COLING 2016, the 26th International Conference on Computational Linguistics: Technical Papers (pp. 3519–3530). Osaka, Japan, December 11-17. <a class="reference external" href="https://www.aclweb.org/anthology/C/C16/C16-1332.pdf">https://www.aclweb.org/anthology/C/C16/C16-1332.pdf</a>
 </td>
 </tr></tbody>
 </table>
@@ -454,7 +454,7 @@ The structure of Japanese Bigger Analogy Test Set
 <tbody valign="top"><tr>
 <td class="label">[6]</td>
 <td>
-<em>(<a class="fn-backref" href="/projects/jbats/#id5">1</a>, <a class="fn-backref" href="/projects/jbats/#id10">2</a>)</em> Karpinska, M., Li, B., Rogers, A., &amp; Drozd, A. (2018) Subcharacter information in Japanese embeddings: when is it worth it? In In Proceedings of the Workshop on Relevance of Linguistic Structure in Neural Architectures for NLP (RELNLP) 2018, to appear. ACL, 2018.</td>
+<em>(<a class="fn-backref" href="/projects/jBATS/#id5">1</a>, <a class="fn-backref" href="/projects/jBATS/#id10">2</a>)</em> Karpinska, M., Li, B., Rogers, A., &amp; Drozd, A. (2018) Subcharacter information in Japanese embeddings: when is it worth it? In In Proceedings of the Workshop on Relevance of Linguistic Structure in Neural Architectures for NLP (RELNLP) 2018, to appear. ACL, 2018.</td>
 </tr></tbody>
 </table>
 </div>
