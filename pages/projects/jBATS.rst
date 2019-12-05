@@ -1,5 +1,5 @@
 .. title: The Japanese Bigger Analogy Test Set (jBATS)
-.. slug: jbats
+.. slug: jBATS
 .. tags: mathjax
 .. use_math: true
 .. hidetitle: True
