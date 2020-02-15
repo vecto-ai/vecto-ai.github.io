@@ -182,7 +182,7 @@ table.docutils {
         
         &lt;body&gt;&lt;div class=" section id="japanese-subword-level-word-embeddings">
 <h2>Japanese Subword-level word embeddings</h2>
-<p>Languages with logographic writing systems present a difficulty for traditional character-level models. Leveraging the subcharacter information was recently shown to be beneficial for a number of intrinsic and extrinsic tasks in Chinese <a class="footnote-reference" href="/projects/subword_jp/#f1" id="id1">[1]</a> <a class="footnote-reference" href="/projects/subword_jp/#f2" id="id2">[2]</a> <a class="footnote-reference" href="/projects/subword_jp/#f3" id="id3">[3]</a>. We examine whether the same strategies could be applied for Japanese.</p>
+<p>Languages with logographic writing systems present a difficulty for traditional character-level models. Leveraging the subcharacter information was recently shown to be beneficial for a number of intrinsic and extrinsic tasks in Chinese <a class="footnote-reference brackets" href="/projects/subword_jp/#f1" id="id1">1</a> <a class="footnote-reference brackets" href="/projects/subword_jp/#f2" id="id2">2</a> <a class="footnote-reference brackets" href="/projects/subword_jp/#f3" id="id3">3</a>. We examine whether the same strategies could be applied for Japanese.</p>
 <p>In scope of this work, we also developed a new analogy dataset (<a class="reference external" href="/projects/jBATS">jBATS</a>) for Japanese, and contributed new versions of its only similarity dataset (<a class="reference external" href="/projects/jSIM">jSIM</a>). Our <a class="reference internal" href="/projects/subword_jp/#implementation">implementation</a> is available in the Vecto library.</p>
 <p>The bushu information was injected by pre-processing the training corpora, as shown in Figure 1. Each complex character was prepended a list of its components, according to <a class="reference external" href="http://en.glyphwiki.org">KanjiGlyph database</a></p>
 <div class="figure align-center">
@@ -190,14 +190,12 @@ table.docutils {
 </div>
 <p>The overall architecture of Japanese embedding models are shown in Figure 1.</p>
 <ul class="simple">
-<li>The original <strong>SG</strong> (Skip-Gram) <a class="footnote-reference" href="/projects/subword_jp/#f4" id="id4">[4]</a> model (Figure 1-a) uses only word-level information.</li>
-<li>
-<strong>SG+kanji</strong> model (Figure 1-b) is a special case of FastText <a class="footnote-reference" href="/projects/subword_jp/#f5" id="id5">[5]</a>, where the minimal n-gram size and maximum n-gram size are both set to $1$. This enables us to take individual kanji into account.</li>
-<li>
-<strong>SG+kanji+bushu</strong> (Figure 1-c) model sums the vector of the target word, its constituent characters, and their constituent bushu to incorporate the bushu information. For example, the vector of the word 仲間, the vectors of characters 仲 and 間, and the vectors of bushu 亻, 中, 門, 日 are summed to predict the contextual words.</li>
+<li><p>The original <strong>SG</strong> (Skip-Gram) <a class="footnote-reference brackets" href="/projects/subword_jp/#f4" id="id4">4</a> model (Figure 1-a) uses only word-level information.</p></li>
+<li><p><strong>SG+kanji</strong> model (Figure 1-b) is a special case of FastText <a class="footnote-reference brackets" href="/projects/subword_jp/#f5" id="id5">5</a>, where the minimal n-gram size and maximum n-gram size are both set to $1$. This enables us to take individual kanji into account.</p></li>
+<li><p><strong>SG+kanji+bushu</strong> (Figure 1-c) model sums the vector of the target word, its constituent characters, and their constituent bushu to incorporate the bushu information. For example, the vector of the word 仲間, the vectors of characters 仲 and 間, and the vectors of bushu 亻, 中, 門, 日 are summed to predict the contextual words.</p></li>
 </ul>
 <div class="figure align-center">
-<img alt="/assets/img/subword/jap/models.png" src="/assets/img/subword/jap/models.png" style="width: 600px;"><p class="caption">Figure 2. Model architecture of SG, SG+kanji, and SG+kanji+bushu <a class="footnote-reference" href="/projects/subword_jp/#f6" id="id6">[6]</a> .
+<img alt="/assets/img/subword/jap/models.png" src="/assets/img/subword/jap/models.png" style="width: 600px;"><p class="caption">Figure 2. Model architecture of SG, SG+kanji, and SG+kanji+bushu <a class="footnote-reference brackets" href="/projects/subword_jp/#f6" id="id6">6</a> .
 Example sentence: いつも~~忙しい~~仲間~~と~~やっと~~会え~~た (I have finally met with my busy colleague.), window size 2.</p>
 </div>
 <div class="section" id="results-subcharacter-information-does-help-to-construct-oov-representations">
@@ -205,7 +203,7 @@ Example sentence: いつも~~忙しい~~仲間~~と~~やっと~~会え~~た (I h
 <div class="figure align-center">
 <img alt="/assets/img/subword/jap/similarity.png" src="/assets/img/subword/jap/similarity.png" style="width: 600px;"><p class="caption">Table 1. Spearman's correlation with human similarity judgements.</p>
 </div>
-<p>Table 1 shows the results on word similarity task (<a class="reference external" href="/projects/jSIM">jSIM</a>). Models are trained on the full <a class="reference external" href="http://www.nichigai.co.jp/sales/mainichi/mainichi-data.html">Mainichi corpus</a> <a class="footnote-reference" href="/projects/subword_jp/#f7" id="id7">[7]</a>, a half Mainichi corpus, and <a class="reference external" href="https://www.wikipedia.org/">Wikipedia</a>.
+<p>Table 1 shows the results on word similarity task (<a class="reference external" href="/projects/jSIM">jSIM</a>). Models are trained on the full <a class="reference external" href="http://www.nichigai.co.jp/sales/mainichi/mainichi-data.html">Mainichi corpus</a> <a class="footnote-reference brackets" href="/projects/subword_jp/#f7" id="id7">7</a>, a half Mainichi corpus, and <a class="reference external" href="https://www.wikipedia.org/">Wikipedia</a>.
 The strongest effect for inclusion of bushu is observed in the OOV condition: in all datasets the Spearman's correlations are higher for SG+kanji+bushu
 than for other SG models, which suggests that this information is indeed meaningful and helpful. The gains are also the most consistent for the adjective category, which has the highest percentage of single-kanji words. Multiple-kanji words may contain kanjis that are irrelevant to the meaning of the whole word, and that could be expected to increase the noise for bushu-aware models.</p>
 </div>
@@ -229,81 +227,36 @@ the SG+kanji beats the original SG by a large margin on inflectional and derivat
 <p>Sample script for training Japanese subword-level word embeddings (SG+kanji+bushu):</p>
 <p><code>python3 -m vecto.embeddings.train_word2vec --path_corpus $path_corpus --path_out $path_out --subword sum --language jap --path_word2chars path_word2chars</code></p>
 <p class="rubric">Footnotes</p>
-<table class="docutils footnote" frame="void" id="f1" rules="none">
-<colgroup>
-<col class="label">
-<col>
-</colgroup>
-<tbody valign="top"><tr>
-<td class="label"><a class="fn-backref" href="/projects/subword_jp/#id1">[1]</a></td>
-<td>Yaming  Sun,  Lei  Lin,  Nan  Yang,  Zhenzhou  Ji,  and Xiaolong Wang. 2014.   Radical-Enhanced Chinese Character Embedding.  In Neural Information Processing, Lecture Notes in Computer Science, pages 279–286. Springer, Cham. <a class="reference external" href="http://citeseerx.ist.psu.edu/viewdoc/download?doi=10.1.1.752.2770&amp;rep=rep1&amp;type=pdf">http://citeseerx.ist.psu.edu/viewdoc/download?doi=10.1.1.752.2770&amp;rep=rep1&amp;type=pdf</a>
-</td>
-</tr></tbody>
-</table>
-<table class="docutils footnote" frame="void" id="f2" rules="none">
-<colgroup>
-<col class="label">
-<col>
-</colgroup>
-<tbody valign="top"><tr>
-<td class="label"><a class="fn-backref" href="/projects/subword_jp/#id2">[2]</a></td>
-<td>Yanran   Li,   Wenjie   Li,   Fei   Sun,   and   Sujian   Li. 2015.  Component-enhanced Chinese character embeddings. In Proceedings of the 2015 Conference on Empirical Methods in Natural Language Processing,  pages  829–834,  Lisbon,  Portugal,  17-21 September 2015. Association for Computationa lLinguistics. <a class="reference external" href="http://anthology.aclweb.org/D/D15/D15-1098.pdf">http://anthology.aclweb.org/D/D15/D15-1098.pdf</a>
-</td>
-</tr></tbody>
-</table>
-<table class="docutils footnote" frame="void" id="f3" rules="none">
-<colgroup>
-<col class="label">
-<col>
-</colgroup>
-<tbody valign="top"><tr>
-<td class="label"><a class="fn-backref" href="/projects/subword_jp/#id3">[3]</a></td>
-<td>Frederick Liu,  Han Lu,  Chieh Lo,  and Graham Neubig. 2017. Learning Character-level Compositionality with Visual Features.  pages 2059–2068. Association for Computational Linguistics. <a class="reference external" href="http://www.aclweb.org/anthology/P17-1188">http://www.aclweb.org/anthology/P17-1188</a>
-</td>
-</tr></tbody>
-</table>
-<table class="docutils footnote" frame="void" id="f4" rules="none">
-<colgroup>
-<col class="label">
-<col>
-</colgroup>
-<tbody valign="top"><tr>
-<td class="label"><a class="fn-backref" href="/projects/subword_jp/#id4">[4]</a></td>
-<td>Mikolov, T., Yih, W., &amp; Zweig, G. (2013). Linguistic Regularities in Continuous Space Word Representations. In Proceedings of NAACL-HLT 2013 (pp. 746–751). Atlanta, Georgia, 9–14 June 2013. Retrieved from <a class="reference external" href="https://www.aclweb.org/anthology/N13-1090">https://www.aclweb.org/anthology/N13-1090</a>
-</td>
-</tr></tbody>
-</table>
-<table class="docutils footnote" frame="void" id="f5" rules="none">
-<colgroup>
-<col class="label">
-<col>
-</colgroup>
-<tbody valign="top"><tr>
-<td class="label"><a class="fn-backref" href="/projects/subword_jp/#id5">[5]</a></td>
-<td>Bojanowski, P., Grave, E., Joulin, A., &amp; Mikolov, T. (2017). Enriching Word Vectors with Subword Information. Transactions of the Association for Computational Linguistics, 5, 135-146. <a class="reference external" href="http://www.aclweb.org/anthology/Q17-1010">http://www.aclweb.org/anthology/Q17-1010</a>
-</td>
-</tr></tbody>
-</table>
-<table class="docutils footnote" frame="void" id="f6" rules="none">
-<colgroup>
-<col class="label">
-<col>
-</colgroup>
-<tbody valign="top"><tr>
-<td class="label"><a class="fn-backref" href="/projects/subword_jp/#id6">[6]</a></td>
-<td>Karpinska, M., Li, B., Rogers, A., &amp; Drozd, A. (2018) Subcharacter information in japanese embeddings: when is it worth it? In Proceedings of the Workshop on Relevance of Linguistic Structure in Neural Architectures for NLP (RELNLP) 2018, to appear. ACL, 2018.</td>
-</tr></tbody>
-</table>
-<table class="docutils footnote" frame="void" id="f7" rules="none">
-<colgroup>
-<col class="label">
-<col>
-</colgroup>
-<tbody valign="top"><tr>
-<td class="label"><a class="fn-backref" href="/projects/subword_jp/#id7">[7]</a></td>
-<td>Nichigai  Associate.  1994-2009.   CD-Mainichi  Shimbun de-ta shu (1994-2009).</td>
-</tr></tbody>
-</table>
+<dl class="footnote brackets">
+<dt class="label" id="f1"><span class="brackets"><a class="fn-backref" href="/projects/subword_jp/#id1">1</a></span></dt>
+<dd>
+<p>Yaming  Sun,  Lei  Lin,  Nan  Yang,  Zhenzhou  Ji,  and Xiaolong Wang. 2014.   Radical-Enhanced Chinese Character Embedding.  In Neural Information Processing, Lecture Notes in Computer Science, pages 279–286. Springer, Cham. <a class="reference external" href="http://citeseerx.ist.psu.edu/viewdoc/download?doi=10.1.1.752.2770&amp;rep=rep1&amp;type=pdf">http://citeseerx.ist.psu.edu/viewdoc/download?doi=10.1.1.752.2770&amp;rep=rep1&amp;type=pdf</a></p>
+</dd>
+<dt class="label" id="f2"><span class="brackets"><a class="fn-backref" href="/projects/subword_jp/#id2">2</a></span></dt>
+<dd>
+<p>Yanran   Li,   Wenjie   Li,   Fei   Sun,   and   Sujian   Li. 2015.  Component-enhanced Chinese character embeddings. In Proceedings of the 2015 Conference on Empirical Methods in Natural Language Processing,  pages  829–834,  Lisbon,  Portugal,  17-21 September 2015. Association for Computationa lLinguistics. <a class="reference external" href="http://anthology.aclweb.org/D/D15/D15-1098.pdf">http://anthology.aclweb.org/D/D15/D15-1098.pdf</a></p>
+</dd>
+<dt class="label" id="f3"><span class="brackets"><a class="fn-backref" href="/projects/subword_jp/#id3">3</a></span></dt>
+<dd>
+<p>Frederick Liu,  Han Lu,  Chieh Lo,  and Graham Neubig. 2017. Learning Character-level Compositionality with Visual Features.  pages 2059–2068. Association for Computational Linguistics. <a class="reference external" href="http://www.aclweb.org/anthology/P17-1188">http://www.aclweb.org/anthology/P17-1188</a></p>
+</dd>
+<dt class="label" id="f4"><span class="brackets"><a class="fn-backref" href="/projects/subword_jp/#id4">4</a></span></dt>
+<dd>
+<p>Mikolov, T., Yih, W., &amp; Zweig, G. (2013). Linguistic Regularities in Continuous Space Word Representations. In Proceedings of NAACL-HLT 2013 (pp. 746–751). Atlanta, Georgia, 9–14 June 2013. Retrieved from <a class="reference external" href="https://www.aclweb.org/anthology/N13-1090">https://www.aclweb.org/anthology/N13-1090</a></p>
+</dd>
+<dt class="label" id="f5"><span class="brackets"><a class="fn-backref" href="/projects/subword_jp/#id5">5</a></span></dt>
+<dd>
+<p>Bojanowski, P., Grave, E., Joulin, A., &amp; Mikolov, T. (2017). Enriching Word Vectors with Subword Information. Transactions of the Association for Computational Linguistics, 5, 135-146. <a class="reference external" href="http://www.aclweb.org/anthology/Q17-1010">http://www.aclweb.org/anthology/Q17-1010</a></p>
+</dd>
+<dt class="label" id="f6"><span class="brackets"><a class="fn-backref" href="/projects/subword_jp/#id6">6</a></span></dt>
+<dd>
+<p>Karpinska, M., Li, B., Rogers, A., &amp; Drozd, A. (2018) Subcharacter information in japanese embeddings: when is it worth it? In Proceedings of the Workshop on Relevance of Linguistic Structure in Neural Architectures for NLP (RELNLP) 2018, to appear. ACL, 2018.</p>
+</dd>
+<dt class="label" id="f7"><span class="brackets"><a class="fn-backref" href="/projects/subword_jp/#id7">7</a></span></dt>
+<dd>
+<p>Nichigai  Associate.  1994-2009.   CD-Mainichi  Shimbun de-ta shu (1994-2009).</p>
+</dd>
+</dl>
 </div>
 </div>
 </div>
