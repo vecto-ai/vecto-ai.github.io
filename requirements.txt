@@ -3,3 +3,5 @@ pybtex
 webassets
 ghp-import2
 pylatexenc
+aiohttp
+watchdog
