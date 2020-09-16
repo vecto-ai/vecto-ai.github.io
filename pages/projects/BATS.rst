@@ -39,7 +39,7 @@ These numbers look convincingly large, but language has thousands of relations o
 
 BATS [#f2]_ is an improvement over this dataset in several aspects:
 
- * :emph:`balanced and representative`: BATS covers inflectional and derivational morphology, and lexicographic and encyclopedic semantics. Each relation is represented with 10 categories, and each category contains 50 unique word pairs. This makes for 99,200 [#f3]_ questions for the vector offset method.
+ * :emph:`balanced and representative`: BATS covers inflectional and derivational morphology, and lexicographic and encyclopedic semantics. Each relation is represented with 10 categories, and each category contains 50 unique word pairs. This makes for 98,000 [#f3]_ questions for the vector offset method.
  * :emph:`reduced homonymy`: the morphological categories were sampled to reduce homonymy. For example, for verb present tense the Google set includes pairs like *walk:walks*, which could be both verbs and nouns.
  * :emph:`multiple correct answers` where applicable. For example, both *mammal* and *canine* are hypernyms of dog. In some cases alternative spellings are listed (e.g. *organize: reorganize/reorganise*).
 
@@ -72,7 +72,7 @@ A comparable dataset for Japanese is now also `available <http://vecto.space/pro
 
 .. [#f2] Gladkova, A., Drozd, A., & Matsuoka, S. (2016). Analogy-based detection of morphological and semantic relations with word embeddings: what works and what doesn’t. In Proceedings of the NAACL-HLT SRW (pp. 47–54). San Diego, California, June 12-17, 2016: ACL. https://www.aclweb.org/anthology/N/N16/N16-2002.pdf
 
-.. [#f3] The abstract of the original paper has a mistake: the total number of questions in BATS is 99,200.
+.. [#f3] The original paper has a typo: the total number of questions in BATS is 98,000, not 99,200.
 
 .. [#f4] Pennington, J., Socher, R., & Manning, C. D. (2014). Glove: Global vectors for word representation. In Proceedings of the 2014 Conference on Empirical Methods in Natural Language Processing (EMNLP) (Vol. 12, pp. 1532–1543). https://www.aclweb.org/anthology/D14-1162
 
